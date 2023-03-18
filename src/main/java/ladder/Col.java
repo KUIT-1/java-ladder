@@ -21,6 +21,16 @@ public class Col {
     }
 
 
+    @Override
+    public String toString() {
+        String S = "[";
+        for(int i = 0; i < col.length; i++) {
+            if(col[i] == -1) S += col[i] + " ,";
+            else S += col[i] + " , ";
+        }
 
+        S += "|\n";
+        return S;
+    }
 
 }

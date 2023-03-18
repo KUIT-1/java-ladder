@@ -83,5 +83,13 @@ public class Ladder {
     }
 
 
+    @Override
+    public String toString() {
+        String S = "";
+        for(int i = 0; i < cols.length; i++) {
+            S = S + cols[i];
+        }
+        return S;
+    }
 
 }
