@@ -2,26 +2,10 @@ package ladder;
 
 public class Ladder {
 
-    private final Row[] rows;
-
+    private final int[][] rows;
 
     public Ladder(int row, int numberOfPerson) {
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
-            rows[i] = new Row(numberOfPerson);
-        }
+        rows = new int[row][numberOfPerson];
     }
 
-    public void drawLine(int row, int col) {
-        rows[row].drawLine(col);
-    }
-
-    public int run(int position) {
-
-        for (int i = 0; i < rows.length; i++) {
-            position = rows[i].nextPosition(position);
-        }
-
-        return position;
-    }
 }
