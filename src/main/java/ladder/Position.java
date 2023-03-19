@@ -16,12 +16,12 @@ public class Position {
 
     private static void validatePoint(Point leftPoint, Point rightPoint, Ladder ladder) {
         /** X 좌표값이 numberOfPerson을 넘어선 안됨 */
-        if (leftPoint.getX()  < ladder.getNumberOfPerson()) throw new IllegalArgumentException();
-        if (rightPoint.getX() < ladder.getNumberOfPerson()) throw new IllegalArgumentException();
+        if (leftPoint.getX()  > ladder.getNumberOfPerson()) throw new IllegalArgumentException();
+        if (rightPoint.getX() > ladder.getNumberOfPerson()) throw new IllegalArgumentException();
         /** Y 좌표값이 numberOfPerson을 넘어선 안됨
          *  또한 마지막 row와 같아서도 안됨 */
-        if (leftPoint.getY() < ladder.getRow() -1) throw new IllegalArgumentException();
-        if (rightPoint.getY() < ladder.getRow() -1) throw new IllegalArgumentException();
+        if (leftPoint.getY() > ladder.getRow() -1) throw new IllegalArgumentException();
+        if (rightPoint.getY() > ladder.getRow() -1) throw new IllegalArgumentException();
 
         /** rightPoint.X > leftPoint.X*/
         if (rightPoint.getX() <= leftPoint.getX()) throw new IllegalArgumentException();
