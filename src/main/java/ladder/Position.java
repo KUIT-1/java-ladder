@@ -23,8 +23,10 @@ public class Position {
         if (leftPoint.getY() < ladder.getRow() -1) throw new IllegalArgumentException();
         if (rightPoint.getY() < ladder.getRow() -1) throw new IllegalArgumentException();
 
+        /** rightPoint.X > leftPoint.X*/
+        if (rightPoint.getX() <= leftPoint.getX()) throw new IllegalArgumentException();
         /** 두 좌표의 X 값 차가 1이어야 함 */
-        if (Math.abs(leftPoint.getX() - rightPoint.getX()) != 1) throw new IllegalArgumentException();
+        if (leftPoint.getX() - rightPoint.getX() != -1) throw new IllegalArgumentException();
         /** 두 좌표의 Y 값이 같아야 함 */
         if (leftPoint.getY() != rightPoint.getY()) throw new IllegalArgumentException();
     }
