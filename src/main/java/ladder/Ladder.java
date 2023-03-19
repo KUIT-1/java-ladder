@@ -14,7 +14,23 @@ public class Ladder {
     }
 
     public int run(int startNumber) {
-        return startNumber;
+        int num = startNumber;
+        for(int curHeight = 1; curHeight <= height; curHeight++){
+            if(rows[curHeight][num]==0) continue;
+            if(rows[curHeight][num]==1){
+                num++;
+                continue;
+            }
+            if(rows[curHeight][num]==-1){
+                num--;
+                continue;
+            }
+        }
+        return num;
     }
 
+    public void drawLine(int row, int col) {
+        rows[row][col] = 1;
+        rows[row][col+1] = -1;
+    }
 }
