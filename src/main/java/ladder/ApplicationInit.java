@@ -7,8 +7,8 @@ public class ApplicationInit {
     private static Ladder ladder;
     private static Position position;
 
-    public static Ladder createLadder(int numberOfPerson, int row) {
-        ApplicationInit.ladder = new Ladder(numberOfPerson, row);
+    public static Ladder createLadder(int row, int numberOfPerson) {
+        ApplicationInit.ladder = new Ladder(row, numberOfPerson);
         return ApplicationInit.ladder;
     }
 
