@@ -15,13 +15,13 @@ public class LadderTest {
     }
 
     @Test
-    @DisplayName("초기 Run : Line x")
+    @DisplayName("Run : Line x")
     void runWithoutLine(){
         assertEquals(2, ladder.run(2));
     }
 
     @Test
-    @DisplayName("Line 1개 추가 후 Run")
+    @DisplayName("Run : Line 1개 추가 후 Run")
     void runWithLine(){
         ladder.drawLine(2, 3);
         assertEquals(4, ladder.run(3));
@@ -29,7 +29,7 @@ public class LadderTest {
     }
 
     @Test
-    @DisplayName("Line 여러 개 추가 후 Run")
+    @DisplayName("Run : Line 여러 개 추가 후 Run")
     void runWithLines(){
         ladder.drawLine(2, 3);
         ladder.drawLine(3, 3);
@@ -55,17 +55,17 @@ public class LadderTest {
     @Test
     @DisplayName("drawLine : row 값 유효성")
     void wrongRowAtdrawLine(){
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(-3, 3));
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(0, 3));
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(6, 3));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(-3, 3));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(0, 3));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(6, 3));
     }
 
     @Test
     @DisplayName("drawLine : col 값 유효성")
     void wrongColAtdrawLine(){
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, -1));
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 0));
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 4));
-        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 7));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, -1));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 0));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 4));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 7));
     }
 }
