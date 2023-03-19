@@ -10,7 +10,12 @@ public class Ladder {
         this.height = height;
         this.numberOfPerson = numberOfPerson;
         rows = new int[height+1][numberOfPerson+1];
+        validateLadder();
+    }
 
+    private void validateLadder() {
+        if(height <= 0 || numberOfPerson <= 0)
+            throw new IllegalArgumentException("높이와 인원수는 1 이상이어야 합니다.");
     }
 
     public int run(int startNumber) {
