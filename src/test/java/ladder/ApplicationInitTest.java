@@ -29,13 +29,13 @@ class ApplicationInitTest {
     public void createPosition() throws Exception {
         //given
         Ladder ladder = ApplicationInit.createLadder(4, 5);
-        Position position = ApplicationInit.createPosition(0, 1, 1, 1);
+        Position position = ApplicationInit.createPosition(1, 1, 1, 2);
 
         //then
-        assertEquals(0, position.getLeftPointXInt());
+        assertEquals(1, position.getLeftPointXInt());
         assertEquals(1, position.getLeftPointYInt());
         assertEquals(1, position.getRightPointXInt());
-        assertEquals(1, position.getRightPointYInt());
+        assertEquals(2, position.getRightPointYInt());
     }
 
     @Test
@@ -44,29 +44,27 @@ class ApplicationInitTest {
         Ladder ladder = ApplicationInit.createLadder(4, 5);
 
         //when
-        /** X 좌표값이 numberOfPerson을 넘어선 안됨 */
+        /** Y 좌표값이 numberOfPerson을 넘어선 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 1, 10, 1));
-        assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(10, 1, 11, 1));
+                () -> ApplicationInit.createPosition(1, 10, 1, 11));
 
-        /** Y 좌표값이 numberOfPerson을 넘어선 안됨
+        /** X 좌표값이 row을 넘어선 안됨
          *  또한 마지막 row와 같아서도 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 10, 1, 1));
+                () -> ApplicationInit.createPosition(10, 1, 10, 2));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> ApplicationInit.createPosition(1, 1, 1, 2));
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 1, 1, 10));
-        assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 4, 1, 4));
+                () -> ApplicationInit.createPosition(5, 2, 5, 2));
 
-        /** rightPoint.X > leftPoint.X*/
+        /** rightPoint.Y > leftPoint.Y*/
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(1, 1, 0, 1));
-        /** 두 좌표의 X 값 차가 1이어야 함 */
+                () -> ApplicationInit.createPosition(1, 2, 1, 1));
+        /** 두 좌표의 Y 값 차가 1이어야 함 */
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 1, 3, 1));
-        /** 두 좌표의 Y 값이 같아야 함 */
+                () -> ApplicationInit.createPosition(1, 1, 1, 3));
+        /** 두 좌표의 X 값이 같아야 함 */
         assertThrows(IllegalArgumentException.class,
-                () -> ApplicationInit.createPosition(0, 1, 1, 2));
+                () -> ApplicationInit.createPosition(1, 1, 2, 2));
     }
 }
