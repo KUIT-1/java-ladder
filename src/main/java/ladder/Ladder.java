@@ -4,8 +4,15 @@ public class Ladder {
 
     private final int[][] rows;
 
-    public Ladder(int numberOfPerson, int row) {
-        rows = new int[numberOfPerson][row];
+    public Ladder(int row, int numberOfPerson) {
+        validateParameters(row, numberOfPerson);
+
+        rows = new int[row][numberOfPerson];
+    }
+
+    private static void validateParameters(int row, int numberOfPerson) {
+        if (row < 3) throw new IllegalArgumentException();
+        if (numberOfPerson < 2) throw new IllegalArgumentException();
     }
 
     public void drawLine(Position position) {
@@ -14,13 +21,13 @@ public class Ladder {
     }
 
     public int run(int ladderNum) {
-        int col = 0;
+        int row = 0;
 
-        while (col + 1 < rows.length) {
-            switch (rows[ladderNum][col]) {
-                case 1: ladderNum++; col++; break;
-                case -1: ladderNum--; col++; break;
-                case 0: col++; break;
+        while (row + 1 < rows.length) {
+            switch (rows[row][ladderNum]) {
+                case 1: ladderNum++; row++; break;
+                case -1: ladderNum--; row++; break;
+                case 0: row++; break;
             }
         }
 
@@ -33,6 +40,10 @@ public class Ladder {
 
     public int getRow() {
         return rows.length;
+    }
+
+    public int[][] getRowsForTest() {
+        return rows;
     }
 
 }
