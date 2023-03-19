@@ -42,4 +42,11 @@ public class LadderTest {
         assertEquals(4, ladder.run(4));
     }
 
+    // 예외처리
+    @Test
+    @DisplayName("높이나 인원수를 0 이하의 값으로 생성")
+    void wrongCreate(){
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 1));
+    }
+
 }
