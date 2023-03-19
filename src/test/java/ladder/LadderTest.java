@@ -38,7 +38,7 @@ public class LadderTest {
 
     // 예외처리
     @Test
-    @DisplayName("높이나 인원수를 0 이하의 값으로 생성")
+    @DisplayName("생성자 : 높이/인원수 유효성")
     void wrongCreate(){
         assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 1));
         assertThrows(IllegalArgumentException.class, ()-> new Ladder(1, 0));
@@ -46,9 +46,26 @@ public class LadderTest {
     }
 
     @Test
-    @DisplayName("run 시작점 오류")
+    @DisplayName("run : 시작점 유효성")
     void runAtWrongNumber(){
         assertThrows(IllegalArgumentException.class, ()-> ladder.run(-1));
         assertThrows(IllegalArgumentException.class, ()-> ladder.run(7));
+    }
+
+    @Test
+    @DisplayName("drawLine : row 값 유효성")
+    void wrongRowAtdrawLine(){
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(-3, 3));
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(0, 3));
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(6, 3));
+    }
+
+    @Test
+    @DisplayName("drawLine : col 값 유효성")
+    void wrongColAtdrawLine(){
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, -1));
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 0));
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 4));
+        assertThrows(IllegalAccessException.class, ()-> ladder.drawLine(4, 7));
     }
 }

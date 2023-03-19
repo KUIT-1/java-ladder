@@ -41,7 +41,18 @@ public class Ladder {
     }
 
     public void drawLine(int row, int col) {
+        validateLine(row, col);
         rows[row][col] = 1;
         rows[row][col+1] = -1;
     }
+
+    private void validateLine(int row, int col) {
+        if (col >= numberOfPerson || col < 1) {
+            throw new IllegalArgumentException("col 값이 유효하지 않습니다.");
+        }
+        if (row > this.height || row < 1) {
+            throw new IllegalArgumentException("row 값이 유효하지 않습니다.");
+        }
+    }
+
 }
