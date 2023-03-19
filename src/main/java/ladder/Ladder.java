@@ -19,6 +19,7 @@ public class Ladder {
     }
 
     public int run(int startNumber) {
+        validateStartNumber(startNumber);
         int num = startNumber;
         for(int curHeight = 1; curHeight <= height; curHeight++){
             if(rows[curHeight][num]==0) continue;
@@ -32,6 +33,11 @@ public class Ladder {
             }
         }
         return num;
+    }
+
+    private void validateStartNumber(int startNumber) {
+        if(startNumber < 1 || startNumber > numberOfPerson)
+            throw new IllegalArgumentException("시작점의 값이 유효하지 않습니다.");
     }
 
     public void drawLine(int row, int col) {

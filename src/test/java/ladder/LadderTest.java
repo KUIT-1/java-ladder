@@ -26,7 +26,6 @@ public class LadderTest {
         ladder.drawLine(2, 3);
         assertEquals(4, ladder.run(3));
         assertEquals(3, ladder.run(4));
-
     }
 
     @Test
@@ -42,6 +41,14 @@ public class LadderTest {
     @DisplayName("높이나 인원수를 0 이하의 값으로 생성")
     void wrongCreate(){
         assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 1));
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(1, 0));
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 0));
     }
 
+    @Test
+    @DisplayName("run 시작점 오류")
+    void runAtWrongNumber(){
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(-1));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(7));
+    }
 }
