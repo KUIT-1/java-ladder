@@ -14,82 +14,65 @@ public class Ladder {
 
     //사다리
     private Col[] cols;
-    //사다리 길이
-    private int ladder_length;
-
+    private PositiveNum pLength;
     //* 생성자 - 초기화
-    public Ladder(int ladder_length, int numberOfPerson) {
-        cols = new Col[numberOfPerson];
+    public Ladder(int ladderLength, int numberOfPerson) {
+
+        pLength = new PositiveNum(ladderLength);
+        PositiveNum pPerson = new PositiveNum(numberOfPerson);
+
+        cols = new Col[pPerson.getNum()];
         for(int i = 0; i < cols.length; i++) {
-            cols[i] = new Col(ladder_length);
+            cols[i] = new Col(pLength);
         }
-        this.ladder_length = ladder_length;
     }
+
 
     //* 실행 함수
 
     //start : 시작 위치
     public int run(int start) {
+        Position ans = new Position(new PositiveNum(start), new PositiveNum(cols.length));
 
-        //start 위치 확인 - 범위 밖일 시 -1 return
-        if(!valid_position(start)) return -1;
-        int ans = start;
-
-        //사다리 길이동안 좌로 갈지 우로갈지 체크해서 이동
-        for(int i = 0; i < ladder_length; i++) {
-            Col col = cols[ans];
-            ans += col.checkDirection(i);
+        //끝만나기 전에 좌로 갈지 우로 갈지 체크해서 이동
+        for(int i = 0; i < pLength.getNum(); i++) {
+            //더해줌
+            Col col = cols[ans.getPosition()];
+            //방향값을 확인하고 더해줌
+            ans.addPosition(col.checkDirection(new PositiveNum(i)));
         }
 
         //마지막 위치 return
-        return ans;
-    }
-
-    //* 위치가 범위 내인지 확인하는 함수
-
-    //범위 내이면 true, 밖이면 -1 return
-    public boolean valid_position(int position) {
-        if(position >= ladder_length) return false;
-        if(position < 0) return false;
-        return true;
+        return ans.getPosition();
     }
 
     //* 선 긋는 함수
 
-    //row : 선 그을 시작 줄
-    //col : 선 그을 시작 위치
+    //row : 선 그을 시작 위치(length)
+    //col : 선 그을 시작 사다리
     //direction : 방향(좌측인지 우측인지)
     //좌측 : -1, 우측 : 1
 
     //정상작동 시 true, 오작동 시 false return
-    public boolean drawLine(int row, int col, String direction) {
-        //사다리 밖으로 안나가는지 확인하고 선을 그어줌
-        if(!valid_position(col)) return false;
-        if((direction.equals("left") && row > 0)) return connect(row, col, -1);
-        if ((direction.equals("right")) && (row < cols.length-1)) return connect(row, col, 1);
+    public boolean drawLine(int row, int col, Direction direction) {
+        PositiveNum positionRow = new PositiveNum(row);
+        Position positionCol = new Position(new PositiveNum(col), new PositiveNum(cols.length));
+        if(!positionCol.detectWall(direction)) return connect(positionRow, positionCol, direction);
         return false;
     }
 
     //* 실질적으로 사다리 연결해주는 함수
-    private boolean connect(int row, int col, int direction) {
-        //from_col : line을 그을 Col
-        //to_col : line이 그어질 Col
+    private boolean connect(PositiveNum pRow, Position pCol, Direction direction) {
+        //fromCol : line을 그을 Col
+        //toCol : line이 그어질 Col
         //방향에 맞춰 양방향으로 다닐 수 있게 연결
-        Col from_col = cols[row];
-        from_col.drawLine(col, direction);
-        Col to_col = cols[row + direction];
-        to_col.drawLine(col, -direction);
+        Col fromCol = cols[pCol.getPosition()];
+        fromCol.drawLine(pRow, direction);
+        Col toCol = cols[pCol.getPosition() + direction.getNum()];
+        toCol.drawLine(pRow, direction.opposite());
         return true;
     }
 
 
-    @Override
-    public String toString() {
-        String S = "";
-        for(int i = 0; i < cols.length; i++) {
-            S = S + cols[i];
-        }
-        return S;
-    }
 
 }
