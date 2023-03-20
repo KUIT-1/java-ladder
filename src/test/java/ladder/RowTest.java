@@ -41,6 +41,23 @@ class RowTest {
     }
 
     @Test
+    @DisplayName("양쪽으로 연결된 경우에는 왼쪽으로 간다")
+    void getNextPositionTest2() {
+        //when
+        Row rows = new Row(10);
+
+        // given
+        int startPosition = 1;
+        rows.drawLine(1);
+        rows.drawLine(0);
+
+        // then
+        int expectedEndPosition = 0;
+        int endPosition = rows.getNextPosition(startPosition);
+        Assertions.assertThat(endPosition).isEqualTo(expectedEndPosition);
+    }
+
+    @Test
     @DisplayName("아무것도 연결되지 않음을 잘 체크하는지 확인")
     void connectedNothingTest() {
         // when
