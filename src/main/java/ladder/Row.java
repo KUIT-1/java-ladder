@@ -18,35 +18,28 @@ public class Row {
     }
 
     public int getNextPosition(int nowPosition) {
-        int nextPosition;
         validatePosition(nowPosition);
         // nowPosition 이 유효한 지 확인
         if (connectedNothing(nowPosition)) {
             // 아무것도 연결되어 있지 않다면
-            return nextPosition = nowPosition; // go Straight!
+            return nowPosition; // go Straight!
         }
         if (connectedLeft(nowPosition)) {
             // startPoSITION 에서 왼쪽으로 연결되어 있다면?
-            return nextPosition = nowPosition - 1;
+            return nowPosition - 1;
             // 왼쪽을 먼저 간다.
         }
         // 아무것도 연결되어 있는 것이 아니지만
         // 왼쪽으로도 연결되어 있지 않다면 오른쪽으로 연결되어 있다는 것
-        return nextPosition = nowPosition + 1;
+        return nowPosition + 1;
     }
 
-    private boolean connectedNothing(int position) {
-        if (row[position] == Direction.STRAIGHT.getDirection()) {
-            return true;
-        }
-        return false;
+    public boolean connectedNothing(int position) {
+        return row[position] == Direction.STRAIGHT.getDirection();
     }
 
     public boolean connectedLeft(int position) {
-        if (row[position] == Direction.LEFT.getDirection()) {
-            return true;
-        }
-        return false;
+        return row[position] == Direction.LEFT.getDirection();
     }
 
     public void validateNumberOfPerson(int numberOfPerson) {
