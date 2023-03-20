@@ -1,58 +1,25 @@
 package ladder;
 
 public class Ladder {
-
-    private final int[][] rows;
-    int height;
-    int numberOfPerson;
+    private LadderRun ladderRun;
+    private PositionManager positionManager;
 
     public Ladder(int height, int numberOfPerson) {
-        this.height = height;
-        this.numberOfPerson = numberOfPerson;
-        rows = new int[height+1][numberOfPerson+1];
-        validateLadder();
+        validateLadder(height, numberOfPerson);
+        positionManager = new PositionManager(height, numberOfPerson);
+        ladderRun = new LadderRun(positionManager);
     }
 
-    private void validateLadder() {
+    private void validateLadder(int height, int numberOfPerson) {
         if(height <= 0 || numberOfPerson <= 0)
-            throw new IllegalArgumentException("높이와 인원수는 1 이상이어야 합니다.");
-    }
-
-    public int run(int startNumber) {
-        validateStartNumber(startNumber);
-        int num = startNumber;
-        for(int curHeight = 1; curHeight <= height; curHeight++){
-            if(rows[curHeight][num]==0) continue;
-            if(rows[curHeight][num]==1){
-                num++;
-                continue;
-            }
-            if(rows[curHeight][num]==-1){
-                num--;
-                continue;
-            }
-        }
-        return num;
-    }
-
-    private void validateStartNumber(int startNumber) {
-        if(startNumber < 1 || startNumber > numberOfPerson)
-            throw new IllegalArgumentException("시작점의 값이 유효하지 않습니다.");
+            throw new IllegalArgumentException("높이와 인원수 값이 유효하지 않습니다.");
     }
 
     public void drawLine(int row, int col) {
-        validateLine(row, col);
-        rows[row][col] = 1;
-        rows[row][col+1] = -1;
+        positionManager.drawLine(row, col);
     }
 
-    private void validateLine(int row, int col) {
-        if (col >= numberOfPerson || col < 1) {
-            throw new IllegalArgumentException("col 값이 유효하지 않습니다.");
-        }
-        if (row > this.height || row < 1) {
-            throw new IllegalArgumentException("row 값이 유효하지 않습니다.");
-        }
+    public int run(int startPoint) {
+        return ladderRun.run(startPoint);
     }
-
 }
