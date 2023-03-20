@@ -41,7 +41,7 @@ class RowTest {
     }
 
     @Test
-    @DisplayName("양쪽으로 연결된 경우에는 왼쪽으로 간다")
+    @DisplayName("양쪽으로 연결된 경우에는 왼쪽으로 간다.")
     void getNextPositionTest2() {
         //when
         Row rows = new Row(10);
