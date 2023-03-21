@@ -1,10 +1,10 @@
 package ladder;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RowTest {
 
@@ -20,8 +20,8 @@ class RowTest {
         rows.drawLine(startPosition);
 
         //then
-        Assertions.assertThat(row[startPosition]).isEqualTo(Direction.RIGHT.getDirection());
-        Assertions.assertThat(row[startPosition + 1]).isEqualTo(Direction.LEFT.getDirection());
+        assertEquals(row[startPosition], Direction.RIGHT.getDirection());
+        assertEquals(row[startPosition + 1], Direction.LEFT.getDirection());
     }
 
     @Test
@@ -37,7 +37,7 @@ class RowTest {
         // then
         int expectedEndPosition = 2;
         int endPosition = rows.getNextPosition(startPosition);
-        Assertions.assertThat(endPosition).isEqualTo(expectedEndPosition);
+        assertEquals(expectedEndPosition, endPosition);
     }
 
     @Test
@@ -54,7 +54,7 @@ class RowTest {
         // then
         int expectedEndPosition = 0;
         int endPosition = rows.getNextPosition(startPosition);
-        Assertions.assertThat(endPosition).isEqualTo(expectedEndPosition);
+        assertEquals(expectedEndPosition, endPosition);
     }
 
     @Test
@@ -67,7 +67,7 @@ class RowTest {
 
         // then
         for(int pos = 0 ; pos < 10; pos ++){
-            Assertions.assertThat(rows.connectedNothing(pos)).isEqualTo(true);
+            assertTrue(rows.connectedNothing(pos));
         }
     }
 
@@ -81,7 +81,7 @@ class RowTest {
         rows.drawLine(5);
 
         // then
-        Assertions.assertThat(rows.connectedLeft(6)).isEqualTo(true);
+        assertTrue(rows.connectedLeft(6));
     }
 
     @Test

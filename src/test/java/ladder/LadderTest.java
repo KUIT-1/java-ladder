@@ -1,6 +1,5 @@
 package ladder;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,25 +18,27 @@ public class LadderTest {
         // then
         for (int j : startPositionList) {
             int result = ladder.run(j);
-            Assertions.assertThat(result).isEqualTo(j);
+            assertEquals(result, j);
         }
     }
+
     @Test
     @DisplayName("유효하지 않은 시작 위치가 주어진 경우")
-    public void invalidRow(){
+    public void invalidRow() {
         // when
         ladder = new Ladder(1, 10);
         // given
         int[] givenPositionList = {-1, 11, 100};
         // then
-        for(int pos : givenPositionList){
+        for (int pos : givenPositionList) {
             assertThrows(IllegalArgumentException.class,
-                    ()->ladder.run(pos));
+                    () -> ladder.run(pos));
         }
     }
+
     @Test
     @DisplayName("잘못된 위치에 Line 을 그리려고 하는 경우")
-    public void invalidDraw(){
+    public void invalidDraw() {
         // when
         ladder = new Ladder(5, 5);
         // given
@@ -45,11 +46,12 @@ public class LadderTest {
         int col = 4;
         // then
         assertThrows(IllegalArgumentException.class,
-                ()->ladder.drawLine(row, col));
+                () -> ladder.drawLine(row, col));
     }
+
     @Test
     @DisplayName("Run Test #case 1")
-    public void Testcase1(){
+    public void Testcase1() {
         // when
         ladder = new Ladder(5, 5);
         // given
@@ -57,11 +59,12 @@ public class LadderTest {
         // then
         int startPosition = 0;
         int result = ladder.run(startPosition);
-        Assertions.assertThat(result).isEqualTo(1);
+        assertEquals(1, result);
     }
+
     @Test
     @DisplayName("Run Test #case 2")
-    public void Testcase2(){
+    public void Testcase2() {
         // when
         ladder = new Ladder(5, 5);
         // given
@@ -72,27 +75,27 @@ public class LadderTest {
         // then
         int startPosition = 0;
         int result = ladder.run(startPosition);
-        Assertions.assertThat(result).isEqualTo(4);
+        assertEquals(4, result);
     }
 
     @Test
     @DisplayName("Run Test #case 3")
-    public void Testcase3(){
+    public void Testcase3() {
         // when
         ladder = new Ladder(100, 100);
         // given
-        for(int i = 0 ; i < 99; i++){
+        for (int i = 0; i < 99; i++) {
             ladder.drawLine(i, i);
         }
         // then
         int expectedPosition;
-        for(int startPosition = 0 ; startPosition <=99; startPosition++){
+        for (int startPosition = 0; startPosition <= 99; startPosition++) {
             int endPosition = ladder.run(startPosition);
             expectedPosition = startPosition - 1;
-            if(startPosition == 0){
+            if (startPosition == 0) {
                 expectedPosition = 99;
             }
-            Assertions.assertThat(endPosition).isEqualTo(expectedPosition);
+            assertEquals(expectedPosition, endPosition);
         }
     }
 
@@ -100,7 +103,7 @@ public class LadderTest {
     @DisplayName("Line Drawing Test")
     void drawLine() {
         // when
-        ladder = new Ladder(5 , 10);
+        ladder = new Ladder(5, 10);
 
         //given
         int before = ladder.run(3);
@@ -108,7 +111,7 @@ public class LadderTest {
         int after = ladder.run(3);
 
         //then
-        Assertions.assertThat(before).isEqualTo(3);
-        Assertions.assertThat(after).isEqualTo(4);
+        assertEquals(3, before);
+        assertEquals(4, after);
     }
 }
