@@ -3,9 +3,9 @@ package ladder;
 public class Ladder {
     private final Row[] rows;
 
-    public Ladder(int row, int numberOfPerson) {
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
+    public Ladder(int numberOfRow, int numberOfPerson) {
+        rows = new Row[numberOfRow];
+        for (int i = 0; i < numberOfRow; i++) {
             rows[i] = new Row(numberOfPerson);
         }
     }
