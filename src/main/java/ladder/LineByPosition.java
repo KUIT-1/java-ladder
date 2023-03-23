@@ -1,11 +1,11 @@
 package ladder;
 
-public class Position {
+public class LineByPosition {
 
     private boolean left;
     private boolean right;
 
-    public Position() {
+    public LineByPosition() {
         this.left = false;
         this.right = false;
     }
@@ -18,7 +18,7 @@ public class Position {
         this.right = true;
     }
 
-    public int checkDirection(int state) {
+    public int nextDirection(int state) {
         if(state == 0 && this.right){ // gotoRight
             return 1;
         }

@@ -2,18 +2,22 @@ package ladder;
 
 public class LadderRun {
 
-    private final PositionManager positionManager;
+    private LineManager lineManager;
 
-    public LadderRun(PositionManager positionManager) {
-        this.positionManager = positionManager;
+    public LadderRun(int height, int numberOfPerson) {
+        this.lineManager = new LineManager(height, numberOfPerson);
+    }
+
+    public void drawLine(int row, int col) {
+        lineManager.drawLine(row, col);
     }
 
     public int run(int startPoint) {
-        positionManager.validateStartPoint(startPoint);
+        lineManager.validateStartPoint(startPoint);
         Node node = new Node(startPoint);
         int lastPoint = startPoint;
-        while(positionManager.isRowExceedHeight(node)){
-            lastPoint = node.move(positionManager);
+        while(lineManager.isRowExceedHeight(node)){
+            lastPoint = node.move(lineManager);
         }
         return lastPoint;
     }

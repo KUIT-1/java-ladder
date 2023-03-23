@@ -35,6 +35,18 @@ public class LadderTest {
     void When_runWithLines_Expect_ReturnCorrectPosition(){
         ladder.drawLine(1, 1);
         ladder.drawLine(2, 2);
+        ladder.drawLine(3, 3);
+        assertEquals(4, ladder.run(1));
+        assertEquals(1, ladder.run(2));
+        assertEquals(2, ladder.run(3));
+        assertEquals(3, ladder.run(4));
+    }
+
+    @Test
+    @DisplayName("Run : 이어지는 Line 추가 후 Run")
+    void When_runWithConnectLines_Expect_ReturnCorrectPosition(){
+        ladder.drawLine(1, 1);
+        ladder.drawLine(2, 2);
         ladder.drawLine(2, 3);
         ladder.drawLine(3, 3);
         assertEquals(3, ladder.run(1));
