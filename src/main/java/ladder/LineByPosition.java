@@ -18,7 +18,7 @@ public class Position {
         this.right = true;
     }
 
-    public int checkDirection(int state) {
+    public int nextDirection(int state) {
         if(state == 0 && this.right){ // gotoRight
             return 1;
         }

@@ -2,33 +2,27 @@ package ladder;
 
 public class PositionManager {
 
-    private Position[][] positions;
+    private LineByRow[] lineByRows;
     private final int height;
     private final int numberOfPerson;
 
     public PositionManager(int height, int numberOfPerson) {
-        positions = new Position[height + 1][numberOfPerson + 1];
+        lineByRows = new LineByRow[height+1];
         this.height = height;
         this.numberOfPerson = numberOfPerson;
-        initPositions();
+        initLineByRow(height, numberOfPerson);
     }
 
-    private void initPositions() {
+    private void initLineByRow(int height, int numberOfPerson) {
         for(int row = 1; row < height + 1; row++){
-            initCol(row);
-        }
-    }
-
-    private void initCol(int row) {
-        for(int col = 1; col < numberOfPerson + 1; col++){
-            positions[row][col] = new Position();
+            lineByRows[row] = new LineByRow(numberOfPerson);
         }
     }
 
     public void drawLine(int row, int col) {
         validateLine(row, col);
-        positions[row][col].addLinetoRight();
-        positions[row][col+1].addLinetoLeft();
+        lineByRows[row].addLinetoRight(col);
+        lineByRows[row].addLinetoLeft(col+1);
     }
 
     private void validateLine(int row, int col) {
@@ -43,8 +37,8 @@ public class PositionManager {
         return node.isRowExceedValue(height);
     }
 
-    public int checkDirection(int row, int col, int state) {
-        return positions[row][col].checkDirection(state);
+    public int nextDirection(int row, int col, int state) {
+        return lineByPositions[row][col].nextDirection(state);
     }
 
     public void validateStartPoint(int startPoint) {
