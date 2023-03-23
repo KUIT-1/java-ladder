@@ -1,11 +1,11 @@
 package ladder;
 
-public class Position {
+public class LineByPosition {
 
     private boolean left;
     private boolean right;
 
-    public Position() {
+    public LineByPosition() {
         this.left = false;
         this.right = false;
     }
