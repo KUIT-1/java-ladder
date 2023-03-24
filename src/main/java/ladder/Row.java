@@ -5,6 +5,7 @@ public class Row {
     private final boolean[] lineDrawn;
 
     public Row(int numberOfPerson) {
+        validatePersonNum(numberOfPerson);
         this.numberOfPerson = numberOfPerson;
         this.lineDrawn = new boolean[numberOfPerson - 1];
     }
@@ -28,6 +29,11 @@ public class Row {
     private void validatePosition(int position) {
         if (position < 1 || position >= numberOfPerson) {
             throw new IllegalArgumentException("Invalid position: " + position);
+        }
+    }
+    private void validatePersonNum(int numberOfPerson){
+        if(numberOfPerson<1){
+            throw new IllegalArgumentException();
         }
     }
 }
