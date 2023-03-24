@@ -1,32 +1,41 @@
 package ladder;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
 
+    static Ladder ladder;
+    static Position position;
+
+    @BeforeAll
+    static void setLadderAndPosition() {
+        ladder = LadderPositionFactory.createLadder(4, 5);
+    }
+
     @Test
     public void drawLineTest() throws Exception {
         //given
-        Ladder ladder = ApplicationInit.createLadder(4, 5);
-        Position position = ApplicationInit.createPosition(1, 1, 1, 2);
+        position = LadderPositionFactory.createPosition(ladder, 1, 1, 2);
 
         //when
-        ladder.drawLine(position);
+        ladder.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
         //then
-        assertEquals(1, ladder.getRowsForTest()[1][1]);
-        assertEquals(-1, ladder.getRowsForTest()[1][2]);
+        assertEquals(1, ladder.getRowsForTest()[1].getValue(1));
+        assertEquals(-1, ladder.getRowsForTest()[1].getValue(2));
     }
 
     @Test
     public void runTest() throws Exception {
         //given
-        Ladder ladder = ApplicationInit.createLadder(4, 5);
+        position = LadderPositionFactory.createPosition(ladder, 1, 1, 2);
+        ladder.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
-        ladder.drawLine(ApplicationInit.createPosition(1, 1, 1, 2));
-        ladder.drawLine(ApplicationInit.createPosition(2, 2, 2, 3));
+        position = LadderPositionFactory.createPosition(ladder, 2, 2, 3);
+        ladder.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
         //when
         int result = ladder.run(1);
