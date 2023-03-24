@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-10T05:19:09" hostname="gimjeong-uui-MacBookAir.local" time="0.007">
+<testsuite name="ladder.LadderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-24T09:44:33" hostname="imsubin-ui-MacBookAir.local" time="0.031">
   <properties/>
-  <testcase name="1 -1 0 0 / 0 1 -1 0 / 1 -1 0 0" classname="ladder.LadderTest" time="0.006"/>
-  <testcase name="만들어진 사다리 이상의 사람 예외 처리" classname="ladder.LadderTest" time="0.001"/>
+  <testcase name="사다리게임" classname="ladder.LadderTest" time="0.031"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
