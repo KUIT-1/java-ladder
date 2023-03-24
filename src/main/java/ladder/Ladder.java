@@ -2,12 +2,15 @@ package ladder;
 
 public class Ladder {
 
-    private final int[][] rows;
+    private final Row[] rows;
 
     public Ladder(int row, int numberOfPerson) {
         validateParameters(row, numberOfPerson);
 
-        rows = new int[row][numberOfPerson];
+        rows = new Row[row];
+        for (int i = 0; i < row; i++) {
+            rows[i] = new Row(numberOfPerson);
+        }
     }
 
     private static void validateParameters(int row, int numberOfPerson) {
@@ -15,34 +18,30 @@ public class Ladder {
         if (numberOfPerson < 2) throw new IllegalArgumentException();
     }
 
-    public void drawLine(Position position) {
-        rows[position.getLeftPointXInt()][position.getLeftPointYInt()] = 1;
-        rows[position.getRightPointXInt()][position.getRightPointYInt()] = -1;
+    public void drawLine(int x, int leftY, int rightY) {
+        rows[x].setValue(leftY, rightY);
     }
 
     public int run(int ladderNum) {
         int row = 0;
 
         while (row + 1 < rows.length) {
-            switch (rows[row][ladderNum]) {
-                case 1: ladderNum++; row++; break;
-                case -1: ladderNum--; row++; break;
-                case 0: row++; break;
-            }
+            ladderNum = rows[row].nextPosition(ladderNum);
+            row++;
         }
 
         return ladderNum;
     }
 
     public int getNumberOfPerson() {
-        return rows[0].length;
+        return rows[0].getLength();
     }
 
     public int getRow() {
         return rows.length;
     }
 
-    public int[][] getRowsForTest() {
+    public Row[] getRowsForTest() {
         return rows;
     }
 
