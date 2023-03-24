@@ -27,8 +27,6 @@ public class Position {
         if (rightPoint.getY() <= leftPoint.getY()) throw new IllegalArgumentException();
         /** 두 좌표의 Y 값 차가 1이어야 함 */
         if (leftPoint.getY() - rightPoint.getY() != -1) throw new IllegalArgumentException();
-        /** 두 좌표의 X 값이 같아야 함 */
-        if (leftPoint.getX() != rightPoint.getX()) throw new IllegalArgumentException();
     }
 
     public int getLeftPointXInt() {
