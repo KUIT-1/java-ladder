@@ -5,38 +5,38 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LadderPositionFactoryTest {
+class LadderGamePositionFactoryTest {
 
-    static Ladder ladder;
+    static LadderGame ladderGame;
 
     @BeforeAll
     static void setLadder() {
-        ladder = LadderPositionFactory.createLadder(4, 5);
+        ladderGame = LadderPositionFactory.createLadderGame(4, 5);
     }
 
     @Test
     public void createLadder() throws Exception {
         //given
-        ladder = LadderPositionFactory.createLadder(4, 5);
+        ladderGame = LadderPositionFactory.createLadderGame(4, 5);
 
         //then
-        assertEquals(4, ladder.getRow());
-        assertEquals(5, ladder.getNumberOfPerson());
+        assertEquals(4, ladderGame.getRow());
+        assertEquals(5, ladderGame.getNumberOfPerson());
     }
 
     @Test
     public void validateLadderException() throws Exception {
         //given
         /** row > 2*/
-        assertThrows(IllegalArgumentException.class, () -> LadderPositionFactory.createLadder(2, 5));
+        assertThrows(IllegalArgumentException.class, () -> LadderPositionFactory.createLadderGame(2, 5));
         /** numberOfPerson > 1*/
-        assertThrows(IllegalArgumentException.class, () -> LadderPositionFactory.createLadder(5, 1));
+        assertThrows(IllegalArgumentException.class, () -> LadderPositionFactory.createLadderGame(5, 1));
     }
 
     @Test
     public void createPosition() throws Exception {
         //given
-        Position position = LadderPositionFactory.createPosition(ladder, 1, 1, 2);
+        Position position = LadderPositionFactory.createPosition(ladderGame, 1, 1, 2);
 
         //then
         assertEquals(1, position.getLeftPointXInt());
@@ -50,21 +50,21 @@ class LadderPositionFactoryTest {
         //when
         /** Y 좌표값이 numberOfPerson을 넘어선 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> LadderPositionFactory.createPosition(ladder, 10, 1, 11));
+                () -> LadderPositionFactory.createPosition(ladderGame, 10, 1, 11));
 
         /** X 좌표값이 row을 넘어선 안됨
          *  또한 마지막 row와 같아서도 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> LadderPositionFactory.createPosition(ladder, 1, 10, 2));
+                () -> LadderPositionFactory.createPosition(ladderGame, 1, 10, 2));
         assertThrows(IllegalArgumentException.class,
-                () -> LadderPositionFactory.createPosition(ladder, 2, 5, 2));
+                () -> LadderPositionFactory.createPosition(ladderGame, 2, 5, 2));
 
         /** rightPoint.Y > leftPoint.Y*/
         assertThrows(IllegalArgumentException.class,
-                () -> LadderPositionFactory.createPosition(ladder, 2, 1, 1));
+                () -> LadderPositionFactory.createPosition(ladderGame, 2, 1, 1));
         /** 두 좌표의 Y 값 차가 1이어야 함 */
         assertThrows(IllegalArgumentException.class,
-                () -> LadderPositionFactory.createPosition(ladder, 1, 1, 3));
+                () -> LadderPositionFactory.createPosition(ladderGame, 1, 1, 3));
 
     }
 }
