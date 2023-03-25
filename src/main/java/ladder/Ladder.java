@@ -23,9 +23,8 @@ public class Ladder {
     }
 
     public int run(int ladderNum) {
-        int row = 0;
-        while (row + 1 < rows.length) {
-            ladderNum = rows[row++].nextPosition(ladderNum);
+        for (Row row : rows) {
+            ladderNum = row.nextPosition(ladderNum);
         }
 
         return ladderNum;
