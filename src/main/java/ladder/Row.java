@@ -1,5 +1,7 @@
 package ladder;
 
+import static ladder.Direction.*;
+
 public class Row {
 
     private int[] row;
@@ -13,15 +15,14 @@ public class Row {
     }
 
     public void setValue(int leftY, int rightY) {
-        row[leftY] = 1;
-        row[rightY] = -1;
+        row[leftY] = LEFT.getDirection();
+        row[rightY] = RIGHT.getDirection();
     }
 
     public int nextPosition(int ladderNum) {
         switch (row[ladderNum]) {
-            case 1 : ladderNum++; break;
-            case -1: ladderNum--; break;
-            case 0: break;
+            case 1 : return ++ladderNum;
+            case -1 : return --ladderNum;
         }
         return ladderNum;
     }
