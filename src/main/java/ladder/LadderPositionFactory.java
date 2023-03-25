@@ -1,6 +1,7 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.creator.RandomLadderCreator;
 import ladder.creator.SelfLadderCreator;
 
 import java.awt.*;
@@ -13,6 +14,10 @@ public class LadderPositionFactory {
 
     public static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
         return new SelfLadderCreator(row, numberOfPerson);
+    }
+
+    public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+        return new RandomLadderCreator(row, numberOfPerson);
     }
 
     public static LadderRunner createLadderRunner(LadderCreator LadderCreator) {
