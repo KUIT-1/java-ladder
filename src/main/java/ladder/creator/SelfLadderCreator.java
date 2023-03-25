@@ -4,7 +4,7 @@ import ladder.NumberOfPerson;
 import ladder.NumberOfRow;
 import ladder.Row;
 
-public class SelfLadderCreator {
+public class SelfLadderCreator implements LadderCreator{
 
     private final Row[] rows;
 
@@ -15,10 +15,12 @@ public class SelfLadderCreator {
         }
     }
 
+    @Override
     public void drawLine(int x, int leftY, int rightY) {
         rows[x].setValue(leftY, rightY);
     }
 
+    @Override
     public Row[] getRows() {
         return rows;
     }
