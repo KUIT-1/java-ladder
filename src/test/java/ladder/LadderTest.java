@@ -38,7 +38,7 @@ public class LadderTest {
         ladder.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
         //when
-        int result = ladder.run(1);
+        int result = ladder.run(LadderNumber.createLadderNumber(1));
 
         //then
         assertEquals(3, result);
