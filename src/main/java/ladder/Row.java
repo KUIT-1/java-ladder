@@ -6,8 +6,8 @@ public class Row {
 
     private int[] row;
 
-    public Row(int numberOfPerson) {
-        this.row = new int[numberOfPerson];
+    public Row(NumberOfPerson numberOfPerson) {
+        this.row = new int[numberOfPerson.getNumberOfPerson()];
     }
 
     public int getValue(int y) {
@@ -19,12 +19,17 @@ public class Row {
         row[rightY] = RIGHT.getDirection();
     }
 
-    public int nextPosition(int ladderNum) {
-        switch (row[ladderNum]) {
-            case 1 : return ++ladderNum;
-            case -1 : return --ladderNum;
+    public void nextPosition(LadderNumber ladderNum) {
+        validateLadderNumber(ladderNum);
+
+        switch (row[ladderNum.getNumber()]) {
+            case 1 : ladderNum.goRight(); break;
+            case -1 : ladderNum.goLeft(); break;
         }
-        return ladderNum;
+    }
+
+    private void validateLadderNumber(LadderNumber ladderNum) {
+        if (ladderNum.isBigger(row.length)) throw new IllegalArgumentException();
     }
 
 

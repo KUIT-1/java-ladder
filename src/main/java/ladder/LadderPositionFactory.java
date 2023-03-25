@@ -5,7 +5,7 @@ import java.awt.*;
 public class LadderPositionFactory {
 
     public static Ladder createLadder(int row, int numberOfPerson) {
-        return new Ladder(row, numberOfPerson);
+        return new Ladder(NumberOfRow.createNumberOfPerson(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
     }
 
     public static Position createPosition(Ladder ladder, int x, int leftY, int rightY) {

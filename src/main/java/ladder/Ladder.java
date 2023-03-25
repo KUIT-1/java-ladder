@@ -4,30 +4,23 @@ public class Ladder {
 
     private final Row[] rows;
 
-    public Ladder(int row, int numberOfPerson) {
-        validateParameters(row, numberOfPerson);
-
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
+    public Ladder(NumberOfRow row, NumberOfPerson numberOfPerson) {
+        rows = new Row[row.getNumberOfRow()];
+        for (int i = 0; i < row.getNumberOfRow(); i++) {
             rows[i] = new Row(numberOfPerson);
         }
-    }
-
-    private static void validateParameters(int row, int numberOfPerson) {
-        if (row < 3) throw new IllegalArgumentException();
-        if (numberOfPerson < 2) throw new IllegalArgumentException();
     }
 
     public void drawLine(int x, int leftY, int rightY) {
         rows[x].setValue(leftY, rightY);
     }
 
-    public int run(int ladderNum) {
+    public int run(LadderNumber ladderNum) {
         for (Row row : rows) {
-            ladderNum = row.nextPosition(ladderNum);
+            row.nextPosition(ladderNum);
         }
 
-        return ladderNum;
+        return ladderNum.getNumber();
     }
 
     public int getNumberOfPerson() {
