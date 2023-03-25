@@ -22,9 +22,13 @@ public class Row {
     public void nextPosition(LadderNumber ladderNum) {
         validateLadderNumber(ladderNum);
 
-        switch (row[ladderNum.getNumber()]) {
-            case 1 : ladderNum.goRight(); break;
-            case -1 : ladderNum.goLeft(); break;
+        if (isLeft(ladderNum.getNumber())) {
+            ladderNum.goRight();
+            return;
+        }
+        if (isRight(ladderNum.getNumber())) {
+            ladderNum.goLeft();
+            return;
         }
     }
 
@@ -32,6 +36,13 @@ public class Row {
         if (ladderNum.isBigger(row.length)) throw new IllegalArgumentException();
     }
 
+    private boolean isLeft(int ladderNumber) {
+        return row[ladderNumber] == LEFT.getDirection();
+    }
+
+    private boolean isRight(int ladderNumber) {
+        return row[ladderNumber] == RIGHT.getDirection();
+    }
 
     public int getLength() {
         return row.length;
