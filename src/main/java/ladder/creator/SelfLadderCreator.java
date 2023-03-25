@@ -4,11 +4,11 @@ import ladder.NumberOfPerson;
 import ladder.NumberOfRow;
 import ladder.Row;
 
-public class LadderCreator {
+public class SelfLadderCreator {
 
     private final Row[] rows;
 
-    public LadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+    public SelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
         rows = new Row[row.getNumberOfRow()];
         for (int i = 0; i < row.getNumberOfRow(); i++) {
             rows[i] = new Row(numberOfPerson);
