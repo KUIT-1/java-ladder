@@ -1,5 +1,7 @@
 package ladder;
 
+import static ladder.Direction.*;
+
 public class LadderNumber {
 
     private int number;

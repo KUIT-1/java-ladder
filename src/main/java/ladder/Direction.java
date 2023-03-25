@@ -1,9 +1,9 @@
 package ladder;
 
 public enum Direction {
-    LEFT(1), RIGHT(-1);
+    LEFT(1), RIGHT(-1), CENTER(0);
 
-    private int direction;
+    private final int direction;
 
     Direction(int direction) {
         this.direction = direction;
@@ -12,4 +12,5 @@ public enum Direction {
     public int getDirection() {
         return direction;
     }
+
 }

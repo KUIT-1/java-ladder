@@ -4,47 +4,43 @@ import static ladder.Direction.*;
 
 public class Row {
 
-    private int[] row;
+    private Node[] nodes;
 
     public Row(NumberOfPerson numberOfPerson) {
-        this.row = new int[numberOfPerson.getNumberOfPerson()];
+        this.nodes = new Node[numberOfPerson.getNumberOfPerson()];
+        for (int i = 0; i < numberOfPerson.getNumberOfPerson(); i++) {
+            nodes[i] = Node.createCenterNode();
+        }
     }
 
     public int getValue(int y) {
-        return row[y];
+        return nodes[y].getValue();
     }
 
     public void setValue(int leftY, int rightY) {
-        row[leftY] = LEFT.getDirection();
-        row[rightY] = RIGHT.getDirection();
+        nodes[leftY] = Node.createLeftNode();
+        nodes[rightY] = Node.createRightNode();
     }
 
     public void nextPosition(LadderNumber ladderNum) {
         validateLadderNumber(ladderNum);
 
-        if (isLeft(ladderNum.getNumber())) {
+        if (nodes[ladderNum.getNumber()].isLeft()) {
             ladderNum.goRight();
             return;
         }
-        if (isRight(ladderNum.getNumber())) {
+        if (nodes[ladderNum.getNumber()].isRight()) {
             ladderNum.goLeft();
             return;
         }
     }
 
+
     private void validateLadderNumber(LadderNumber ladderNum) {
-        if (ladderNum.isBigger(row.length)) throw new IllegalArgumentException();
-    }
-
-    private boolean isLeft(int ladderNumber) {
-        return row[ladderNumber] == LEFT.getDirection();
-    }
-
-    private boolean isRight(int ladderNumber) {
-        return row[ladderNumber] == RIGHT.getDirection();
+        if (ladderNum.isBigger(nodes.length)) throw new IllegalArgumentException();
     }
 
     public int getLength() {
-        return row.length;
+        return nodes.length;
     }
 }
