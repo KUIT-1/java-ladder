@@ -7,11 +7,11 @@ public class Ladder {
         ladderRun = new LadderRun(height, numberOfPerson);
     }
 
-    public void drawLine(int row, int col) {
+    public void drawLine(Position row, Position col) {
         ladderRun.drawLine(row, col);
     }
 
-    public int run(NaturalNumber startPoint) {
+    public int run(Position startPoint) {
         return ladderRun.run(startPoint);
     }
 

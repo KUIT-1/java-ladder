@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static ladder.NaturalNumber.*;
+import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
@@ -21,42 +22,42 @@ public class LadderTest {
     @Test
     @DisplayName("Run : Line x")
     void When_runWithoutLine_Expect_SamePointAsStartPoint(){
-        assertEquals(2, ladder.run(createNaturalNumber(2)));
+        assertEquals(2, ladder.run(createPosition(2)));
     }
 
     @Test
     @DisplayName("Run : Line 1개 추가 후 Run")
     void When_runWithLine_Expect_NextPointOfStartPoint(){
-        ladder.drawLine(2, 3);
-        assertEquals(1, ladder.run(createNaturalNumber(1)));
-        assertEquals(2, ladder.run(createNaturalNumber(2)));
-        assertEquals(4, ladder.run(createNaturalNumber(3)));
-        assertEquals(3, ladder.run(createNaturalNumber(4)));
+        ladder.drawLine(createPosition(2), createPosition(3));
+        assertEquals(1, ladder.run(createPosition(1)));
+        assertEquals(2, ladder.run(createPosition(2)));
+        assertEquals(4, ladder.run(createPosition(3)));
+        assertEquals(3, ladder.run(createPosition(4)));
     }
 
     @Test
     @DisplayName("Run : Line 여러 개 추가 후 Run")
     void When_runWithLines_Expect_ReturnCorrectPosition(){
-        ladder.drawLine(1, 1);
-        ladder.drawLine(2, 2);
-        ladder.drawLine(3, 3);
-        assertEquals(4, ladder.run(createNaturalNumber(1)));
-        assertEquals(1, ladder.run(createNaturalNumber(2)));
-        assertEquals(2, ladder.run(createNaturalNumber(3)));
-        assertEquals(3, ladder.run(createNaturalNumber(4)));
+        ladder.drawLine(createPosition(1), createPosition(1));
+        ladder.drawLine(createPosition(2), createPosition(2));
+        ladder.drawLine(createPosition(3), createPosition(3));
+        assertEquals(4, ladder.run(createPosition(1)));
+        assertEquals(1, ladder.run(createPosition(2)));
+        assertEquals(2, ladder.run(createPosition(3)));
+        assertEquals(3, ladder.run(createPosition(4)));
     }
 
     @Test
     @DisplayName("Run : 이어지는 Line 추가 후 Run")
     void When_runWithConnectLines_Expect_ReturnCorrectPosition(){
-        ladder.drawLine(1, 1);
-        ladder.drawLine(2, 2);
-        ladder.drawLine(2, 3);
-        ladder.drawLine(3, 3);
-        assertEquals(3, ladder.run(createNaturalNumber(1)));
-        assertEquals(1, ladder.run(createNaturalNumber(2)));
-        assertEquals(3, ladder.run(createNaturalNumber(3)));
-        assertEquals(2, ladder.run(createNaturalNumber(4)));
+        ladder.drawLine(createPosition(1), createPosition(1));
+        ladder.drawLine(createPosition(2), createPosition(2));
+        ladder.drawLine(createPosition(2), createPosition(3));
+        ladder.drawLine(createPosition(3), createPosition(3));
+        assertEquals(3, ladder.run(createPosition(1)));
+        assertEquals(1, ladder.run(createPosition(2)));
+        assertEquals(3, ladder.run(createPosition(3)));
+        assertEquals(2, ladder.run(createPosition(4)));
     }
 
     // 예외처리
@@ -70,25 +71,25 @@ public class LadderTest {
     @Test
     @DisplayName("drawLine : row 값 유효성")
     void When_InvalidRowValueInDrawLine_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(-3, 3));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(0, 3));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(6, 3));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(-3), createPosition(3)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(0), createPosition(3)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(6), createPosition(3)));
     }
 
     @Test
     @DisplayName("drawLine : col 값 유효성")
     void When_InvalidColValueInDrawLine_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, -1));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 0));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 4));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(4, 7));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(4), createPosition(-1)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(4), createPosition(0)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(4), createPosition(4)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.drawLine(createPosition(4), createPosition(7)));
     }
 
     @Test
     @DisplayName("run : 시작점 유효성")
     void When_InvalidStartPointInRun_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createNaturalNumber(-1)));
-        assertEquals(4, ladder.run(createNaturalNumber(4)));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createNaturalNumber(7)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createPosition(-1)));
+        assertEquals(4, ladder.run(createPosition(4)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createPosition(7)));
     }
 }

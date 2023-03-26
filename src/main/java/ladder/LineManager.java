@@ -19,10 +19,10 @@ public class LineManager {
         }
     }
 
-    public void drawLine(int row, int col) {
+    public void drawLine(Position row, Position col) {
         validateLine(row, col);
-        lineByRows[row].addLinetoRight(col);
-        lineByRows[row].addLinetoLeft(col+1);
+        lineByRows[row.getPosition()].addLinetoRight(col);
+        lineByRows[row.getPosition()].addLinetoLeft(col.nextPosition());
     }
 
     public boolean isRowExceedHeight(Node node) {
@@ -34,16 +34,16 @@ public class LineManager {
         return lineByRows[row].nextDirection(col, state);
     }
 
-    private void validateLine(int row, int col) {
+    private void validateLine(Position row, Position col) {
         // Line은 해당 지점에서 오른쪽으로 뻗는 line만 생성 가능
-        if (col >= numberOfPerson.getNumber() || col < 1)
+        if (col.getPosition() >= numberOfPerson.getNumber())
             throw new IllegalArgumentException("col 값이 유효하지 않습니다.");
-        if (row > height.getNumber() || row < 1)
+        if (row.getPosition() > height.getNumber())
             throw new IllegalArgumentException("row 값이 유효하지 않습니다.");
     }
 
-    public void validateStartPoint(NaturalNumber startPoint) {
-        if(startPoint.getNumber() > numberOfPerson.getNumber())
+    public void validateStartPoint(Position startPoint) {
+        if(startPoint.getPosition() > numberOfPerson.getNumber())
             throw new IllegalArgumentException("시작점의 값이 유효하지 않습니다.");
     }
 

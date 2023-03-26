@@ -14,12 +14,12 @@ public class LineByRow {
         }
     }
 
-    public void addLinetoRight(int col) {
-        lineByPositions[col].addLinetoRight();
+    public void addLinetoRight(Position col) {
+        lineByPositions[col.getPosition()].addLinetoRight();
     }
 
-    public void addLinetoLeft(int col) {
-        lineByPositions[col].addLinetoLeft();
+    public void addLinetoLeft(Position col) {
+        lineByPositions[col.getPosition()].addLinetoLeft();
     }
 
     public int nextDirection(int col, int state) {
