@@ -8,19 +8,14 @@ import ladder.domain.wrapper.NumberOfRow;
 import ladder.domain.Row;
 import ladder.factory.LadderFactory;
 
-/** 얘가 핸들러? */
 public class LadderGame {
 
     private LadderCreator ladderCreator;
     private Ladder ladder;
 
     public LadderGame(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        ladderCreator = LadderFactory.createSelfLadderCreator(row, numberOfPerson);
+        ladderCreator = LadderFactory.createRandomLadderCreator(row, numberOfPerson);
         ladder = ladderCreator.getLadder();
-    }
-
-    public void drawLine(int x, int leftY, int rightY) {
-        ladderCreator.drawLine(x,leftY,rightY);
     }
 
     public int run(LadderNumber ladderNum) {
