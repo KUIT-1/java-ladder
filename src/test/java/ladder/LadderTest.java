@@ -3,6 +3,8 @@ package ladder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static ladder.NaturalNumber.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
@@ -11,23 +13,25 @@ public class LadderTest {
 
     @BeforeEach
     void init(){
-        ladder = new Ladder(5, 4);
+        NaturalNumber height = createNaturalNumber(5);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        ladder = new Ladder(height, numberOfPerson);
     }
 
     @Test
     @DisplayName("Run : Line x")
     void When_runWithoutLine_Expect_SamePointAsStartPoint(){
-        assertEquals(2, ladder.run(2));
+        assertEquals(2, ladder.run(createNaturalNumber(2)));
     }
 
     @Test
     @DisplayName("Run : Line 1개 추가 후 Run")
     void When_runWithLine_Expect_NextPointOfStartPoint(){
         ladder.drawLine(2, 3);
-        assertEquals(1, ladder.run(1));
-        assertEquals(2, ladder.run(2));
-        assertEquals(4, ladder.run(3));
-        assertEquals(3, ladder.run(4));
+        assertEquals(1, ladder.run(createNaturalNumber(1)));
+        assertEquals(2, ladder.run(createNaturalNumber(2)));
+        assertEquals(4, ladder.run(createNaturalNumber(3)));
+        assertEquals(3, ladder.run(createNaturalNumber(4)));
     }
 
     @Test
@@ -36,10 +40,10 @@ public class LadderTest {
         ladder.drawLine(1, 1);
         ladder.drawLine(2, 2);
         ladder.drawLine(3, 3);
-        assertEquals(4, ladder.run(1));
-        assertEquals(1, ladder.run(2));
-        assertEquals(2, ladder.run(3));
-        assertEquals(3, ladder.run(4));
+        assertEquals(4, ladder.run(createNaturalNumber(1)));
+        assertEquals(1, ladder.run(createNaturalNumber(2)));
+        assertEquals(2, ladder.run(createNaturalNumber(3)));
+        assertEquals(3, ladder.run(createNaturalNumber(4)));
     }
 
     @Test
@@ -49,19 +53,19 @@ public class LadderTest {
         ladder.drawLine(2, 2);
         ladder.drawLine(2, 3);
         ladder.drawLine(3, 3);
-        assertEquals(3, ladder.run(1));
-        assertEquals(1, ladder.run(2));
-        assertEquals(3, ladder.run(3));
-        assertEquals(2, ladder.run(4));
+        assertEquals(3, ladder.run(createNaturalNumber(1)));
+        assertEquals(1, ladder.run(createNaturalNumber(2)));
+        assertEquals(3, ladder.run(createNaturalNumber(3)));
+        assertEquals(2, ladder.run(createNaturalNumber(4)));
     }
 
     // 예외처리
     @Test
     @DisplayName("생성자 : 높이/인원수 유효성")
     void When_InvalidArgumentInConstructor_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 1));
-        assertThrows(IllegalArgumentException.class, ()-> new Ladder(1, 0));
-        assertThrows(IllegalArgumentException.class, ()-> new Ladder(0, 0));
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(createNaturalNumber(0), createNaturalNumber(1)));
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(createNaturalNumber(1), createNaturalNumber(0)));
+        assertThrows(IllegalArgumentException.class, ()-> new Ladder(createNaturalNumber(0), createNaturalNumber(0)));
     }
     @Test
     @DisplayName("drawLine : row 값 유효성")
@@ -83,8 +87,8 @@ public class LadderTest {
     @Test
     @DisplayName("run : 시작점 유효성")
     void When_InvalidStartPointInRun_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladder.run(-1));
-        assertEquals(4, ladder.run(4));
-        assertThrows(IllegalArgumentException.class, ()-> ladder.run(7));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createNaturalNumber(-1)));
+        assertEquals(4, ladder.run(createNaturalNumber(4)));
+        assertThrows(IllegalArgumentException.class, ()-> ladder.run(createNaturalNumber(7)));
     }
 }

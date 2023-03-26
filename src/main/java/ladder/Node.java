@@ -7,10 +7,10 @@ public class Node {
     private int current_row;
     private int current_col;
 
-    public Node(int startPoint){
+    public Node(NaturalNumber startPoint){
         this.state = DOWN.getDirection();
         this.current_row = 1;
-        this.current_col = startPoint;
+        this.current_col = startPoint.getNumber();
     }
 
     public int move(LineManager lineManager) {

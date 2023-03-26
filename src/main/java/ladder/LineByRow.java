@@ -3,13 +3,13 @@ package ladder;
 public class LineByRow {
     private LineByPosition[] lineByPositions;
 
-    public LineByRow(int numberOfPerson) {
-        lineByPositions = new LineByPosition[numberOfPerson + 1];
+    public LineByRow(NaturalNumber numberOfPerson) {
+        lineByPositions = new LineByPosition[numberOfPerson.getNumber() + 1];
         initLineByPosition(numberOfPerson);
     }
 
-    private void initLineByPosition(int numberOfPerson) {
-        for(int col = 1; col < numberOfPerson + 1; col++){
+    private void initLineByPosition(NaturalNumber numberOfPerson) {
+        for(int col = 1; col < numberOfPerson.getNumber() + 1; col++){
             lineByPositions[col] = new LineByPosition();
         }
     }

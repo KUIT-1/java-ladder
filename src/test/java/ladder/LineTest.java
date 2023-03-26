@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.createNaturalNumber;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LineTest {
@@ -12,13 +13,14 @@ class LineTest {
 
     @BeforeEach
     void init(){
-        lineManager = new LineManager(5, 4);
+        NaturalNumber height = createNaturalNumber(5);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        lineManager = new LineManager(height, numberOfPerson);
     }
 
     @Test
     @DisplayName("checkDirection : 하향 중에 line 만난 경우")
     void When_LastMoveIsDownward_Expect_ReturnStateAfterMove(){
-        lineManager = new LineManager(2, 4);
         lineManager.drawLine(1, 2);
         assertEquals(1, lineManager.nextDirection(1, 2, 0));
         assertEquals(-1, lineManager.nextDirection(1, 3, 0));
@@ -27,7 +29,6 @@ class LineTest {
     @Test
     @DisplayName("checkDirection : 하향 중 & 좌우에 line이 존재")
     void When_LastMoveIsDownwardAndLineOnBothSide_Expect_ReturnStateAfterMove(){
-        lineManager = new LineManager(2, 4);
         lineManager.drawLine(1, 2);
         lineManager.drawLine(1, 1);
         assertEquals(1, lineManager.nextDirection(1, 2, 0));
@@ -36,7 +37,6 @@ class LineTest {
     @Test
     @DisplayName("checkDirection : 좌향 중")
     void When_LastMoveIsLeftward_Expect_ReturnStateAfterMove(){
-        lineManager = new LineManager(2, 4);
         lineManager.drawLine(1, 2);
         assertEquals(0, lineManager.nextDirection(1, 2, -1));
         assertEquals(-1, lineManager.nextDirection(1, 3, -1));
@@ -45,7 +45,6 @@ class LineTest {
     @Test
     @DisplayName("checkDirection : 우향 중")
     void When_LastMoveIsRightward_Expect_ReturnStateAfterMove(){
-        lineManager = new LineManager(2, 4);
         lineManager.drawLine(1, 2);
         assertEquals(1, lineManager.nextDirection(1, 2, 1));
         assertEquals(0, lineManager.nextDirection(1, 3, 1));
@@ -72,8 +71,8 @@ class LineTest {
     @Test
     @DisplayName("validateStartPoint : 시작점 유효성")
     void When_InvalidStartPointInRun_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> lineManager.validateStartPoint(-1));
-        assertThrows(IllegalArgumentException.class, ()-> lineManager.validateStartPoint(7));
+        assertThrows(IllegalArgumentException.class, ()-> lineManager.validateStartPoint(createNaturalNumber(-1)));
+        assertThrows(IllegalArgumentException.class, ()-> lineManager.validateStartPoint(createNaturalNumber(7)));
     }
 
 }

@@ -4,7 +4,7 @@ public class LadderRun {
 
     private LineManager lineManager;
 
-    public LadderRun(int height, int numberOfPerson) {
+    public LadderRun(NaturalNumber height, NaturalNumber numberOfPerson) {
         this.lineManager = new LineManager(height, numberOfPerson);
     }
 
@@ -12,10 +12,10 @@ public class LadderRun {
         lineManager.drawLine(row, col);
     }
 
-    public int run(int startPoint) {
+    public int run(NaturalNumber startPoint) {
         lineManager.validateStartPoint(startPoint);
         Node node = new Node(startPoint);
-        int lastPoint = startPoint;
+        int lastPoint = startPoint.getNumber();
         while(lineManager.isRowExceedHeight(node)){
             lastPoint = node.move(lineManager);
         }
