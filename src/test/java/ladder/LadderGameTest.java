@@ -23,7 +23,7 @@ public class LadderGameTest {
     @BeforeEach
     void reset() {
         ladderGame = LadderFactory.createLadderGame(4, 5);
-        LadderFactory.resetLadder(ladderGame.getLadderCreator());
+        LadderFactory.resetLadder();
     }
 
     @Test
