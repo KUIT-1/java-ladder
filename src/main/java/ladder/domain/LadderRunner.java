@@ -1,7 +1,6 @@
-package ladder;
+package ladder.domain;
 
-import ladder.wrapper.LadderNumber;
-import ladder.wrapper.Row;
+import ladder.domain.wrapper.LadderNumber;
 
 public class LadderRunner {
 

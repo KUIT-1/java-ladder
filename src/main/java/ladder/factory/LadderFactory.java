@@ -1,10 +1,12 @@
-package ladder;
+package ladder.factory;
 
-import ladder.creator.LadderCreator;
-import ladder.creator.RandomLadderCreator;
-import ladder.creator.SelfLadderCreator;
-import ladder.wrapper.NumberOfPerson;
-import ladder.wrapper.NumberOfRow;
+import ladder.LadderGame;
+import ladder.domain.creator.LadderCreator;
+import ladder.domain.creator.RandomLadderCreator;
+import ladder.domain.creator.SelfLadderCreator;
+import ladder.domain.LadderRunner;
+import ladder.domain.wrapper.NumberOfPerson;
+import ladder.domain.wrapper.NumberOfRow;
 
 public class LadderFactory {
 

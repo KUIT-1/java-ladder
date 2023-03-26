@@ -1,4 +1,4 @@
-package ladder;
+package ladder.domain.wrapper;
 
 public enum Direction {
     LEFT(1), RIGHT(-1), CENTER(0);

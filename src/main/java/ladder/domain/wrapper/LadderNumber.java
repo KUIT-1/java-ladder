@@ -1,4 +1,4 @@
-package ladder.wrapper;
+package ladder.domain.wrapper;
 
 public class LadderNumber {
 

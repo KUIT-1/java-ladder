@@ -1,6 +1,6 @@
-package ladder.wrapper;
+package ladder.domain;
 
-import ladder.Direction;
+import ladder.domain.wrapper.Direction;
 
 public class Node {
 

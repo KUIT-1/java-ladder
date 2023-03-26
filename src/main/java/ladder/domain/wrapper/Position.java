@@ -1,7 +1,6 @@
-package ladder.wrapper;
+package ladder.domain.wrapper;
 
-import ladder.LadderGame;
-import ladder.creator.LadderCreator;
+import ladder.domain.creator.LadderCreator;
 
 import java.awt.*;
 

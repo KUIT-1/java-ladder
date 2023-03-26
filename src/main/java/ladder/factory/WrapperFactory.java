@@ -1,7 +1,7 @@
-package ladder;
+package ladder.factory;
 
-import ladder.creator.LadderCreator;
-import ladder.wrapper.Position;
+import ladder.domain.creator.LadderCreator;
+import ladder.domain.wrapper.Position;
 
 import java.awt.*;
 

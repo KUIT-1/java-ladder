@@ -1,10 +1,11 @@
 package ladder;
 
-import ladder.creator.LadderCreator;
-import ladder.wrapper.LadderNumber;
-import ladder.wrapper.NumberOfPerson;
-import ladder.wrapper.NumberOfRow;
-import ladder.wrapper.Row;
+import ladder.domain.creator.LadderCreator;
+import ladder.domain.wrapper.LadderNumber;
+import ladder.domain.wrapper.NumberOfPerson;
+import ladder.domain.wrapper.NumberOfRow;
+import ladder.domain.Row;
+import ladder.factory.LadderFactory;
 
 /** 얘가 핸들러? */
 public class LadderGame {
@@ -39,7 +40,7 @@ public class LadderGame {
      * 이건 수정해보기
      * @return
      */
-    public ladder.creator.LadderCreator getLadderCreator() {
+    public ladder.domain.creator.LadderCreator getLadderCreator() {
         return LadderCreator;
     }
 }

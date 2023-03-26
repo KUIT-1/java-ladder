@@ -1,6 +1,6 @@
-package ladder.creator;
+package ladder.domain.creator;
 
-import ladder.wrapper.Row;
+import ladder.domain.Row;
 
 public interface LadderCreator {
 

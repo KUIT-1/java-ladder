@@ -1,4 +1,7 @@
-package ladder.wrapper;
+package ladder.domain;
+
+import ladder.domain.wrapper.LadderNumber;
+import ladder.domain.wrapper.NumberOfPerson;
 
 public class Row {
 
