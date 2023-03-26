@@ -4,9 +4,7 @@ import ladder.creator.LadderCreator;
 import ladder.creator.RandomLadderCreator;
 import ladder.creator.SelfLadderCreator;
 
-import java.awt.*;
-
-public class LadderPositionFactory {
+public class LadderFactory {
 
     public static LadderGame createLadderGame(int row, int numberOfPerson) {
         return new LadderGame(NumberOfRow.createNumberOfPerson(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
@@ -24,7 +22,4 @@ public class LadderPositionFactory {
         return new LadderRunner(LadderCreator.getRows());
     }
 
-    public static Position createPosition(LadderGame ladderGame, int x, int leftY, int rightY) {
-        return new Position(new Point(x, leftY), new Point(x, rightY), ladderGame);
-    }
 }
