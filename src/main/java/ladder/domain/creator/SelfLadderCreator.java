@@ -1,27 +1,25 @@
 package ladder.domain.creator;
 
+import ladder.domain.Ladder;
 import ladder.domain.wrapper.NumberOfPerson;
 import ladder.domain.wrapper.NumberOfRow;
 import ladder.domain.Row;
 
 public class SelfLadderCreator implements LadderCreator{
 
-    private final Row[] rows;
+    private final Ladder ladder;
 
-    public SelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        rows = new Row[row.getNumberOfRow()];
-        for (int i = 0; i < row.getNumberOfRow(); i++) {
-            rows[i] = new Row(numberOfPerson);
-        }
+    public SelfLadderCreator(Ladder ladder) {
+        this.ladder = ladder;
     }
 
     @Override
     public void drawLine(int x, int leftY, int rightY) {
-        rows[x].setValue(leftY, rightY);
+        ladder.getRows()[x].setValue(leftY, rightY);
     }
 
     @Override
-    public Row[] getRows() {
-        return rows;
+    public Ladder getLadder() {
+        return ladder;
     }
 }

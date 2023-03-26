@@ -1,18 +1,13 @@
 package ladder.domain.creator;
 
-import ladder.domain.wrapper.NumberOfPerson;
-import ladder.domain.wrapper.NumberOfRow;
-import ladder.domain.Row;
+import ladder.domain.Ladder;
 
 public class RandomLadderCreator implements LadderCreator{
 
-    private final Row[] rows;
+    private final Ladder ladder;
 
-    public RandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        rows = new Row[row.getNumberOfRow()];
-        for (int i = 0; i < row.getNumberOfRow(); i++) {
-            rows[i] = new Row(numberOfPerson);
-        }
+    public RandomLadderCreator(Ladder ladder) {
+        this.ladder = ladder;
     }
 
     @Override
@@ -21,7 +16,7 @@ public class RandomLadderCreator implements LadderCreator{
     }
 
     @Override
-    public Row[] getRows() {
-        return rows;
+    public Ladder getLadder() {
+        return ladder;
     }
 }

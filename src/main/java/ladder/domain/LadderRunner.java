@@ -4,14 +4,14 @@ import ladder.domain.wrapper.LadderNumber;
 
 public class LadderRunner {
 
-    Row[] rows;
+    private Ladder ladder;
 
-    public LadderRunner(Row[] rows) {
-        this.rows = rows;
+    public LadderRunner(Ladder ladder) {
+        this.ladder = ladder;
     }
 
     public int run(LadderNumber ladderNum) {
-        for (Row row : rows) {
+        for (Row row : ladder.getRows()) {
             row.nextPosition(ladderNum);
         }
 

@@ -1,5 +1,6 @@
 package ladder;
 
+import ladder.domain.Ladder;
 import ladder.domain.creator.LadderCreator;
 import ladder.domain.wrapper.LadderNumber;
 import ladder.domain.wrapper.NumberOfPerson;
@@ -10,37 +11,35 @@ import ladder.factory.LadderFactory;
 /** 얘가 핸들러? */
 public class LadderGame {
 
-    private LadderCreator LadderCreator;
+    private LadderCreator ladderCreator;
+    private Ladder ladder;
 
     public LadderGame(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        LadderCreator = LadderFactory.createSelfLadderCreator(row, numberOfPerson);
+        ladderCreator = LadderFactory.createSelfLadderCreator(row, numberOfPerson);
+        ladder = ladderCreator.getLadder();
     }
 
     public void drawLine(int x, int leftY, int rightY) {
-        LadderCreator.drawLine(x,leftY,rightY);
+        ladderCreator.drawLine(x,leftY,rightY);
     }
 
     public int run(LadderNumber ladderNum) {
-        return LadderFactory.createLadderRunner(LadderCreator).run(ladderNum);
+        return LadderFactory.createLadderRunner(ladderCreator).run(ladderNum);
     }
 
     public int getNumberOfPerson() {
-        return LadderCreator.getRows()[0].getLength();
+        return ladder.getNumberOfPersonSize();
     }
 
     public int getRow() {
-        return LadderCreator.getRows().length;
+        return ladder.getRowSize();
     }
 
-    public Row[] getRowsForTest() {
-        return LadderCreator.getRows();
+    public Ladder getLadder() {
+        return ladder;
     }
 
-    /**
-     * 이건 수정해보기
-     * @return
-     */
-    public ladder.domain.creator.LadderCreator getLadderCreator() {
-        return LadderCreator;
+    public LadderCreator getLadderCreator() {
+        return ladderCreator;
     }
 }
