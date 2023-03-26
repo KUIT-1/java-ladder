@@ -9,9 +9,9 @@ import java.util.Random;
 public class RandomLadderCreator implements LadderCreator {
 
     private final Ladder ladder;
-    private final SelfLadderCreator selfLadderCreator;
+    private final LadderCreator selfLadderCreator;
 
-    public RandomLadderCreator(Ladder ladder, SelfLadderCreator selfLadderCreator) {
+    public RandomLadderCreator(Ladder ladder, LadderCreator selfLadderCreator) {
         this.ladder = ladder;
         this.selfLadderCreator = selfLadderCreator;
     }
