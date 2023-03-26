@@ -24,12 +24,12 @@ public class LadderFactory {
         return new SelfLadderCreator(ladder);
     }
 
-    public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson,
-                                                          SelfLadderCreator selfLadderCreator) {
+    public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+        LadderCreator selfLadderCreator = createSelfLadderCreator(row, numberOfPerson);
         if (ladder == null) {
-            new RandomLadderCreator(createLadder(row, numberOfPerson), selfLadderCreator);
+            new RandomLadderCreator(createLadder(row, numberOfPerson), (SelfLadderCreator) selfLadderCreator);
         }
-        return new RandomLadderCreator(ladder, selfLadderCreator);
+        return new RandomLadderCreator(ladder, (SelfLadderCreator) selfLadderCreator);
     }
 
     public static LadderRunner createLadderRunner(LadderCreator LadderCreator) {
