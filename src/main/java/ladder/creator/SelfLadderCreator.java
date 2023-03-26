@@ -1,8 +1,8 @@
 package ladder.creator;
 
-import ladder.NumberOfPerson;
-import ladder.NumberOfRow;
-import ladder.Row;
+import ladder.wrapper.NumberOfPerson;
+import ladder.wrapper.NumberOfRow;
+import ladder.wrapper.Row;
 
 public class SelfLadderCreator implements LadderCreator{
 

@@ -1,7 +1,12 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.wrapper.LadderNumber;
+import ladder.wrapper.NumberOfPerson;
+import ladder.wrapper.NumberOfRow;
+import ladder.wrapper.Row;
 
+/** 얘가 핸들러? */
 public class LadderGame {
 
     LadderCreator LadderCreator;

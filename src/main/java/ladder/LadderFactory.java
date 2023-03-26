@@ -3,6 +3,8 @@ package ladder;
 import ladder.creator.LadderCreator;
 import ladder.creator.RandomLadderCreator;
 import ladder.creator.SelfLadderCreator;
+import ladder.wrapper.NumberOfPerson;
+import ladder.wrapper.NumberOfRow;
 
 public class LadderFactory {
 

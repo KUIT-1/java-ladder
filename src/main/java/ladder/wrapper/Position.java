@@ -1,4 +1,6 @@
-package ladder;
+package ladder.wrapper;
+
+import ladder.LadderGame;
 
 import java.awt.*;
 

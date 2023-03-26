@@ -1,5 +1,7 @@
 package ladder;
 
+import ladder.wrapper.Position;
+
 import java.awt.*;
 
 public class WrapperFactory {

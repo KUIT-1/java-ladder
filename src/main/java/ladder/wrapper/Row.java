@@ -1,6 +1,4 @@
-package ladder;
-
-import static ladder.Direction.*;
+package ladder.wrapper;
 
 public class Row {
 

@@ -1,5 +1,7 @@
 package ladder;
 
+import ladder.wrapper.LadderNumber;
+import ladder.wrapper.Position;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
