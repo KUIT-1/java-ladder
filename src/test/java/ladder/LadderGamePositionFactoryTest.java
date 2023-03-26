@@ -37,7 +37,7 @@ class LadderGamePositionFactoryTest {
     @Test
     public void createPosition() throws Exception {
         //given
-        Position position = WrapperFactory.createPosition(ladderGame, 1, 1, 2);
+        Position position = WrapperFactory.createPosition(ladderGame.getLadderCreator(), 1, 1, 2);
 
         //then
         assertEquals(1, position.getLeftPointXInt());
@@ -51,21 +51,21 @@ class LadderGamePositionFactoryTest {
         //when
         /** Y 좌표값이 numberOfPerson을 넘어선 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> WrapperFactory.createPosition(ladderGame, 10, 1, 11));
+                () -> WrapperFactory.createPosition(ladderGame.getLadderCreator(), 10, 1, 11));
 
         /** X 좌표값이 row을 넘어선 안됨
          *  또한 마지막 row와 같아서도 안됨 */
         assertThrows(IllegalArgumentException.class,
-                () -> WrapperFactory.createPosition(ladderGame, 1, 10, 2));
+                () -> WrapperFactory.createPosition(ladderGame.getLadderCreator(), 1, 10, 2));
         assertThrows(IllegalArgumentException.class,
-                () -> WrapperFactory.createPosition(ladderGame, 2, 5, 2));
+                () -> WrapperFactory.createPosition(ladderGame.getLadderCreator(), 2, 5, 2));
 
         /** rightPoint.Y > leftPoint.Y*/
         assertThrows(IllegalArgumentException.class,
-                () -> WrapperFactory.createPosition(ladderGame, 2, 1, 1));
+                () -> WrapperFactory.createPosition(ladderGame.getLadderCreator(), 2, 1, 1));
         /** 두 좌표의 Y 값 차가 1이어야 함 */
         assertThrows(IllegalArgumentException.class,
-                () -> WrapperFactory.createPosition(ladderGame, 1, 1, 3));
+                () -> WrapperFactory.createPosition(ladderGame.getLadderCreator(), 1, 1, 3));
 
     }
 }

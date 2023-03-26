@@ -9,7 +9,7 @@ import ladder.wrapper.Row;
 /** 얘가 핸들러? */
 public class LadderGame {
 
-    LadderCreator LadderCreator;
+    private LadderCreator LadderCreator;
 
     public LadderGame(NumberOfRow row, NumberOfPerson numberOfPerson) {
         LadderCreator = LadderFactory.createSelfLadderCreator(row, numberOfPerson);
@@ -35,4 +35,11 @@ public class LadderGame {
         return LadderCreator.getRows();
     }
 
+    /**
+     * 이건 수정해보기
+     * @return
+     */
+    public ladder.creator.LadderCreator getLadderCreator() {
+        return LadderCreator;
+    }
 }
