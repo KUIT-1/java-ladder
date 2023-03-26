@@ -1,9 +1,6 @@
 package ladder.domain.creator;
 
 import ladder.domain.Ladder;
-import ladder.domain.wrapper.NumberOfPerson;
-import ladder.domain.wrapper.NumberOfRow;
-import ladder.domain.Row;
 
 public class SelfLadderCreator implements LadderCreator{
 
@@ -16,6 +13,14 @@ public class SelfLadderCreator implements LadderCreator{
     @Override
     public void drawLine(int x, int leftY, int rightY) {
         ladder.getRows()[x].setValue(leftY, rightY);
+    }
+
+    /**
+     * @deprecated
+     */
+    @Override
+    public void drawLine() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
