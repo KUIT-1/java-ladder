@@ -1,19 +1,44 @@
 package ladder.domain.creator;
 
 import ladder.domain.Ladder;
+import ladder.domain.wrapper.Position;
+import ladder.factory.WrapperFactory;
 
-public class RandomLadderCreator implements LadderCreator{
+import java.util.Random;
+
+public class RandomLadderCreator implements LadderCreator {
 
     private final Ladder ladder;
+    private final SelfLadderCreator selfLadderCreator;
 
-    public RandomLadderCreator(Ladder ladder) {
+    public RandomLadderCreator(Ladder ladder, SelfLadderCreator selfLadderCreator) {
         this.ladder = ladder;
+        this.selfLadderCreator = selfLadderCreator;
     }
 
     @Override
     public void drawLine(int x, int leftY, int rightY) {
+        int ladderSize = ladder.getRowSize() * ladder.getNumberOfPersonSize();
+        int count = (int) (ladderSize * 0.3);
 
+        Random random = new Random();
+        for (int i = 0; i < count; i++) {
+            i = createRandomDrawLine(random, i);
+        }
     }
+
+    private int createRandomDrawLine(Random random, int i) {
+        int randomX = random.nextInt(ladder.getRowSize() - 2);
+        int randomY = random.nextInt(ladder.getNumberOfPersonSize() - 1);
+        try {
+            Position position = WrapperFactory.createPosition(ladder, randomX, randomY, randomY + 1);
+            selfLadderCreator.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
+        } catch (IllegalArgumentException e) {
+            return --i;
+        }
+        return i;
+    }
+
 
     @Override
     public Ladder getLadder() {
