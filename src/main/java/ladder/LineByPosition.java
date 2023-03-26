@@ -20,19 +20,20 @@ public class LineByPosition {
         this.right = true;
     }
 
-    public int nextDirection(int state) {
-        if(state == DOWN.getDirection() && this.right){ // gotoRight
-            return RIGHT.getDirection();
+    public Direction nextDirection(Direction state) {
+        if(state == DOWN && this.right){ // gotoRight
+            return RIGHT;
         }
-        if(state == DOWN.getDirection() && this.left){ // gotoLeft
-            return LEFT.getDirection();
+        if(state == DOWN && this.left){ // gotoLeft
+            return LEFT;
         }
-        if(state == RIGHT.getDirection() && this.right){ // gotoRight
-            return RIGHT.getDirection();
+        if(state == RIGHT && this.right){ // gotoRight
+            return RIGHT;
         }
-        if(state == LEFT.getDirection() && this.left){ // gotoLeft
-            return LEFT.getDirection();
+        if(state == LEFT && this.left){ // gotoLeft
+            return LEFT;
         }
-        return DOWN.getDirection();
+        return DOWN;
     }
+
 }

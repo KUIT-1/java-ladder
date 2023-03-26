@@ -27,7 +27,7 @@ public class LadderTest {
 
     @Test
     @DisplayName("Run : Line 1개 추가 후 Run")
-    void When_runWithLine_Expect_NextPointOfStartPoint(){
+    void When_RunWithLine_Expect_NextPointOfStartPoint(){
         ladder.drawLine(createPosition(2), createPosition(3));
         assertEquals(1, ladder.run(createPosition(1)));
         assertEquals(2, ladder.run(createPosition(2)));
@@ -37,7 +37,7 @@ public class LadderTest {
 
     @Test
     @DisplayName("Run : Line 여러 개 추가 후 Run")
-    void When_runWithLines_Expect_ReturnCorrectPosition(){
+    void When_RunWithLines_Expect_ReturnCorrectPosition(){
         ladder.drawLine(createPosition(1), createPosition(1));
         ladder.drawLine(createPosition(2), createPosition(2));
         ladder.drawLine(createPosition(3), createPosition(3));
@@ -49,7 +49,7 @@ public class LadderTest {
 
     @Test
     @DisplayName("Run : 이어지는 Line 추가 후 Run")
-    void When_runWithConnectLines_Expect_ReturnCorrectPosition(){
+    void When_RunWithConnectLines_Expect_ReturnCorrectPosition(){
         ladder.drawLine(createPosition(1), createPosition(1));
         ladder.drawLine(createPosition(2), createPosition(2));
         ladder.drawLine(createPosition(2), createPosition(3));

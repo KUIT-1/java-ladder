@@ -9,7 +9,7 @@ public class LineByRow {
     }
 
     private void initLineByPosition(NaturalNumber numberOfPerson) {
-        for(int col = 1; col < numberOfPerson.getNumber() + 1; col++){
+        for(int col = 1; col <= numberOfPerson.getNumber(); col++){
             lineByPositions[col] = new LineByPosition();
         }
     }
@@ -22,7 +22,8 @@ public class LineByRow {
         lineByPositions[col.getPosition()].addLinetoLeft();
     }
 
-    public int nextDirection(int col, int state) {
-        return lineByPositions[col].nextDirection(state);
+    public Direction nextDirection(Position col, Direction state) {
+        return lineByPositions[col.getPosition()].nextDirection(state);
     }
+
 }

@@ -26,11 +26,13 @@ public class LineManager {
     }
 
     public boolean isRowExceedHeight(Node node) {
+
         return node.isRowExceedValue(height);
     }
 
-    public int nextDirection(int row, int col, int state) {
-        return lineByRows[row].nextDirection(col, state);
+
+    public Direction nextDirection(Position row, Position col, Direction state) {
+        return lineByRows[row.getPosition()].nextDirection(col, state);
     }
 
     private void validateLine(Position row, Position col) {

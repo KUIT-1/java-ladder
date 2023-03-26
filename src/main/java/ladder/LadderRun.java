@@ -15,11 +15,11 @@ public class LadderRun {
     public int run(Position startPoint) {
         lineManager.validateStartPoint(startPoint);
         Node node = new Node(startPoint);
-        int lastPoint = startPoint.getPosition();
+        Position lastPoint = startPoint;
         while(lineManager.isRowExceedHeight(node)){
             lastPoint = node.move(lineManager);
         }
-        return lastPoint;
+        return lastPoint.getPosition();
     }
 
 }
