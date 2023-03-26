@@ -26,8 +26,7 @@ public class LineManager {
     }
 
     public boolean isRowExceedHeight(Node node) {
-
-        return node.isRowExceedValue(height.getNumber());
+        return node.isRowExceedValue(height);
     }
 
     public int nextDirection(int row, int col, int state) {

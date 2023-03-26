@@ -30,15 +30,10 @@ public class Node {
         this.current_col = this.current_col + this.state;
     }
 
-    public boolean isRowExceedValue(int value) {
-        validateValue(value);
-        if(this.current_row > value)
+    public boolean isRowExceedValue(NaturalNumber value) {
+        if(this.current_row > value.getNumber())
             return false;
         return true;
     }
 
-    private void validateValue(int value) {
-        if(value < 0)
-            throw new IllegalArgumentException("value는 음수가 될 수 없습니다.");
-    }
 }
