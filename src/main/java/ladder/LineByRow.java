@@ -26,4 +26,12 @@ public class LineByRow {
         return lineByPositions[col.getPosition()].nextDirection(state);
     }
 
+    public String infoRow(NaturalNumber numberOfPerson) {
+        String str_row = "";
+        for(int col = 1; col <= numberOfPerson.getNumber();col++){
+            str_row += lineByPositions[col].infoLine() + "\t";
+        }
+        return str_row;
+    }
+
 }

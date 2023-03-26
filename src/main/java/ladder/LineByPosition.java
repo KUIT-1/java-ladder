@@ -36,4 +36,14 @@ public class LineByPosition {
         return DOWN;
     }
 
+    public String infoLine() {
+        if(left && right)
+            return "↔";
+        if(left)
+            return "←";
+        if(right)
+            return "→";
+        return "0";
+    }
+
 }

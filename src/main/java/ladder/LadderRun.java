@@ -22,4 +22,9 @@ public class LadderRun {
         return lastPoint.getPosition();
     }
 
+    public void printLadder() {
+        String ladder_str = lineManager.printLineByRows();
+        System.out.print(ladder_str);
+    }
+
 }

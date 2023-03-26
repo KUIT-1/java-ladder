@@ -48,4 +48,12 @@ public class LineManager {
             throw new IllegalArgumentException("시작점의 값이 유효하지 않습니다.");
     }
 
+    public String printLineByRows() {
+        String str_Ladder = "";
+        for(int row = 1;row <= height.getNumber();row++){
+            str_Ladder += lineByRows[row].infoRow(numberOfPerson) + "\n";
+        }
+        return str_Ladder;
+    }
+
 }

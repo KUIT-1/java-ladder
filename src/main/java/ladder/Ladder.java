@@ -15,4 +15,7 @@ public class Ladder {
         return ladderRun.run(startPoint);
     }
 
+    public void printLadder() {
+        ladderRun.printLadder();
+    }
 }
