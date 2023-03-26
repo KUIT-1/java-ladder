@@ -1,5 +1,7 @@
 package ladder;
 
+import static ladder.Direction.*;
+
 public class LineByPosition {
 
     private boolean left;
@@ -19,18 +21,18 @@ public class LineByPosition {
     }
 
     public int nextDirection(int state) {
-        if(state == 0 && this.right){ // gotoRight
-            return 1;
+        if(state == DOWN.getDirection() && this.right){ // gotoRight
+            return RIGHT.getDirection();
         }
-        if(state == 0 && this.left){ // gotoLeft
-            return -1;
+        if(state == DOWN.getDirection() && this.left){ // gotoLeft
+            return LEFT.getDirection();
         }
-        if(state == 1 && this.right){ // gotoRight
-            return 1;
+        if(state == RIGHT.getDirection() && this.right){ // gotoRight
+            return RIGHT.getDirection();
         }
-        if(state == -1 && this.left){ // gotoLeft
-            return -1;
+        if(state == LEFT.getDirection() && this.left){ // gotoLeft
+            return LEFT.getDirection();
         }
-        return 0;
+        return DOWN.getDirection();
     }
 }

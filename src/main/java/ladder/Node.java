@@ -1,19 +1,21 @@
 package ladder;
 
+import static ladder.Direction.*;
+
 public class Node {
     private int state; // -1 : gotoLeft, 1 : gotoRight, 0 : gotoDown
     private int current_row;
     private int current_col;
 
     public Node(int startPoint){
-        this.state = 0;
+        this.state = DOWN.getDirection();
         this.current_row = 1;
         this.current_col = startPoint;
     }
 
     public int move(LineManager lineManager) {
         this.state = lineManager.nextDirection(this.current_row, this.current_col, this.state);
-        if(state == 0){
+        if(state == DOWN.getDirection()){
             gotoDown();
         }
         followLine();
