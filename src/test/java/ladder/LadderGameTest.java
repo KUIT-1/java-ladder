@@ -12,13 +12,13 @@ public class LadderGameTest {
 
     @BeforeAll
     static void setLadderAndPosition() {
-        ladderGame = LadderPositionFactory.createLadderGame(4, 5);
+        ladderGame = LadderFactory.createLadderGame(4, 5);
     }
 
     @Test
     public void drawLineTest() throws Exception {
         //given
-        position = LadderPositionFactory.createPosition(ladderGame, 1, 1, 2);
+        position = WrapperFactory.createPosition(ladderGame, 1, 1, 2);
 
         //when
         ladderGame.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
@@ -31,10 +31,10 @@ public class LadderGameTest {
     @Test
     public void runTest() throws Exception {
         //given
-        position = LadderPositionFactory.createPosition(ladderGame, 1, 1, 2);
+        position = WrapperFactory.createPosition(ladderGame, 1, 1, 2);
         ladderGame.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
-        position = LadderPositionFactory.createPosition(ladderGame, 2, 2, 3);
+        position = WrapperFactory.createPosition(ladderGame, 2, 2, 3);
         ladderGame.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
 
         //when

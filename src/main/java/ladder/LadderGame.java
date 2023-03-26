@@ -7,7 +7,7 @@ public class LadderGame {
     LadderCreator LadderCreator;
 
     public LadderGame(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        LadderCreator = LadderPositionFactory.createSelfLadderCreator(row, numberOfPerson);
+        LadderCreator = LadderFactory.createSelfLadderCreator(row, numberOfPerson);
     }
 
     public void drawLine(int x, int leftY, int rightY) {
@@ -15,7 +15,7 @@ public class LadderGame {
     }
 
     public int run(LadderNumber ladderNum) {
-        return LadderPositionFactory.createLadderRunner(LadderCreator).run(ladderNum);
+        return LadderFactory.createLadderRunner(LadderCreator).run(ladderNum);
     }
 
     public int getNumberOfPerson() {
