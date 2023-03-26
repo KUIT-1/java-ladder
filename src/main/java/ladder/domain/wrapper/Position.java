@@ -21,10 +21,9 @@ public class Position {
         /** Y 좌표값이 numberOfPerson을 넘어선 안됨 */
         if (leftPoint.getY()  > ladder.getRows()[0].getLength()) throw new IllegalArgumentException();
         if (rightPoint.getY() > ladder.getRows()[0].getLength()) throw new IllegalArgumentException();
-        /** X 좌표값이 row을 넘어선 안됨
-         *  또한 마지막 row와 같아서도 안됨 */
-        if (leftPoint.getX() > ladder.getRows().length -1) throw new IllegalArgumentException();
-        if (rightPoint.getX() > ladder.getRows().length -1) throw new IllegalArgumentException();
+        /** X 좌표값이 row을 넘어선 안됨 */
+        if (leftPoint.getX() > ladder.getRows().length) throw new IllegalArgumentException();
+        if (rightPoint.getX() > ladder.getRows().length) throw new IllegalArgumentException();
 
         /** rightPoint.Y > leftPoint.Y*/
         if (rightPoint.getY() <= leftPoint.getY()) throw new IllegalArgumentException();
