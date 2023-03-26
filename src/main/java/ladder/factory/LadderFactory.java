@@ -2,10 +2,12 @@ package ladder.factory;
 
 import ladder.LadderGame;
 import ladder.domain.Ladder;
+import ladder.domain.LadderViewer;
 import ladder.domain.creator.LadderCreator;
 import ladder.domain.creator.RandomLadderCreator;
 import ladder.domain.creator.SelfLadderCreator;
 import ladder.domain.LadderRunner;
+import ladder.domain.wrapper.CurrentPosition;
 import ladder.domain.wrapper.NumberOfPerson;
 import ladder.domain.wrapper.NumberOfRow;
 
@@ -41,10 +43,13 @@ public class LadderFactory {
         return ladder;
     }
 
-    public static LadderCreator resetLadder() {
+    public static void resetLadder() {
         ladder = createLadder(NumberOfRow.createNumberOfPerson(ladder.getRowSize()),
                 NumberOfPerson.createNumberOfPerson(ladder.getNumberOfPersonSize()));
-        return new SelfLadderCreator(ladder);
+    }
+
+    public static LadderViewer createLadderViewer(CurrentPosition currentPosition) {
+        return LadderViewer.createLadderViewer(currentPosition, ladder);
     }
 
 }
