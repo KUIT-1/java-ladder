@@ -19,18 +19,12 @@ public class LadderFactory {
         return new LadderGame(NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
     }
 
-    public static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        if (ladder == null) {
-            new SelfLadderCreator(createLadder(row, numberOfPerson));
-        }
-        return new SelfLadderCreator(ladder);
+    private static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+        return new SelfLadderCreator(createLadder(row, numberOfPerson));
     }
 
     public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
         LadderCreator selfLadderCreator = createSelfLadderCreator(row, numberOfPerson);
-        if (ladder == null) {
-            new RandomLadderCreator(createLadder(row, numberOfPerson), selfLadderCreator);
-        }
         return new RandomLadderCreator(ladder, selfLadderCreator);
     }
 
