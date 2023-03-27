@@ -16,7 +16,7 @@ public class LadderFactory {
     private static Ladder ladder;
 
     public static LadderGame createLadderGame(int row, int numberOfPerson) {
-        return new LadderGame(NumberOfRow.createNumberOfPerson(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
+        return new LadderGame(NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
     }
 
     public static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
@@ -29,9 +29,9 @@ public class LadderFactory {
     public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
         LadderCreator selfLadderCreator = createSelfLadderCreator(row, numberOfPerson);
         if (ladder == null) {
-            new RandomLadderCreator(createLadder(row, numberOfPerson), (SelfLadderCreator) selfLadderCreator);
+            new RandomLadderCreator(createLadder(row, numberOfPerson), selfLadderCreator);
         }
-        return new RandomLadderCreator(ladder, (SelfLadderCreator) selfLadderCreator);
+        return new RandomLadderCreator(ladder, selfLadderCreator);
     }
 
     public static LadderRunner createLadderRunner(LadderCreator LadderCreator) {
@@ -44,7 +44,7 @@ public class LadderFactory {
     }
 
     public static void resetLadder() {
-        ladder = createLadder(NumberOfRow.createNumberOfPerson(ladder.getRowSize()),
+        ladder = createLadder(NumberOfRow.createNumberOfRow(ladder.getRowSize()),
                 NumberOfPerson.createNumberOfPerson(ladder.getNumberOfPersonSize()));
     }
 
