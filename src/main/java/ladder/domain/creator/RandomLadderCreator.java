@@ -32,23 +32,12 @@ public class RandomLadderCreator implements LadderCreator {
         random.setSeed(System.currentTimeMillis());
 
         for (int i = 0; i < count; i++) {
-            i = createRandomDrawLine(random, i);
+            RandomPosition randomPosition = RandomPosition.createRandomPosition();
+            Position position = randomPosition.getPosition(ladder);
+            selfLadderCreator.drawLine(position.getLeftPointXInt(),
+                    position.getLeftPointYInt(), position.getRightPointYInt());
         }
     }
-
-    private int createRandomDrawLine(Random random, int i) {
-        int randomX = random.nextInt(ladder.getRowSize());
-        int randomY = random.nextInt(ladder.getNumberOfPersonSize() - 1);
-
-        try {
-            Position position = WrapperFactory.createPosition(ladder, randomX, randomY, randomY + 1);
-            selfLadderCreator.drawLine(position.getLeftPointXInt(), position.getLeftPointYInt(), position.getRightPointYInt());
-        } catch (IllegalArgumentException e) {
-            return --i;
-        }
-        return i;
-    }
-
 
     @Override
     public Ladder getLadder() {
