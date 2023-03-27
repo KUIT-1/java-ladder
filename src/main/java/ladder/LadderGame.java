@@ -5,7 +5,6 @@ import ladder.domain.creator.LadderCreator;
 import ladder.domain.wrapper.LadderNumber;
 import ladder.domain.wrapper.NumberOfPerson;
 import ladder.domain.wrapper.NumberOfRow;
-import ladder.domain.Row;
 import ladder.factory.LadderFactory;
 
 public class LadderGame {
@@ -22,12 +21,12 @@ public class LadderGame {
         return LadderFactory.createLadderRunner(ladderCreator).run(ladderNum);
     }
 
-    public int getNumberOfPerson() {
-        return ladder.getNumberOfPersonSize();
+    public int getRowSize() {
+        return ladder.getRowSize();
     }
 
-    public int getRow() {
-        return ladder.getRowSize();
+    public int getNumberOfPersonSize() {
+        return ladder.getNumberOfPersonSize();
     }
 
     public Ladder getLadder() {
