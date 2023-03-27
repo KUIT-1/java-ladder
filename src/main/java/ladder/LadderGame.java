@@ -12,9 +12,9 @@ public class LadderGame {
     private LadderCreator ladderCreator;
     private Ladder ladder;
 
-    public LadderGame(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        ladderCreator = LadderFactory.createRandomLadderCreator(row, numberOfPerson);
-        ladder = ladderCreator.getLadder();
+    public LadderGame(LadderCreator ladderCreator, Ladder ladder) {
+        this.ladderCreator = ladderCreator;
+        this.ladder = ladder;
     }
 
     public int run(LadderNumber ladderNum) {
