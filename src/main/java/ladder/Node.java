@@ -28,8 +28,20 @@ public class Node {
 
     private void followLine() {
         this.current_col = createPosition(current_col.getPosition() + state.getDirection());
-
     }
+
+    // print 처리에 사용하기 위한 함수
+    public boolean isEqualRow(Position row){
+        if(row.getPosition() == current_row.getPosition())
+            return true;
+        return false;
+    }
+    public boolean isEqualCol(Position col){
+        if(col.getPosition() == current_col.getPosition())
+            return true;
+        return false;
+    }
+
     public boolean isRowExceedValue(NaturalNumber value) {
         if(this.current_row.getPosition() > value.getNumber())
             return false;
