@@ -2,9 +2,6 @@ package ladder.domain.creator;
 
 import ladder.domain.Ladder;
 import ladder.domain.wrapper.Position;
-import ladder.factory.WrapperFactory;
-
-import java.util.Random;
 
 public class RandomLadderCreator implements LadderCreator {
 
@@ -28,12 +25,11 @@ public class RandomLadderCreator implements LadderCreator {
     public void drawLine() {
         int count = (int) (ladder.getRowSize() * ladder.getNumberOfPersonSize() * 0.3);
 
-        Random random = new Random();
-        random.setSeed(System.currentTimeMillis());
-
         for (int i = 0; i < count; i++) {
             RandomPosition randomPosition = RandomPosition.createRandomPosition();
+
             Position position = randomPosition.getPosition(ladder);
+
             selfLadderCreator.drawLine(position.getLeftPointXInt(),
                     position.getLeftPointYInt(), position.getRightPointYInt());
         }
