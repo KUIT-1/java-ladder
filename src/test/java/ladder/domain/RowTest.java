@@ -1,0 +1,59 @@
+package ladder.domain;
+
+import ladder.domain.wrapper.CurrentPosition;
+import ladder.domain.wrapper.Direction;
+import ladder.domain.wrapper.LadderNumber;
+import ladder.domain.wrapper.NumberOfPerson;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RowTest {
+
+    @Test
+    public void createRow() throws Exception {
+        //given
+        Row row = new Row(NumberOfPerson.createNumberOfPerson(5));
+
+        //when
+        row.setValue(2, 3);
+
+        //then
+        assertEquals(Direction.LEFT.getDirection(), row.getValue(2));
+        assertEquals(Direction.RIGHT.getDirection(), row.getValue(3));
+    }
+
+    @Test
+    public void nextPosition() throws Exception {
+        //given
+        Row row = new Row(NumberOfPerson.createNumberOfPerson(5));
+
+        //when
+        row.setValue(2, 3);
+        LadderNumber ladderNumber = LadderNumber.createLadderNumber(2);
+        CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
+
+        row.nextPosition(ladderNumber, currentPosition);
+
+        //then
+        /** currentPosition 초기 x 값은 0임 */
+        assertTrue(currentPosition.equal(0, 3));
+
+    }
+
+    @Test
+    public void validate() throws Exception {
+        //given
+        Row row = new Row(NumberOfPerson.createNumberOfPerson(5));
+
+        //when
+        row.setValue(2, 3);
+        LadderNumber ladderNumber = LadderNumber.createLadderNumber(10);
+        CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
+
+        //then
+        assertThrows(IllegalArgumentException.class,
+                () -> row.nextPosition(ladderNumber, currentPosition));
+
+    }
+}
