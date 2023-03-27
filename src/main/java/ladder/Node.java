@@ -13,8 +13,8 @@ public class Node {
         this.current_col = startPoint;
     }
 
-    public Position move(LineManager lineManager) {
-        this.state = lineManager.nextDirection(this.current_row, this.current_col, this.state);
+    public Position move(LineByRow[] lineByRow) {
+        this.state = lineByRow[this.current_row.getPosition()].nextDirection(this.current_col, this.state);
         if(state == DOWN){
             gotoDown();
         }

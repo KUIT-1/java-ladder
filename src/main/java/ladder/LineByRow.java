@@ -26,9 +26,13 @@ public class LineByRow {
         return lineByPositions[col.getPosition()].nextDirection(state);
     }
 
-    public String infoRow(NaturalNumber numberOfPerson, boolean isCurrentRow, Node node) {
+    public NaturalNumber lengthOfRow(){
+        return NaturalNumber.createNaturalNumber(lineByPositions.length - 1);
+    }
+
+    public String infoRow(boolean isCurrentRow, Node node) {
         String str_row = "";
-        for(int col = 1; col <= numberOfPerson.getNumber();col++){
+        for(int col = 1; col < lineByPositions.length;col++){
             str_row += lineByPositions[col].infoLine();
             if(isCurrentRow && node.isEqualCol(Position.createPosition(col)))
                 str_row += "*";
