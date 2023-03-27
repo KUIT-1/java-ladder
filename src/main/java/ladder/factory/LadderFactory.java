@@ -19,7 +19,7 @@ public class LadderFactory {
         return new LadderGame(NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
     }
 
-    private static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+    public static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
         return new SelfLadderCreator(createLadder(row, numberOfPerson));
     }
 
