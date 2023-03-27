@@ -4,7 +4,7 @@ public class NumberOfRow {
 
     private final int numberOfRow;
 
-    public NumberOfRow(int numberOfPerson) {
+    private NumberOfRow(int numberOfPerson) {
         this.numberOfRow = numberOfPerson;
     }
 

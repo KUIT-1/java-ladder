@@ -4,7 +4,7 @@ public class NumberOfPerson {
 
     private final int numberOfPerson;
 
-    public NumberOfPerson(int numberOfPerson) {
+    private NumberOfPerson(int numberOfPerson) {
         this.numberOfPerson = numberOfPerson;
     }
 
