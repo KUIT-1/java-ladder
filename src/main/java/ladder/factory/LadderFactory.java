@@ -37,11 +37,6 @@ public class LadderFactory {
         return ladder;
     }
 
-    public static void resetLadder() {
-        ladder = createLadder(NumberOfRow.createNumberOfRow(ladder.getRowSize()),
-                NumberOfPerson.createNumberOfPerson(ladder.getNumberOfPersonSize()));
-    }
-
     public static LadderViewer createLadderViewer(CurrentPosition currentPosition) {
         return LadderViewer.createLadderViewer(currentPosition, ladder);
     }
