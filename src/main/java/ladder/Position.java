@@ -4,18 +4,26 @@ package ladder;
 //사다리 밖으로 나가면 에러 발생 아니면 PositiveNum(0 혹은 양수) 저장
 //col, row 모두에게 적용
 
+import static ladder.PositiveNum.createPositiveNumber;
+
 public class Position {
     private PositiveNum position;
     private PositiveNum pNum;
 
-    public Position(PositiveNum position, PositiveNum pNum) {
-        validPosition(position, pNum);
+    private Position(PositiveNum position, PositiveNum pNum) {
         this.position = position;
         this.pNum = pNum;
     }
 
+    public static Position createPosition(int pos, int pNum) {
+        PositiveNum pPos = createPositiveNumber(pos);
+        PositiveNum posNum = createPositiveNumber(pNum);
+        validPosition(pPos, posNum);
+        return new Position(pPos, posNum);
+    }
+
     //사다리 밖으로 나가게 되면 에러 발생
-    public void validPosition(PositiveNum pos, PositiveNum pNum) {
+    public static void validPosition(PositiveNum pos, PositiveNum pNum) {
         if(pos.getNum() >= pNum.getNum()) throw new IllegalArgumentException("포지션 에러");
     }
 
@@ -27,7 +35,5 @@ public class Position {
         return false;
     }
     public int getPosition() {return position.getNum();}
-    public void addPosition(int num) {
-        this.position.addNum(num);
-    }
+    public void addPosition(int num) {position.addNum(num);}
 }
