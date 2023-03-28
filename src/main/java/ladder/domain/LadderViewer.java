@@ -25,6 +25,10 @@ public class LadderViewer {
         System.out.println();
     }
 
+    public void setCurrentPositionX(int i) {
+        currentPosition.setX(i);
+    }
+
     public CurrentPosition getCurrentPosition() {
         return currentPosition;
     }
