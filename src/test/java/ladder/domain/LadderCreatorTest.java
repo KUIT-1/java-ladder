@@ -15,8 +15,7 @@ public class LadderCreatorTest {
     @Test
     public void createSelfLadderCreator() throws Exception {
         //given
-        LadderCreator selfLadderCreator = LadderFactory.createSelfLadderCreator(
-                        NumberOfRow.createNumberOfRow(4), NumberOfPerson.createNumberOfPerson(5));
+        LadderCreator selfLadderCreator = LadderFactory.createSelfLadderCreator(4, 5);
 
         //when
         Position position = WrapperFactory.createPosition(selfLadderCreator.getLadder(), 1, 1, 2);
@@ -31,8 +30,7 @@ public class LadderCreatorTest {
     @Test
     public void creatRandomLadderCreator() throws Exception {
         //given
-        LadderCreator randomLadderCreator = LadderFactory.createRandomLadderCreator(
-                        NumberOfRow.createNumberOfRow(4), NumberOfPerson.createNumberOfPerson(5));
+        LadderCreator randomLadderCreator = LadderFactory.createRandomLadderCreator(4, 5);
 
         //when
         /** RandomPosition과 마찬가지로 예외 발생하지 않으면 통과 */

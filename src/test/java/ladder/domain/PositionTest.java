@@ -16,7 +16,7 @@ public class PositionTest {
 
     @BeforeAll
     static void setLadder() {
-        ladderGame = LadderFactory.createLadderGame(4, 5);
+        ladderGame = LadderFactory.createLadderGame(LadderFactory.createSelfLadderCreator(4, 5));
     }
 
     @Test

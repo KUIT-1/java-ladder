@@ -15,22 +15,17 @@ public class LadderFactory {
 
     private static Ladder ladder;
 
-    public static LadderGame createLadderGame(int row, int numberOfPerson) {
-//        LadderCreator ladderCreator = LadderFactory.createSelfLadderCreator(
-//                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
-
-        LadderCreator ladderCreator = LadderFactory.createRandomLadderCreator(
-                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
-
+    public static LadderGame createLadderGame(LadderCreator ladderCreator) {
         ladder = ladderCreator.getLadder();
         return new LadderGame(ladderCreator, ladder);
     }
 
-    public static LadderCreator createSelfLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
-        return new SelfLadderCreator(createLadder(row, numberOfPerson));
+    public static LadderCreator createSelfLadderCreator(int row, int numberOfPerson) {
+        return new SelfLadderCreator(createLadder(
+                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson)));
     }
 
-    public static LadderCreator createRandomLadderCreator(NumberOfRow row, NumberOfPerson numberOfPerson) {
+    public static LadderCreator createRandomLadderCreator(int row, int numberOfPerson) {
         LadderCreator selfLadderCreator = createSelfLadderCreator(row, numberOfPerson);
         return new RandomLadderCreator(ladder, selfLadderCreator);
     }

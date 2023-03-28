@@ -14,7 +14,7 @@ public class RandomPositionTest {
     public void creatRandomPosition() throws Exception {
         //given
         LadderCreator selfLadderCreator =
-                LadderFactory.createSelfLadderCreator(NumberOfRow.createNumberOfRow(10), NumberOfPerson.createNumberOfPerson(10));
+                LadderFactory.createSelfLadderCreator(10, 10);
         RandomPosition randomPosition = RandomPosition.createRandomPosition();
 
         //when

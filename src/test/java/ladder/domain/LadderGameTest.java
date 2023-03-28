@@ -19,14 +19,11 @@ public class LadderGameTest {
 
     @BeforeEach
     void reset() {
-        ladderGame = LadderFactory.createLadderGame(4, 5);
+        ladderGame = LadderFactory.createLadderGame(LadderFactory.createSelfLadderCreator(4, 5));
     }
 
     @Test
     public void drawLineTest() throws Exception {
-
-        Assumptions.assumeTrue(!(ladderGame.getLadderCreator() instanceof RandomLadderCreator),
-                "RandomLadderCreator 가 사용된 경우 테스트 불가. LadderFactory 확인 요망.");
 
         //given
         position = WrapperFactory.createPosition(ladderGame.getLadder(), 1, 1, 2);

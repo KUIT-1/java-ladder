@@ -15,8 +15,7 @@ public class LadderRunnerTest {
     public void SelfLadderRunner() throws Exception {
         //given
         LadderCreator selfLadderCreator =
-                LadderFactory.createSelfLadderCreator(
-                        NumberOfRow.createNumberOfRow(4), NumberOfPerson.createNumberOfPerson(5));
+                LadderFactory.createSelfLadderCreator(4, 5);
 
         LadderRunner ladderRunner = LadderFactory.createLadderRunner(selfLadderCreator);
 

@@ -7,7 +7,8 @@ public class LadderGameStarter {
 
     public static void main(String[] args) {
 
-        LadderGame ladderGame = LadderFactory.createLadderGame(4, 5);
+        LadderGame ladderGame = LadderFactory.createLadderGame(
+                LadderFactory.createRandomLadderCreator(4, 5));
         ladderGame.getLadderCreator().drawLine();
         System.out.println("시작 0 = " + ladderGame.run(LadderNumber.createLadderNumber(0)));
     }
