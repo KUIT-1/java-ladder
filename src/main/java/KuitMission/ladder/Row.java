@@ -1,4 +1,4 @@
-package ladder;
+package KuitMission.ladder;
 
 public class Row {
     public int cols[];
