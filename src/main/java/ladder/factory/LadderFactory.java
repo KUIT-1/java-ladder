@@ -16,11 +16,11 @@ public class LadderFactory {
     private static Ladder ladder;
 
     public static LadderGame createLadderGame(int row, int numberOfPerson) {
-        LadderCreator ladderCreator = LadderFactory.createSelfLadderCreator(
-                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
-
-//        LadderCreator ladderCreator = LadderFactory.createRandomLadderCreator(
+//        LadderCreator ladderCreator = LadderFactory.createSelfLadderCreator(
 //                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
+
+        LadderCreator ladderCreator = LadderFactory.createRandomLadderCreator(
+                NumberOfRow.createNumberOfRow(row), NumberOfPerson.createNumberOfPerson(numberOfPerson));
 
         ladder = ladderCreator.getLadder();
         return new LadderGame(ladderCreator, ladder);
