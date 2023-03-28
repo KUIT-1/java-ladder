@@ -1,8 +1,11 @@
 package ladder;
 
+import ladder.creator.LadderCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.createNaturalNumber;
+import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LadderTest {
@@ -10,39 +13,41 @@ public class LadderTest {
     @DisplayName("run 실행 확인")
     void runSuccessWhenFourRowFourColFourLine() {
         //when
-        int numberOfPerson = 4;
-        int row = 4;
-        Ladder ladder = new Ladder(row, numberOfPerson);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        NaturalNumber row = createNaturalNumber(4);
+        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
+        LadderGame ladderGame = new LadderGame(ladderCreator);
 
         //given
-        ladder.drawLine(0,1);
-        ladder.drawLine(1,0);
-        ladder.drawLine(2,2);
-        ladder.drawLine(3,0);
+        ladderCreator.drawLine(createPosition(0), createPosition(1));
+        ladderCreator.drawLine(createPosition(1),createPosition(0));
+        ladderCreator.drawLine(createPosition(2),createPosition(2));
+        ladderCreator.drawLine(createPosition(3),createPosition(0));
 
-        int position = 0;
+        Position nthOfPerson = createPosition(0);
         //then
-        assertEquals(0,ladder.run(position));
+        assertEquals(0,ladderGame.run(nthOfPerson));
 
-        position = 3;
+        nthOfPerson = createPosition(3);
 
-        assertEquals(2,ladder.run(position));
+        assertEquals(2,ladderGame.run(nthOfPerson));
     }
 
     @Test
-    @DisplayName("초기 사다리 실행 확인")
-    void runSuccessWhenFourRowFourColNoLine() {
+    void runPrintLadder(){
         //when
-        int numberOfPerson = 4;
-        int row = 4;
-        Ladder ladder = new Ladder(row, numberOfPerson);
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        NaturalNumber row = createNaturalNumber(4);
+        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
+        LadderGame ladderGame = new LadderGame(ladderCreator);
 
-        int position = 1;
-        //then
-        assertEquals(1,ladder.run(position));
+        //given
+        ladderCreator.drawLine(createPosition(0), createPosition(1));
+        ladderCreator.drawLine(createPosition(1),createPosition(0));
+        ladderCreator.drawLine(createPosition(2),createPosition(2));
+        ladderCreator.drawLine(createPosition(3),createPosition(0));
 
-        position = 3;
-
-        assertEquals(3,ladder.run(position));
+        ladderGame.runWithPrint(createPosition(0));
     }
+
 }

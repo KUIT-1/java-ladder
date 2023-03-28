@@ -1,43 +1,54 @@
 package ladder;
 
 public class Row {
+    Node[] nodes;
 
-    int[] row;
 
-    public Row(int numberOfPerson){
-        validateNumberOfPerson(numberOfPerson);
-        row = new int[numberOfPerson];
+    public Row(NaturalNumber numberOfPerson) {
+        nodes = new Node[numberOfPerson.getNumber()];
+        for (int i = 0; i < numberOfPerson.getNumber(); i++) {
+            nodes[i] = Node.createCenterNode();
+        }
     }
 
-    public void drawLine(int col){
-        validateColumn(col);
-        row[col] = 1;
-        row[col+1] = -1;
+    public void drawLine(Position startPosition) {
+        validateDrawLinePosition(startPosition);
+
+        nodes[startPosition.getPosition()] = Node.createRightNode();
+        nodes[startPosition.getPosition() + 1] = Node.createLeftNode();
     }
 
-    public int nextPosition(int position){
-        validatePosition(position);
-        if(row[position] == 1) return position+1;
-        if(row[position] == -1) return position-1;
-        return position;
+    public void nextPosition(Position position) {
+        validatePositionSize(position);
+        nodes[position.getPosition()].move(position);
     }
 
-    private void validateNumberOfPerson(int numberOfPerson) {
-        if (numberOfPerson<1){
+    private void validatePositionSize(Position position) {
+        if (!position.isSmaller(nodes.length)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateColumn(int col) {
-        if ((col<0)||(col>=row.length)){
+    private void validateDrawLinePosition(Position startPosition) {
+        validatePositionSize(startPosition);
+        if (nodes[startPosition.getPosition()].isLeft() ||
+                nodes[startPosition.getPosition() + 1].isRight()) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validatePosition(int position) {
-        if ((position<0)||(position>row.length)){
-            throw new IllegalArgumentException();
+    public void printRow(LadderPosition ladderPosition, Boolean star){
+        StringBuilder sb = new StringBuilder();
+        int positionRow = -1;
+        if(star) {
+            positionRow = ladderPosition.getX().getPosition();
         }
+        for (int i = 0; i < nodes.length; i++) {
+            sb.append(nodes[i].toString());
+            if(positionRow == i) sb.append("*");
+            sb.append(" ");
+        }
+        System.out.println(sb);
     }
 
 }

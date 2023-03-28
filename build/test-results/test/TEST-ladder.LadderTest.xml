@@ -1,8 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-03-22T05:48:54" hostname="LAPTOP-5N8AOLN7" time="0.031">
+<testsuite name="ladder.LadderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-28T12:56:01" hostname="LAPTOP-5N8AOLN7" time="0.046">
   <properties/>
-  <testcase name="초기 사다리 실행 확인" classname="ladder.LadderTest" time="0.029"/>
-  <testcase name="run 실행 확인" classname="ladder.LadderTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="runPrintLadder()" classname="ladder.LadderTest" time="0.046"/>
+  <system-out><![CDATA[Before
+0* 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1 -1 0 0 
+
+After
+0* 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1 -1 0 0 
+
+Before
+0 1 -1 0 
+1* -1 0 0 
+0 0 1 -1 
+1 -1 0 0 
+
+After
+0 1 -1 0 
+1 -1* 0 0 
+0 0 1 -1 
+1 -1 0 0 
+
+Before
+0 1 -1 0 
+1 -1 0 0 
+0 0* 1 -1 
+1 -1 0 0 
+
+After
+0 1 -1 0 
+1 -1 0 0 
+0 0* 1 -1 
+1 -1 0 0 
+
+Before
+0 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1 -1* 0 0 
+
+After
+0 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1* -1 0 0 
+
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

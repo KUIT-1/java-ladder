@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.NaturalNumber.createNaturalNumber;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -10,66 +11,54 @@ public class RowTest {
     @Test
     @DisplayName("row 생성 유효성 검사")
     void ConstructRowFailWhenWrongValue() {
-        //given
-        int numberOfPerson = 0;
-        //then
-        assertThrows(IllegalArgumentException.class,()->new Row(numberOfPerson));
-
+        assertThrows(IllegalArgumentException.class, () -> createNaturalNumber(0));
     }
 
     @Test
     @DisplayName("drawLine의 유효성 검사")
     void drawLineFailWhenWrongValue() {
         //when
-        int numberOfPerson = 4;
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
         Row row = new Row(numberOfPerson);
 
         //given
-        int givenCol_1 = 4;
+        Position givenCol_1 = Position.createPosition(4);
         //then
         assertThrows(IllegalArgumentException.class,()->row.drawLine(givenCol_1));
-
-        //given
-        int givenCol_2 = -1;
-        //then
-        assertThrows(IllegalArgumentException.class,()->row.drawLine(givenCol_2));
     }
 
     @Test
     @DisplayName("nextPosition의 유효성 검사")
     void nextPositionFailWhenWrongValue() {
         //when
-        int numberOfPerson = 4;
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
         Row row = new Row(numberOfPerson);
 
         //given
-        int position_1 = 7;
+        Position position_1 = Position.createPosition(7);
         //then
         assertThrows(IllegalArgumentException.class,()->row.nextPosition(position_1));
-
-        //given
-        int position_2 = -1;
-        //then
-        assertThrows(IllegalArgumentException.class,()->row.nextPosition(position_2));
     }
 
     @Test
     @DisplayName("nextPosition: 1 -1 1 -1 0")
     void nextPositionSuccessWhenTwoLineFiveCol() {
         //when
-        int numberOfPerson = 5;
+        NaturalNumber numberOfPerson = createNaturalNumber(5);
         Row row = new Row(numberOfPerson);
 
         //given
-        row.drawLine(0);
-        row.drawLine(2);
+        row.drawLine(Position.createPosition(0));
+        row.drawLine(Position.createPosition(2));
 
-        int position = 0;
+        Position position = Position.createPosition(0);
+        row.nextPosition(position);
         //then
-        assertEquals(1,row.nextPosition(position));
+        assertEquals(1,position.getPosition());
         //given
-        position = 3;
+        position = Position.createPosition(3);
+        row.nextPosition(position);
         //then
-        assertEquals(2,row.nextPosition(position));
+        assertEquals(2,position.getPosition());
     }
 }

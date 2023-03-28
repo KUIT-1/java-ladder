@@ -1,0 +1,4 @@
+- 하드코딩(리터럴)은 의미가 불분명함
+- primitive type들을 찾아서 Wrapper 클래스로 포장
+    - Ladder, position, row의 상태값
+- Ladder 클래스 분리
