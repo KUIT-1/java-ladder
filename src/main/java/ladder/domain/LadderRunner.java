@@ -16,7 +16,7 @@ public class LadderRunner {
         LadderViewer ladderViewer = LadderFactory.createLadderViewer(CurrentPosition.createCurrentPosition(ladderNum));
 
         for (int i = 0; i < ladder.getRowSize(); i++) {
-            ladderViewer.getCurrentPosition().setX(i);
+            ladderViewer.setCurrentPositionX(i);
             ladderViewer.view("BEFORE");
             ladder.getRows()[i].nextPosition(ladderNum, ladderViewer.getCurrentPosition());
             ladderViewer.view("AFTER");
