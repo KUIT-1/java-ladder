@@ -3,18 +3,16 @@ package ladder;
 public class Row {
     int[] row;
 
-    public Row(int numberOfPerson) {
-        validateNumberOfPerson(numberOfPerson);
-        // 참여하는 사람의 수가 유효한지 먼저 확인
-        row = new int[numberOfPerson];
+    public Row(NaturalNumber numberOfPerson) {
+        row = new int[numberOfPerson.getNumber()];
         // 유효하다면 참여하는 사람 수 만큼 생성
     }
 
     public void drawLine(int startPosition) {
         validateDrawingPosition(startPosition);
         // startPosition 에서 Line 을 그릴 수 있는 지 확인
-        row[startPosition] = Direction.RIGHT.getDirection();
-        row[startPosition + 1] = Direction.LEFT.getDirection();
+        row[startPosition] = Direction.RIGHT.getFlag();
+        row[startPosition + 1] = Direction.LEFT.getFlag();
     }
 
     public int getNextPosition(int nowPosition) {
@@ -35,17 +33,11 @@ public class Row {
     }
 
     public boolean connectedNothing(int position) {
-        return row[position] == Direction.STRAIGHT.getDirection();
+        return row[position] == Direction.STRAIGHT.getFlag();
     }
 
     public boolean connectedLeft(int position) {
-        return row[position] == Direction.LEFT.getDirection();
-    }
-
-    public void validateNumberOfPerson(int numberOfPerson) {
-        if (numberOfPerson < 1) {
-            throw new IllegalArgumentException("참여하는 사람의 수는 1명 이상이여야 합니다.");
-        }
+        return row[position] == Direction.LEFT.getFlag();
     }
 
     public void validateDrawingPosition(int startPosition) {

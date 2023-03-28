@@ -12,7 +12,7 @@ class RowTest {
     @DisplayName("Line 이 올바르게 그려지는 지 확인")
     void drawLineTest() {
         //when
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
         int startPosition = 5;
         int[] row = rows.row;
 
@@ -20,15 +20,15 @@ class RowTest {
         rows.drawLine(startPosition);
 
         //then
-        assertEquals(row[startPosition], Direction.RIGHT.getDirection());
-        assertEquals(row[startPosition + 1], Direction.LEFT.getDirection());
+        assertEquals(row[startPosition], Direction.RIGHT.getFlag());
+        assertEquals(row[startPosition + 1], Direction.LEFT.getFlag());
     }
 
     @Test
     @DisplayName("올바르게 다음 Position 을 찾아내는 지 확인")
     void getNextPositionTest() {
         //when
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
         int startPosition = 1;
@@ -44,7 +44,7 @@ class RowTest {
     @DisplayName("양쪽으로 연결된 경우에는 왼쪽으로 간다.")
     void getNextPositionTest2() {
         //when
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
         int startPosition = 1;
@@ -61,7 +61,7 @@ class RowTest {
     @DisplayName("아무것도 연결되지 않음을 잘 체크하는지 확인")
     void connectedNothingTest() {
         // when
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
         // given
         // Line 을 하나도 그리지 않음
 
@@ -75,7 +75,7 @@ class RowTest {
     @DisplayName("Left 방향에 경로가 있는지 잘 체크하는 지 확인")
     void connectedLeftTest() {
         // When
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
         rows.drawLine(5);
@@ -85,17 +85,10 @@ class RowTest {
     }
 
     @Test
-    @DisplayName("참여하는 사람 수에 따른 예외처리를 올바르게 하는 지 확인")
-    void validateNumberOfPersonTest() {
-        assertThrows(IllegalArgumentException.class,
-                () -> new Row(-1));
-    }
-
-    @Test
     @DisplayName("현재 지점에서 Drawing 이 가능한 지 잘 체크하는 지 확인")
     void validateDrawingPositionTest() {
         // When
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
         int startPosition = 9;
@@ -109,7 +102,7 @@ class RowTest {
     @DisplayName("OutOfBounds Check 를 잘하는 지 확인")
     void validatePositionTest() {
         // When
-        Row rows = new Row(10);
+        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // Given
         int invalidPosition1 = -1;

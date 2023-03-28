@@ -3,14 +3,13 @@ package ladder;
 public class Ladder {
     private final Row[] rows;
 
-
-    public Ladder(int row, int numberOfPerson) {
-        /* 싱글톤으로 만들었다가 테스트에 어려움을 느껴서 다시 원상복구
+    public Ladder(NaturalNumber row, NaturalNumber numberOfPerson) {
+        /*
            row : 사다리의 높이
            numberOfPerson : 사다리 줄의 개수
          */
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
+        rows = new Row[row.getNumber()];
+        for (int i = 0; i < row.getNumber(); i++) {
             rows[i] = new Row(numberOfPerson);
         }
     }
