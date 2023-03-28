@@ -11,6 +11,8 @@ class LadderTest {
     @Test
     @DisplayName("사다리 세로 줄이 한개")
     void line1(){
+        int numberOfPerson = 1;
+
         Ladder ladder = new Ladder(1, 1);
         assertEquals(1, ladder.run(1));
     }
