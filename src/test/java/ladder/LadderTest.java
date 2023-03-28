@@ -16,25 +16,27 @@ class LadderTest {
     @Test
     @DisplayName("Make Ladder")
     void getLadder(){
-        //높이가 6이면 열 개수는 7
-        int[] expected={3,7};
-        assertArrayEquals(expected,ladder.getInform());
+        //높이가 6이면 행 개수는 7
+        int[] expected={7,3};
+        //ladder클래스의 row 행의 길이와 ladder 클래스의 rows 배열의 첫번째 인덱스의 열 개수
+        int[] actual={ladder.rows.length,ladder.rows[0].numofCol};
+        assertArrayEquals(expected,actual);
     }
     //drawLine 테스트-성공
     @Test
-    @DisplayName("Make Line")
+    @DisplayName("Make Line-성공")
     void drawLine(){
         ladder.drawLine(1,1);
         int[] expected={1,1};
-        int[] actual={ladder.getArray()[1][1],ladder.getArray()[2][1]};
+        int[] actual={ladder.rows[1].checkHere(1),ladder.rows[1].checkHere(0)};
         assertArrayEquals(expected,actual);
     }
     //drawLine 테스트-실패
     @Test
-    @DisplayName("Wrong Range")
+    @DisplayName("Make Line-실패")
     void drawWrongRange(){
         assertThrows(IllegalArgumentException.class,()->
-                ladder.drawLine(2,3));
+                ladder.drawLine(4,3));
     }
     //run 테스트 - 빈 사다리
     @Test
@@ -46,8 +48,8 @@ class LadderTest {
     @Test
     @DisplayName("Run Ladder")
     void runLadder(){
-        ladder.drawLine(0,1);
-        ladder.drawLine(1,4);
+        ladder.drawLine(1,1);
+        ladder.drawLine(2,4);
         assertEquals(3,ladder.run(1));
     }
 }
