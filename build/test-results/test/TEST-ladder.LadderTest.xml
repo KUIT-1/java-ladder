@@ -1,55 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-28T12:56:01" hostname="LAPTOP-5N8AOLN7" time="0.046">
+<testsuite name="ladder.LadderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-28T14:41:23" hostname="LAPTOP-5N8AOLN7" time="0.053">
   <properties/>
-  <testcase name="runPrintLadder()" classname="ladder.LadderTest" time="0.046"/>
-  <system-out><![CDATA[Before
-0* 1 -1 0 
-1 -1 0 0 
-0 0 1 -1 
-1 -1 0 0 
-
-After
-0* 1 -1 0 
-1 -1 0 0 
-0 0 1 -1 
-1 -1 0 0 
-
-Before
-0 1 -1 0 
-1* -1 0 0 
-0 0 1 -1 
-1 -1 0 0 
-
-After
-0 1 -1 0 
-1 -1* 0 0 
-0 0 1 -1 
-1 -1 0 0 
-
-Before
-0 1 -1 0 
-1 -1 0 0 
-0 0* 1 -1 
-1 -1 0 0 
-
-After
-0 1 -1 0 
-1 -1 0 0 
-0 0* 1 -1 
-1 -1 0 0 
-
-Before
-0 1 -1 0 
-1 -1 0 0 
-0 0 1 -1 
-1 -1* 0 0 
-
-After
-0 1 -1 0 
-1 -1 0 0 
-0 0 1 -1 
-1* -1 0 0 
-
+  <testcase name="runRandomLadder()" classname="ladder.LadderTest" time="0.053"/>
+  <system-out><![CDATA[4
+2 1
+0 1
+3 0
+1 1
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

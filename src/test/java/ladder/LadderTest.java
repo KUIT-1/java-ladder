@@ -1,6 +1,7 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.creator.LadderRandomCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +49,15 @@ public class LadderTest {
         ladderCreator.drawLine(createPosition(3),createPosition(0));
 
         ladderGame.runWithPrint(createPosition(0));
+    }
+
+    @Test
+    void runRandomLadder(){
+        //when
+        NaturalNumber numberOfPerson = createNaturalNumber(4);
+        NaturalNumber row = createNaturalNumber(4);
+        LadderRandomCreator ladderCreator = new LadderRandomCreator(row, numberOfPerson);
+
     }
 
 }

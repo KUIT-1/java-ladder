@@ -35,7 +35,7 @@ public class Position {
 
     private static void validatePosition(int number) {
         if (!isPosition(number)) {
-            throw new IllegalArgumentException("자연수는 1이상이어야 합니다.");
+            throw new IllegalArgumentException("0이상이어야 합니다.");
         }
     }
 
