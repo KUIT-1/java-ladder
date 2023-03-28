@@ -5,11 +5,11 @@
   ~~- Position~~
   ~~- int[] row -> Node[] row~~
 
-- Ladder 클래스의 책임을 분리
+~~- Ladder 클래스의 책임을 분리~~
 
-  - LadderRunner
-  - LadderCreator
-  - LadderGame
+  ~~- LadderRunner~~
+  ~~- LadderCreator~~
+  ~~- LadderGame~~
 
 - 사다리 출력하기
   - Row.Show()
