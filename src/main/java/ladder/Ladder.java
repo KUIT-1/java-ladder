@@ -13,17 +13,16 @@ public class Ladder {
             rows[i] = new Row(numberOfPerson);
         }
     }
-    public void drawLine(int row, int col) {
+    public void drawLine(Position row, Position col) {
         // (col, row) 위치에 라인을 만듦
-        rows[row].drawLine(col);
+        rows[row.getPosition()].drawLine(col);
     }
 
-    public int run(int startPosition) {
+    public Position run(Position startPosition) {
         // ladderStartNum 을 선택한 경우에 ladderEdnNum 에 도달한다
-        int nextPosition = startPosition;
         for (Row row : rows) {
-            nextPosition = row.getNextPosition(nextPosition);
+            row.getNextPosition(startPosition);
         }
-        return nextPosition;
+        return startPosition;
     }
 }

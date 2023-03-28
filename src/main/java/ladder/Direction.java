@@ -9,7 +9,7 @@ public enum Direction {
     Direction(int direction){
         this.direction = direction;
     }
-    public int getFlag(){
+    public int getDirection(){
         return this.direction;
     }
 }

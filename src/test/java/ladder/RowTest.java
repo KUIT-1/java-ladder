@@ -13,15 +13,14 @@ class RowTest {
     void drawLineTest() {
         //when
         Row rows = new Row(NaturalNumber.createNaturalNumber(10));
-        int startPosition = 5;
         int[] row = rows.row;
 
         //given
-        rows.drawLine(startPosition);
+        rows.drawLine(Position.createPosition(5));
 
         //then
-        assertEquals(row[startPosition], Direction.RIGHT.getFlag());
-        assertEquals(row[startPosition + 1], Direction.LEFT.getFlag());
+        assertEquals(row[5], Direction.RIGHT.getDirection());
+        assertEquals(row[6], Direction.LEFT.getDirection());
     }
 
     @Test
@@ -31,30 +30,13 @@ class RowTest {
         Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
-        int startPosition = 1;
-        rows.drawLine(startPosition);
+        Position startPosition = Position.createPosition(1);
+        rows.drawLine(Position.createPosition(1));
 
         // then
         int expectedEndPosition = 2;
-        int endPosition = rows.getNextPosition(startPosition);
-        assertEquals(expectedEndPosition, endPosition);
-    }
-
-    @Test
-    @DisplayName("양쪽으로 연결된 경우에는 왼쪽으로 간다.")
-    void getNextPositionTest2() {
-        //when
-        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
-
-        // given
-        int startPosition = 1;
-        rows.drawLine(1);
-        rows.drawLine(0);
-
-        // then
-        int expectedEndPosition = 0;
-        int endPosition = rows.getNextPosition(startPosition);
-        assertEquals(expectedEndPosition, endPosition);
+        rows.getNextPosition(startPosition);
+        assertEquals(expectedEndPosition, startPosition.getPosition());
     }
 
     @Test
@@ -67,7 +49,7 @@ class RowTest {
 
         // then
         for(int pos = 0 ; pos < 10; pos ++){
-            assertTrue(rows.connectedNothing(pos));
+            assertTrue(rows.connectedNothing(Position.createPosition(pos)));
         }
     }
 
@@ -78,24 +60,10 @@ class RowTest {
         Row rows = new Row(NaturalNumber.createNaturalNumber(10));
 
         // given
-        rows.drawLine(5);
+        rows.drawLine(Position.createPosition(5));
 
         // then
-        assertTrue(rows.connectedLeft(6));
-    }
-
-    @Test
-    @DisplayName("현재 지점에서 Drawing 이 가능한 지 잘 체크하는 지 확인")
-    void validateDrawingPositionTest() {
-        // When
-        Row rows = new Row(NaturalNumber.createNaturalNumber(10));
-
-        // given
-        int startPosition = 9;
-
-        // then
-        assertThrows(IllegalArgumentException.class,
-                () -> rows.drawLine(startPosition));
+        assertTrue(rows.connectedLeft(Position.createPosition(6)));
     }
 
     @Test

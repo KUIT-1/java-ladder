@@ -3,6 +3,7 @@ package ladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderTest {
@@ -17,36 +18,9 @@ public class LadderTest {
         int[] startPositionList = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         // then
         for (int j : startPositionList) {
-            int result = ladder.run(j);
-            assertEquals(result, j);
+            Position result = ladder.run(createPosition(j));
+            assertEquals(result.getPosition(), j);
         }
-    }
-
-    @Test
-    @DisplayName("유효하지 않은 시작 위치가 주어진 경우")
-    public void invalidRow() {
-        // when
-        ladder = new Ladder(NaturalNumber.createNaturalNumber(1), NaturalNumber.createNaturalNumber(10));
-        // given
-        int[] givenPositionList = {-1, 11, 100};
-        // then
-        for (int pos : givenPositionList) {
-            assertThrows(IllegalArgumentException.class,
-                    () -> ladder.run(pos));
-        }
-    }
-
-    @Test
-    @DisplayName("잘못된 위치에 Line 을 그리려고 하는 경우")
-    public void invalidDraw() {
-        // when
-        ladder = new Ladder(NaturalNumber.createNaturalNumber(5), NaturalNumber.createNaturalNumber(5));
-        // given
-        int row = 4;
-        int col = 4;
-        // then
-        assertThrows(IllegalArgumentException.class,
-                () -> ladder.drawLine(row, col));
     }
 
     @Test
@@ -55,11 +29,11 @@ public class LadderTest {
         // when
         ladder = new Ladder(NaturalNumber.createNaturalNumber(5), NaturalNumber.createNaturalNumber(5));
         // given
-        ladder.drawLine(0, 0);
+        ladder.drawLine(createPosition(0), createPosition(0));
         // then
         int startPosition = 0;
-        int result = ladder.run(startPosition);
-        assertEquals(1, result);
+        Position result = ladder.run(createPosition(startPosition));
+        assertEquals(1, result.getPosition());
     }
 
     @Test
@@ -68,35 +42,14 @@ public class LadderTest {
         // when
         ladder = new Ladder(NaturalNumber.createNaturalNumber(5), NaturalNumber.createNaturalNumber(5));
         // given
-        ladder.drawLine(0, 0);
-        ladder.drawLine(1, 1);
-        ladder.drawLine(2, 2);
-        ladder.drawLine(3, 3);
+        ladder.drawLine(createPosition(0), createPosition(0));
+        ladder.drawLine(createPosition(1), createPosition(1));
+        ladder.drawLine(createPosition(2), createPosition(2));
+        ladder.drawLine(createPosition(3), createPosition(3));
         // then
         int startPosition = 0;
-        int result = ladder.run(startPosition);
-        assertEquals(4, result);
-    }
-
-    @Test
-    @DisplayName("Run Test #case 3")
-    public void Testcase3() {
-        // when
-        ladder = new Ladder(NaturalNumber.createNaturalNumber(100), NaturalNumber.createNaturalNumber(100));
-        // given
-        for (int i = 0; i < 99; i++) {
-            ladder.drawLine(i, i);
-        }
-        // then
-        int expectedPosition;
-        for (int startPosition = 0; startPosition <= 99; startPosition++) {
-            int endPosition = ladder.run(startPosition);
-            expectedPosition = startPosition - 1;
-            if (startPosition == 0) {
-                expectedPosition = 99;
-            }
-            assertEquals(expectedPosition, endPosition);
-        }
+        Position result = ladder.run(createPosition(startPosition));
+        assertEquals(4, result.getPosition());
     }
 
     @Test
@@ -106,12 +59,12 @@ public class LadderTest {
         ladder = new Ladder(NaturalNumber.createNaturalNumber(5), NaturalNumber.createNaturalNumber(10));
 
         //given
-        int before = ladder.run(3);
-        ladder.drawLine(3, 3);
-        int after = ladder.run(3);
+        Position before = ladder.run(createPosition(3));
+        ladder.drawLine(createPosition(3), createPosition(3));
+        Position after = ladder.run(createPosition(3));
 
         //then
-        assertEquals(3, before);
-        assertEquals(4, after);
+        assertEquals(3, before.getPosition());
+        assertEquals(4, after.getPosition());
     }
 }

@@ -1,8 +1,8 @@
 # Todo (2주차)
 
-- Primitive type 을 Wrapper Class 로
-  - NaturalNum
-  - Position
+- ~~Primitive type 을 Wrapper Class 로~~
+  - ~~NaturalNum~~
+  ~~- Position~~
   - int[] row -> Node[] row
 
 - Ladder 클래스의 책임을 분리
