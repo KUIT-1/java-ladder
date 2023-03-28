@@ -25,20 +25,6 @@ public class LadderGameTest {
         assertEquals(2, ladderGame.run(createPosition(2)));
     }
 
-
-    @Test
-    @DisplayName("drawLine : printLadder를 이용하여 drawLine 테스트")
-    void When_printEmptyLadder_Expect_ZeroMatrix(){
-//        ladder.printLadder();
-    }
-
-    @Test
-    @DisplayName("drawLine : printLadder를 이용하여 drawLine 테스트")
-    void When_printLadder_Expect_CorrectMatrix(){
-        ladderGame.drawLine(createPosition(2), createPosition(3));
-        ladderGame.drawLine(createPosition(2), createPosition(2));
-    }
-
     @Test
     @DisplayName("Run : Line 1개 추가 후 Run")
     void When_RunWithLine_Expect_NextPointOfStartPoint(){
