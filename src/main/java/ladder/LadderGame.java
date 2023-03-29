@@ -21,6 +21,8 @@ public class LadderGame {
         LadderRunner ladderRunner = new LadderRunner(ladderCreator.getRow());
         ladderRunner.printLadderGame(position);
 
+        System.out.println(position.getPosition());
+
         return position.getPosition();
     }
 }

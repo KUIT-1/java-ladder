@@ -1,6 +1,6 @@
 package ladder;
 
-import ladder.creator.LadderCreator;
+import ladder.creator.LadderDefinedCreator;
 import ladder.creator.LadderRandomCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,14 +16,14 @@ public class LadderTest {
         //when
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         NaturalNumber row = createNaturalNumber(4);
-        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
-        LadderGame ladderGame = new LadderGame(ladderCreator);
+        LadderDefinedCreator ladderDefinedCreator = new LadderDefinedCreator(row, numberOfPerson);
+        LadderGame ladderGame = new LadderGame(ladderDefinedCreator);
 
         //given
-        ladderCreator.drawLine(createPosition(0), createPosition(1));
-        ladderCreator.drawLine(createPosition(1),createPosition(0));
-        ladderCreator.drawLine(createPosition(2),createPosition(2));
-        ladderCreator.drawLine(createPosition(3),createPosition(0));
+        ladderDefinedCreator.drawLine(createPosition(0), createPosition(1));
+        ladderDefinedCreator.drawLine(createPosition(1),createPosition(0));
+        ladderDefinedCreator.drawLine(createPosition(2),createPosition(2));
+        ladderDefinedCreator.drawLine(createPosition(3),createPosition(0));
 
         Position nthOfPerson = createPosition(0);
         //then
@@ -39,14 +39,14 @@ public class LadderTest {
         //when
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         NaturalNumber row = createNaturalNumber(4);
-        LadderCreator ladderCreator = new LadderCreator(row, numberOfPerson);
-        LadderGame ladderGame = new LadderGame(ladderCreator);
+        LadderDefinedCreator ladderDefinedCreator = new LadderDefinedCreator(row, numberOfPerson);
+        LadderGame ladderGame = new LadderGame(ladderDefinedCreator);
 
         //given
-        ladderCreator.drawLine(createPosition(0), createPosition(1));
-        ladderCreator.drawLine(createPosition(1),createPosition(0));
-        ladderCreator.drawLine(createPosition(2),createPosition(2));
-        ladderCreator.drawLine(createPosition(3),createPosition(0));
+        ladderDefinedCreator.drawLine(createPosition(0), createPosition(1));
+        ladderDefinedCreator.drawLine(createPosition(1),createPosition(0));
+        ladderDefinedCreator.drawLine(createPosition(2),createPosition(2));
+        ladderDefinedCreator.drawLine(createPosition(3),createPosition(0));
 
         ladderGame.runWithPrint(createPosition(0));
     }
@@ -56,7 +56,9 @@ public class LadderTest {
         //when
         NaturalNumber numberOfPerson = createNaturalNumber(4);
         NaturalNumber row = createNaturalNumber(4);
-        LadderRandomCreator ladderCreator = new LadderRandomCreator(row, numberOfPerson);
+        LadderGame ladderGame = LadderGameFactory.createRandomLadderGame(row, numberOfPerson);
+
+        ladderGame.runWithPrint(createPosition(0));
 
     }
 

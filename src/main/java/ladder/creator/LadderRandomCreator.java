@@ -7,7 +7,7 @@ import ladder.Row;
 
 import java.util.HashSet;
 
-public class LadderRandomCreator {
+public class LadderRandomCreator implements LadderCreator {
     private final Row[] rows;
     LadderSize ladderSize;
     int numOfLine = 0;
@@ -48,10 +48,12 @@ public class LadderRandomCreator {
         }
     }
 
+    @Override
     public void drawLine(Position row, Position col) {
         rows[row.getPosition()].drawLine(col);
     }
 
+    @Override
     public Row[] getRow() {
         return rows;
     }

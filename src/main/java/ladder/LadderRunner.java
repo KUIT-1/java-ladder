@@ -1,7 +1,5 @@
 package ladder;
 
-import ladder.creator.LadderCreator;
-
 public class LadderRunner {
 
     private final Row[] rows;
