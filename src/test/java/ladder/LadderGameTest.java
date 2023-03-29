@@ -1,22 +1,23 @@
 package ladder;
 
-import ladder.creator.CustomLadderCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.LadderSize.createLadderSize;
 import static ladder.NaturalNumber.createNaturalNumber;
 import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderGameTest {
     LadderGame ladderGame;
+    LadderGameFactory ladderGameFactory = new LadderGameFactory();
 
     @Test
     @DisplayName("사다리의 높이가 1 인 경우")
     public void noLineTest() {
         // when
-        CustomLadderCreator customLadderCreator = new CustomLadderCreator(LadderSize.createLadderSize(createNaturalNumber(1), createNaturalNumber(10)));
-        ladderGame = new LadderGame(customLadderCreator);
+        LadderSize ladderSize = createLadderSize(createNaturalNumber(1), createNaturalNumber(10));
+        ladderGame = ladderGameFactory.createCustomLadderGame(ladderSize);
         // given
         int[] startPositionList = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         // then
@@ -27,10 +28,11 @@ public class LadderGameTest {
     }
 
     @Test
-    @DisplayName("Run Test #case 1")
+    @DisplayName("Custom Ladder Test #case 1")
     public void Testcase1() {
         // when
-        ladderGame = new LadderGame(new CustomLadderCreator(LadderSize.createLadderSize(createNaturalNumber(5), createNaturalNumber(5))));
+        LadderSize ladderSize = createLadderSize(createNaturalNumber(5), createNaturalNumber(10));
+        ladderGame = ladderGameFactory.createCustomLadderGame(ladderSize);
         // given
         ladderGame.drawLine(createPosition(0), createPosition(0));
         // then
@@ -40,10 +42,11 @@ public class LadderGameTest {
     }
 
     @Test
-    @DisplayName("Run Test #case 2")
+    @DisplayName("Custom Ladder #case 2")
     public void Testcase2() {
         // when
-        ladderGame = new LadderGame(new CustomLadderCreator(LadderSize.createLadderSize(createNaturalNumber(5), createNaturalNumber(5))));
+        LadderSize ladderSize = createLadderSize(createNaturalNumber(5), createNaturalNumber(5));
+        ladderGame = ladderGameFactory.createCustomLadderGame(ladderSize);
         // given
         ladderGame.drawLine(createPosition(0), createPosition(0));
         ladderGame.drawLine(createPosition(1), createPosition(1));
@@ -59,7 +62,8 @@ public class LadderGameTest {
     @DisplayName("Line Drawing Test")
     void drawLine() {
         // when
-        ladderGame = new LadderGame(new CustomLadderCreator(LadderSize.createLadderSize(createNaturalNumber(5), createNaturalNumber(10))));
+        LadderSize ladderSize = createLadderSize(createNaturalNumber(5), createNaturalNumber(10));
+        ladderGame = ladderGameFactory.createCustomLadderGame(ladderSize);
 
         //given
         Position before = ladderGame.run(createPosition(3));

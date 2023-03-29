@@ -8,7 +8,6 @@ public class CustomLadderCreator implements  LadderCreator{
     Row[] rows;
 
     public CustomLadderCreator(LadderSize ladderSize) {
-
         rows = new Row[ladderSize.getRow().getNumber()];
         for (int i = 0; i < ladderSize.getRow().getNumber(); i++) {
             rows[i] = new Row(ladderSize.getNumberOfPerson());
