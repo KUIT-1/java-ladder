@@ -1,7 +1,7 @@
 package ladder;
 
 public class Row {
-    Node[] nodes;
+    public Node[] nodes; // <- 임시로 public 으로 한 것
 
     public Row(NaturalNumber numberOfPerson) {
         nodes = new Node[numberOfPerson.getNumber()];
@@ -37,7 +37,7 @@ public class Row {
     }
 
     private void validatePositionSize(Position position) {
-        if(!position.isSmaller(nodes.length)){
+        if (!position.isSmaller(nodes.length)) {
             throw new IllegalArgumentException("포지션의 사이즈가 너무 큽니다!");
         }
     }
@@ -46,5 +46,17 @@ public class Row {
         if (nowPosition < 0 || nowPosition >= nodes.length) {
             throw new IllegalArgumentException("유효하지 않은 Position 입니다.");
         }
+    }
+
+    public void createStringEachRow(Position nowRow, Point playerPoint, StringBuilder sb) {
+        for (int i = 0; i < nodes.length; i++) {
+            sb.append(nodes[i].direction.getDirection());
+            Point point = Point.createPoint(nowRow, Position.createPosition(i));
+            if (playerPoint.equals(point)) {
+                sb.append("*");
+            }
+            sb.append(" ");
+        }
+        sb.append("\n");
     }
 }

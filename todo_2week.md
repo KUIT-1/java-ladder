@@ -1,30 +1,33 @@
 # Todo (2주차)
 
-- ~~Primitive type 을 Wrapper Class 로~~
-  - ~~NaturalNum~~
-  ~~- Position~~
-  ~~- int[] row -> Node[] row~~
+️🟢 구현 및 리팩토링 완료
 
-~~- Ladder 클래스의 책임을 분리~~
+🔵 리팩토링 필요
 
-  ~~- LadderRunner~~
-  ~~- LadderCreator~~
-  ~~- LadderGame~~
+🔴 아직 구현 안함
+- Primitive type 을 Wrapper Class 로 ️🟢
+  - NaturalNum️🟢
+  - Position️🟢
+  - int[] row -> Node[] row️🟢
 
-- 사다리 출력하기
+- Ladder 클래스의 책임을 분리️🟢
 
-  - 출력 관련 책임을 담당하는 클래스를 만들자 (LadderView)
-  
-      - Row.Show()
-      : 한 줄을 String 으로 출력
+  - LadderRunner️🟢
+  - LadderCreator️🟢
+  - LadderGame️🟢
 
-      - LadderPosition Class
-        - (x, y)
-      - 현재 위치(*) 출력하기
-        - Run method 내에서 위치가 바뀌기 이전에 한번, 이후에 한번씩 출력하기
+- 사다리 출력하기️🟢
+
+  - 출력 관련 책임을 담당하는 클래스를 만들자 (LadderView)️🟢
+      - Row.Show()️🟢
+      - 한 줄을 String 으로 출력️🟢
+      - Point Class️🟢
+      - (x, y)️🟢
+      - 현재 위치(*) 출력하기️🟢
+      - Run method 내에서 위치가 바뀌기 이전에 한번, 이후에 한번씩 출력하기️🟢
 
 
-- 사다리 자동 생성
+- 사다리 자동 생성 🔴
 
   - 사다리 생성 관련한 책임을 담당하는 클래스를 만들자 (LadderGameFactory)
   - LadderGameFactory.createRandomLadderGame(density p)
