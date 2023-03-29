@@ -4,6 +4,8 @@ public class CreateLadder {
 
     private Direction[][] ladder;
     // -1(왼쪽으로 선 그어져 있음) , 0 , +1 (오른쪽으로 선 그어져 있음) +1 ___ -1
+
+
     pRow pRow;
     int totalRow;
     int totalCol;

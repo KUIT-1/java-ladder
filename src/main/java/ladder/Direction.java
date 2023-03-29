@@ -1,9 +1,10 @@
 package ladder;
 
 public class Direction {
-     int direction;
+
+    int direction;
     // -1(왼쪽으로 선 그어져 있음) , 0 , +1 (오른쪽으로 선 그어져 있음) +1 ___ -1
-     public Direction(int direction) {
+    public Direction(int direction) {
          this.direction = direction;
      }
 
