@@ -30,10 +30,12 @@ public class LadderRunner {
     }
 
     private void printLadder(LadderPosition ladderPosition, String state){
-        System.out.println(state);
+        StringBuilder sb = new StringBuilder();
+        sb.append(state);
+        sb.append("\n");
         for (int i = 0; i < rows.length; i++) {
-            rows[i].printRow(ladderPosition.getXPosition(),ladderPosition.checkCurrentRow(i));
+            sb.append(rows[i].printRow(ladderPosition.getXPosition(),ladderPosition.checkCurrentRow(i)));
         }
-        System.out.println();
+        System.out.println(sb);
     }
 }

@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-29T05:48:28" hostname="LAPTOP-5N8AOLN7" time="0.063">
+<testsuite name="ladder.LadderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-29T15:18:02" hostname="LAPTOP-5N8AOLN7" time="0.066">
   <properties/>
-  <testcase name="runRandomLadder()" classname="ladder.LadderTest" time="0.039"/>
-  <testcase name="runPrintLadder()" classname="ladder.LadderTest" time="0.007"/>
-  <testcase name="run 실행 확인" classname="ladder.LadderTest" time="0.014"/>
+  <testcase name="runRandomLadder()" classname="ladder.LadderTest" time="0.048"/>
+  <testcase name="runPrintLadder()" classname="ladder.LadderTest" time="0.009"/>
+  <testcase name="run 실행 확인" classname="ladder.LadderTest" time="0.006"/>
   <system-out><![CDATA[before
 1* -1 0 0 
 1 -1 1 -1 
-0 0 1 -1 
 0 0 0 0 
+0 1 -1 0 
 
 after
 1 -1* 0 0 
 1 -1 1 -1 
-0 0 1 -1 
 0 0 0 0 
+0 1 -1 0 
 
 before
 1 -1 0 0 
 1 -1* 1 -1 
-0 0 1 -1 
 0 0 0 0 
+0 1 -1 0 
 
 after
 1 -1 0 0 
 1* -1 1 -1 
-0 0 1 -1 
 0 0 0 0 
+0 1 -1 0 
 
 before
 1 -1 0 0 
 1 -1 1 -1 
-0* 0 1 -1 
-0 0 0 0 
+0* 0 0 0 
+0 1 -1 0 
 
 after
 1 -1 0 0 
 1 -1 1 -1 
-0* 0 1 -1 
-0 0 0 0 
+0* 0 0 0 
+0 1 -1 0 
 
 before
 1 -1 0 0 
 1 -1 1 -1 
-0 0 1 -1 
-0* 0 0 0 
+0 0 0 0 
+0* 1 -1 0 
 
 after
 1 -1 0 0 
 1 -1 1 -1 
-0 0 1 -1 
-0* 0 0 0 
+0 0 0 0 
+0* 1 -1 0 
 
 0
 before
