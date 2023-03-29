@@ -1,56 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-29T05:24:18" hostname="LAPTOP-5N8AOLN7" time="0.041">
+<testsuite name="ladder.LadderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-29T05:48:28" hostname="LAPTOP-5N8AOLN7" time="0.063">
   <properties/>
-  <testcase name="runRandomLadder()" classname="ladder.LadderTest" time="0.041"/>
-  <system-out><![CDATA[Before
+  <testcase name="runRandomLadder()" classname="ladder.LadderTest" time="0.039"/>
+  <testcase name="runPrintLadder()" classname="ladder.LadderTest" time="0.007"/>
+  <testcase name="run 실행 확인" classname="ladder.LadderTest" time="0.014"/>
+  <system-out><![CDATA[before
+1* -1 0 0 
+1 -1 1 -1 
+0 0 1 -1 
+0 0 0 0 
+
+after
+1 -1* 0 0 
+1 -1 1 -1 
+0 0 1 -1 
+0 0 0 0 
+
+before
+1 -1 0 0 
+1 -1* 1 -1 
+0 0 1 -1 
+0 0 0 0 
+
+after
+1 -1 0 0 
+1* -1 1 -1 
+0 0 1 -1 
+0 0 0 0 
+
+before
+1 -1 0 0 
+1 -1 1 -1 
 0* 0 1 -1 
-0 1 -1 0 
-0 1 -1 0 
-1 -1 0 0 
+0 0 0 0 
 
-After
+after
+1 -1 0 0 
+1 -1 1 -1 
 0* 0 1 -1 
-0 1 -1 0 
-0 1 -1 0 
-1 -1 0 0 
+0 0 0 0 
 
-Before
-0 0 1 -1 
-0* 1 -1 0 
-0 1 -1 0 
+before
 1 -1 0 0 
-
-After
+1 -1 1 -1 
 0 0 1 -1 
-0* 1 -1 0 
-0 1 -1 0 
+0* 0 0 0 
+
+after
 1 -1 0 0 
-
-Before
+1 -1 1 -1 
 0 0 1 -1 
-0 1 -1 0 
+0* 0 0 0 
+
+0
+before
 0* 1 -1 0 
 1 -1 0 0 
-
-After
 0 0 1 -1 
-0 1 -1 0 
-0* 1 -1 0 
 1 -1 0 0 
 
-Before
+after
+0* 1 -1 0 
+1 -1 0 0 
 0 0 1 -1 
-0 1 -1 0 
+1 -1 0 0 
+
+before
 0 1 -1 0 
 1* -1 0 0 
-
-After
 0 0 1 -1 
-0 1 -1 0 
+1 -1 0 0 
+
+after
 0 1 -1 0 
 1 -1* 0 0 
+0 0 1 -1 
+1 -1 0 0 
 
-1
+before
+0 1 -1 0 
+1 -1 0 0 
+0 0* 1 -1 
+1 -1 0 0 
+
+after
+0 1 -1 0 
+1 -1 0 0 
+0 0* 1 -1 
+1 -1 0 0 
+
+before
+0 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1 -1* 0 0 
+
+after
+0 1 -1 0 
+1 -1 0 0 
+0 0 1 -1 
+1* -1 0 0 
+
+0
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

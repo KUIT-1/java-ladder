@@ -37,15 +37,11 @@ public class Row {
         }
     }
 
-    public void printRow(LadderPosition ladderPosition, Boolean star){
+    public void printRow(int positionCol, Boolean currentRow){
         StringBuilder sb = new StringBuilder();
-        int positionRow = -1;
-        if(star) {
-            positionRow = ladderPosition.getXPosition();
-        }
         for (int i = 0; i < nodes.length; i++) {
             sb.append(nodes[i].toString());
-            if(positionRow == i) sb.append("*");
+            if(positionCol == i && currentRow) sb.append("*");
             sb.append(" ");
         }
         System.out.println(sb);
