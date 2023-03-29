@@ -10,22 +10,39 @@ public class LadderRunner {
     public int run(Position position) {
         position.minusPosition();
 
+        System.out.println(rows.length);
+
         for(int i = 0; i< rows.length; i++){
             Position ypos = Position.createPosition(i+1);
             ypos.minusPosition();
-            LadderPosition ladderPosition = new LadderPosition(position, ypos);
+            LadderPosition ladderPosition = LadderPosition.createLadderPosition(position,ypos);
 
             System.out.println("Before");
-            ladderPosition.printLadder(rows);
+            printLadder(ladderPosition);
 
             rows[i].nextPosition(position);
 
             System.out.println("After");
-            ladderPosition.printLadder(rows);
+            printLadder(ladderPosition);
         }
 
         position.plusPosition();
 
         return position.getPosition();
+    }
+
+    public void printLadder(LadderPosition ladderPosition){
+        for(int j = 0; j< rows.length; j++){
+            compareAndPrintRow(j, ladderPosition);
+        }
+        System.out.println();
+    }
+
+    private void compareAndPrintRow(int j, LadderPosition ladderPosition){
+        if(ladderPosition.getColPosition().getPosition()==j) {
+            rows[j].printRow(true, ladderPosition.getRowPosition());
+            return;
+        }
+        rows[j].printRow(false, ladderPosition.getRowPosition());
     }
 }

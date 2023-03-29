@@ -1,6 +1,7 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.creator.RandomLadderCreator;
 
 public class LadderGame {
     private final LadderCreator ladderCreator;
@@ -13,6 +14,10 @@ public class LadderGame {
         ladderRunner.run(position);
 
         return position.getPosition();
+    }
+
+    public void drawLine(LadderPosition ladderPosition){
+        ladderCreator.drawLine(ladderPosition);
     }
 
 }

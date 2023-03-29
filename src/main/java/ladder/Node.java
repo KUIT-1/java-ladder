@@ -1,7 +1,7 @@
 package ladder;
 
 public class Node {
-    private Direction direction;
+    private final Direction direction;
 
     private Node(Direction direction) {
         this.direction = direction;

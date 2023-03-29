@@ -1,26 +1,40 @@
 package ladder;
 
 public class LadderPosition {
-    private Position x, y;
+    private final Position x;
+    private final Position y;
 
-    public LadderPosition(Position x, Position y) {
+    private LadderPosition(Position y, Position x) {
         this.x = x;
         this.y = y;
     }
 
-    public void printLadder(Rows[] rows){
-        for(int j = 0; j< rows.length; j++){
-            compareAndPrint(j, rows);
-        }
-        System.out.println();
+    public static LadderPosition createLadderPosition(Position y, Position x){
+        return new LadderPosition(y, x);
     }
 
-    private void compareAndPrint(int j, Rows[] rows){
-        if(y.getPosition()==j) {
-            rows[j].printRow(true, x);
-            return;
-        }
-        rows[j].printRow(false, x);
+    public Position getRowPosition(){
+        return y;
     }
 
+    public Position getColPosition(){
+        return x;
+    }
+
+    @Override
+    public int hashCode() {
+        return x.getPosition()*y.getPosition();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof LadderPosition){
+            LadderPosition ladderPosition = (LadderPosition) obj;
+
+            return this.x.getPosition() == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition() ||
+            this.x.getPosition()-1 == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition() ||
+            this.x.getPosition()+1 == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition();
+        }
+        return false;
+    }
 }
