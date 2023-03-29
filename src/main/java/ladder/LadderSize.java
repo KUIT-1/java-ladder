@@ -3,13 +3,13 @@ package ladder;
 import java.util.Objects;
 
 public class LadderSize implements Comparable<LadderSize>{
-    int row;
-    int col;
+    NaturalNumber row;
+    NaturalNumber col;
     float randomRate = (float) 0.3;
 
     public LadderSize(int row, int col) {
-        this.row = row;
-        this.col = col;
+        this.row = NaturalNumber.createNaturalNumber(row);
+        this.col = NaturalNumber.createNaturalNumber(col);
     }
 
     public static LadderSize createLadderSize(int row, int col){
@@ -17,15 +17,15 @@ public class LadderSize implements Comparable<LadderSize>{
     }
 
     public int getRandomNumber(){
-        return (int) (row*col*randomRate);
+        return (int) (row.getNumber()*col.getNumber()*randomRate);
     }
 
     public int getRandomRow(){
-        return (int) (Math.random()*row);
+        return (int) (Math.random()*row.getNumber());
     }
 
     public int getRandomCol(){
-        return (int) (Math.random()*(col-1));
+        return (int) (Math.random()*(col.getNumber()-1));
     }
 
     @Override
@@ -44,6 +44,6 @@ public class LadderSize implements Comparable<LadderSize>{
 
     @Override
     public int hashCode() {
-        return this.row*10+this.col;
+        return this.row.getNumber()*10+this.col.getNumber();
     }
 }

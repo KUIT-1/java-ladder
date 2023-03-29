@@ -2,3 +2,5 @@
 - primitive type들을 찾아서 Wrapper 클래스로 포장
     - Ladder, position, row의 상태값
 - Ladder 클래스 분리
+- ErrorEnum 클래스 생성
+  - error에  대한 hardcoding 개선

@@ -46,6 +46,6 @@ public class Row {
         }
         System.out.println(sb);
     }
-    //String 자체를 내보낼지 아니면 그냥 프린트를 할지
+    //String 자체를 내보낼지 아니면 그냥 프린트를 할지  - sb 반환 고려
 
 }
