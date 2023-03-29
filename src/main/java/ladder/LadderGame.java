@@ -4,10 +4,10 @@ import ladder.creator.LadderCreator;
 import ladder.runner.LadderRunner;
 
 public class LadderGame {
-    LadderCreator ladderCreator;
+    private final LadderCreator ladderCreator;
 
-    public LadderGame(NaturalNumber row, NaturalNumber numberOfPerson) {
-        ladderCreator = new LadderCreator(row, numberOfPerson);
+    public LadderGame(LadderCreator ladderCreator) {
+        this.ladderCreator = ladderCreator; // DI
     }
 
     public void drawLine(Position row, Position col){
