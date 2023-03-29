@@ -59,7 +59,6 @@ public class LadderTest {
         LadderGame ladderGame = LadderGameFactory.createRandomLadderGame(row, numberOfPerson);
 
         ladderGame.runWithPrint(createPosition(0));
-
     }
 
 }

@@ -41,7 +41,7 @@ public class Row {
         StringBuilder sb = new StringBuilder();
         int positionRow = -1;
         if(star) {
-            positionRow = ladderPosition.getX().getPosition();
+            positionRow = ladderPosition.getXPosition();
         }
         for (int i = 0; i < nodes.length; i++) {
             sb.append(nodes[i].toString());
@@ -50,5 +50,6 @@ public class Row {
         }
         System.out.println(sb);
     }
+    //String 자체를 내보낼지 아니면 그냥 프린트를 할지
 
 }

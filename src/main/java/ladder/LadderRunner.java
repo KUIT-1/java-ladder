@@ -9,11 +9,9 @@ public class LadderRunner {
     }
 
     public int run(Position position) {
-
         for (int i = 0; i < rows.length; i++) {
             rows[i].nextPosition(position);
         }
-
         return position.getPosition();
     }
 
@@ -23,27 +21,29 @@ public class LadderRunner {
 
         for (int i = 0; i < rows.length; i++) {
             ladderPosition.setLocation(position, i);
-            System.out.println("Before");
             printLadder(ladderPosition);
-            System.out.println();
-            System.out.println("After");
             printLadderAfter(ladderPosition);
-            System.out.println();
         }
 
         return;
     }
 
     private void printLadder(LadderPosition ladderPosition){
+        System.out.println("Before");
         for (int i = 0; i < rows.length; i++) {
             rows[i].printRow(ladderPosition,ladderPosition.checkCurrentRow(i));
             if(ladderPosition.checkCurrentRow(i)) rows[i].nextPosition(ladderPosition.getX());
         }
+        System.out.println();
     }
 
     private void printLadderAfter(LadderPosition ladderPosition){
+        System.out.println("After");
         for (int i = 0; i < rows.length; i++) {
             rows[i].printRow(ladderPosition,ladderPosition.checkCurrentRow(i));
         }
+        System.out.println();
     }
+
+
 }
