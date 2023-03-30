@@ -39,4 +39,5 @@
       - LadderGame ladderGame = LadderGameFactory.createRandomLadderGame()  ️🟢
       - DI 는 Factory Method 가 맡도록 하기  ️🟢
       - LadderGame 을 생성하는 책임을 한 클래스에게.  ️🟢
+      - 전반적인 String 을 관리하는 StringManager 생성
   
