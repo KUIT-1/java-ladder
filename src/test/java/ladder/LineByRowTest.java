@@ -1,6 +1,8 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+import ladder.lineinfo.LineByPosition;
+import ladder.lineinfo.LineByRow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 
 import static ladder.Direction.*;
+import static ladder.LadderGameFactory.CustomizationLadderGame;
 import static ladder.NaturalNumber.createNaturalNumber;
 import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,8 +24,23 @@ class LineByRowTest {
     void init(){
         NaturalNumber height = createNaturalNumber(5);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        ladderCreator = new LadderCreator(height, numberOfPerson);
-        lineByRows = ladderCreator.getLineByRows();
+        LadderSize ladderSize = new LadderSize(height, numberOfPerson);
+
+        LadderGame ladderGame = CustomizationLadderGame(ladderSize);
+
+        // private 변수 테스트
+        try {
+            Field ladderCreatorField = ladderGame.getClass().getDeclaredField("ladderCreator");
+            ladderCreatorField.setAccessible(true);
+            ladderCreator = (LadderCreator) ladderCreatorField.get(ladderGame);
+            lineByRows = ladderCreator.getLineByRows();
+
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Test
@@ -101,8 +119,8 @@ class LineByRowTest {
     @DisplayName("checkDirection : 좌향 중")
     void When_LastMoveIsLeftward_Expect_ReturnStateAfterMove(){
         ladderCreator.drawLine(createPosition(1), createPosition(2));
-        assertEquals(RIGHT, lineByRows[1].nextDirection(createPosition(2), LEFT));
-        assertEquals(RIGHT, lineByRows[1].nextDirection(createPosition(3), LEFT));
+        assertEquals(DOWN, lineByRows[1].nextDirection(createPosition(2), LEFT));
+        assertEquals(LEFT, lineByRows[1].nextDirection(createPosition(3), LEFT));
     }
 
     @Test
@@ -110,7 +128,7 @@ class LineByRowTest {
     void When_LastMoveIsRightward_Expect_ReturnStateAfterMove(){
         ladderCreator.drawLine(createPosition(1), createPosition(2));
         assertEquals(RIGHT, lineByRows[1].nextDirection(createPosition(2), RIGHT));
-        assertEquals(RIGHT, lineByRows[1].nextDirection(createPosition(3), RIGHT));
+        assertEquals(DOWN, lineByRows[1].nextDirection(createPosition(3), RIGHT));
     }
 
 }

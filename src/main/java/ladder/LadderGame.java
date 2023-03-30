@@ -1,12 +1,14 @@
 package ladder;
 
 import ladder.creator.LadderCreator;
+//import ladder.creator.LadderCreator;
 
 public class LadderGame {
+//    private LadderCreator ladderCreator;
     private LadderCreator ladderCreator;
-
-    public LadderGame(NaturalNumber height, NaturalNumber numberOfPerson) {
-        this.ladderCreator = new LadderCreator(height, numberOfPerson);
+    // DI
+    public LadderGame(LadderCreator ladderCreator) {
+        this.ladderCreator = ladderCreator;
     }
 
     public void drawLine(Position row, Position col) {

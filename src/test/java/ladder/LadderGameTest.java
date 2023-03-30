@@ -4,20 +4,44 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static ladder.LadderGameFactory.AutogenerateLadderGame;
+import static ladder.LadderGameFactory.CustomizationLadderGame;
 import static ladder.NaturalNumber.*;
 import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderGameTest {
-
-    static LadderGame ladderGame;
-
+    LadderGame ladderGame;
+    LadderSize ladderSize;
     @BeforeEach
     void init(){
         NaturalNumber height = createNaturalNumber(5);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        ladderGame = new LadderGame(height, numberOfPerson);
+        ladderSize = new LadderSize(height, numberOfPerson);
+        ladderGame = CustomizationLadderGame(ladderSize);
     }
+
+    @Test
+    @DisplayName("GameCreator : 사용자 정의 사다리 게임 테스트")
+    void When_CustomizationLadderGame_Expect_ReturnLadderGame(){
+        ladderGame = CustomizationLadderGame(ladderSize);
+        // 빈사다리이기 때문에 그대로 나옴.
+        assertEquals(2, ladderGame.run(createPosition(2)));
+    }
+    @Test
+    @DisplayName("GameCreator : 자동 생성 사다리 게임 테스트")
+    void When_AutogenerateLadderGameInit_Expect_ReturnLadderGame(){
+        ladderGame = AutogenerateLadderGame(ladderSize);
+    }
+
+    @Test
+    @DisplayName("Auto - run : 자동 생성 사다리 run 테스트")
+    void When_AutoGame_Expect_randomAnswer(){
+        ladderGame = AutogenerateLadderGame(ladderSize);
+        ladderGame.run(createPosition(2));
+    }
+
+
 
     @Test
     @DisplayName("Run : Line x")
@@ -62,13 +86,6 @@ public class LadderGameTest {
 
     // 예외처리
     @Test
-    @DisplayName("생성자 : 높이/인원수 유효성")
-    void When_InvalidArgumentInConstructor_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> new LadderGame(createNaturalNumber(0), createNaturalNumber(1)));
-        assertThrows(IllegalArgumentException.class, ()-> new LadderGame(createNaturalNumber(1), createNaturalNumber(0)));
-        assertThrows(IllegalArgumentException.class, ()-> new LadderGame(createNaturalNumber(0), createNaturalNumber(0)));
-    }
-    @Test
     @DisplayName("drawLine : row 값 유효성")
     void When_InvalidRowValueInDrawLine_Expect_ThrowException(){
         assertThrows(IllegalArgumentException.class, ()-> ladderGame.drawLine(createPosition(-3), createPosition(3)));
@@ -92,4 +109,5 @@ public class LadderGameTest {
         assertEquals(4, ladderGame.run(createPosition(4)));
         assertThrows(IllegalArgumentException.class, ()-> ladderGame.run(createPosition(7)));
     }
+
 }
