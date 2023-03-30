@@ -1,2 +1,4 @@
-package ladder;public class RandomCreatorManagerTest {
+package ladder;
+
+public class RandomCreatorManagerTest {
 }

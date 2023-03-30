@@ -1,14 +1,15 @@
 package ladder;
 
+import ladder.creator.CustomizationLadderCreator;
 import ladder.creator.LadderCreator;
+import ladder.lineinfo.LineByPosition;
+import ladder.lineinfo.LineByRow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 
-import static ladder.Direction.*;
-import static ladder.Direction.RIGHT;
 import static ladder.NaturalNumber.createNaturalNumber;
 import static ladder.Position.createPosition;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,13 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LadderCreatorTest {
 
+    LadderGame ladderGame;
+    static LadderSize ladderSize;
     LadderCreator ladderCreator;
-
     @BeforeEach
     void init(){
         NaturalNumber height = createNaturalNumber(5);
         NaturalNumber numberOfPerson = createNaturalNumber(4);
-        ladderCreator = new LadderCreator(height, numberOfPerson);
+        ladderSize = new LadderSize(height, numberOfPerson);
+        ladderCreator = new CustomizationLadderCreator(ladderSize);
     }
 
     @Test
@@ -62,18 +65,18 @@ public class LadderCreatorTest {
     @Test
     @DisplayName("drawLine : row 값 유효성")
     void When_InvalidRowValueInDrawLine_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(-3), createPosition(3)));
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(0), createPosition(3)));
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(6), createPosition(3)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(-3), createPosition(3)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(0), createPosition(3)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(6), createPosition(3)));
     }
 
     @Test
     @DisplayName("drawLine : col 값 유효성")
     void When_InvalidColValueInDrawLine_Expect_ThrowException(){
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(4), createPosition(-1)));
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(4), createPosition(0)));
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(4), createPosition(4)));
-        assertThrows(IllegalArgumentException.class, ()-> ladderCreator.drawLine(createPosition(4), createPosition(7)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(4), createPosition(-1)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(4), createPosition(0)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(4), createPosition(4)));
+        assertThrows(IllegalArgumentException.class, ()->ladderCreator.drawLine(createPosition(4), createPosition(7)));
     }
 
 
