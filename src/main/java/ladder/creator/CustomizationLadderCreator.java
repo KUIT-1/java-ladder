@@ -1,22 +1,21 @@
 package ladder.creator;
 
-import ladder.LineByRow;
+import ladder.lineinfo.LineByRow;
 import ladder.NaturalNumber;
 import ladder.Position;
-import ladder.random.LadderSize;
+import ladder.LadderSize;
 
-public class LadderCreatorNew implements LadderCreator {
+public class CustomizationLadderCreator implements LadderCreator {
 
     private LineByRow[] lineByRows;
     private LadderSize ladderSize;
+    private static final int START_INDEX = 1;
 
-    public LadderCreatorNew(LadderSize ladderSize) {
+    public CustomizationLadderCreator(LadderSize ladderSize) {
         this.ladderSize = ladderSize;
-        NaturalNumber height = ladderSize.getHeight();
-        NaturalNumber numberOfPerson = ladderSize.getNumberOfPerson();
 
-        this.lineByRows = new LineByRow[height.getNumber() + 1];
-        initLineByRow(height, numberOfPerson);
+        this.lineByRows = new LineByRow[ladderSize.getHeight() + START_INDEX];
+        initLineByRow(ladderSize.getHeight(), ladderSize.getNumberOfPerson());
     }
 
     @Override
@@ -29,23 +28,20 @@ public class LadderCreatorNew implements LadderCreator {
 
     @Override
     public boolean validateLine(Position row, Position col) {
-        NaturalNumber numberOfPerson = ladderSize.getNumberOfPerson();
-        NaturalNumber height = ladderSize.getHeight();
-
         // Line은 해당 지점에서 오른쪽으로 뻗는 line만 생성 가능
-        if (col.getPosition() >= numberOfPerson.getNumber())
+        if (col.getPosition() >= ladderSize.getNumberOfPerson())
             throw new IllegalArgumentException("col 값이 유효하지 않습니다.");
 
-        if (row.getPosition() > height.getNumber())
+        if (row.getPosition() > ladderSize.getHeight())
             throw new IllegalArgumentException("row 값이 유효하지 않습니다.");
 
         return true;
     }
 
 
-    private void initLineByRow(NaturalNumber height, NaturalNumber numberOfPerson) {
-        for(int row = 1; row < height.getNumber() + 1; row++){
-            lineByRows[row] = new LineByRow(numberOfPerson);
+    private void initLineByRow(int height, int numberOfPerson) {
+        for(int row = START_INDEX; row <= height; row++){
+            lineByRows[row] = new LineByRow(NaturalNumber.createNaturalNumber(numberOfPerson));
         }
     }
 

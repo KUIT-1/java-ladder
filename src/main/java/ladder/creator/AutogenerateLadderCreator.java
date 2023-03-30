@@ -1,55 +1,57 @@
 package ladder.creator;
 
-import ladder.LineByRow;
+import ladder.lineinfo.LineByRow;
 import ladder.NaturalNumber;
 import ladder.Position;
-import ladder.random.LadderSize;
-import ladder.random.RanomCreatorManager;
+import ladder.LadderSize;
+import ladder.random.RandomCreatorManager;
 
 import static ladder.Position.createPosition;
 import static ladder.random.Point.createPoint;
 
-public class RandomCreator implements LadderCreatorInterface{
+public class AutogenerateLadderCreator implements LadderCreator {
 
     private LineByRow[] lineByRows;
     private LadderSize ladderSize;
-    private RanomCreatorManager ranomCreatorManager;
+    private RandomCreatorManager randomCreatorManager;
 
-    public RandomCreator(LadderSize ladderSize) {
+    // 상수
+    // 뒤에서부터 접근 가능한 인덱스
+    private static final int ACCESSIBLE_LAST_INDEX_FROM_NTHPERSON = 2;
+    private static final int ACCESSIBLE_LAST_INDEX_FROM_HEIGHT = 1;
+    private static final int START_INDEX = 1;
+
+    public AutogenerateLadderCreator(LadderSize ladderSize) {
         this.ladderSize = ladderSize;
-        lineByRows = new LineByRow[ladderSize.getHeight().getNumber() + 1];
+
+        lineByRows = new LineByRow[ladderSize.getHeight() + START_INDEX];
         initLineByRow(ladderSize.getHeight(), ladderSize.getNumberOfPerson());
         autoLadderCreator();
     }
 
     private void autoLadderCreator(){
-        ranomCreatorManager = new RanomCreatorManager(ladderSize);
-        NaturalNumber height = ladderSize.getHeight();
-        NaturalNumber numberOfPerson = ladderSize.getNumberOfPerson();
-        long lineSize = Math.round(height.getNumber() * numberOfPerson.getNumber() * 0.3);
+        randomCreatorManager = new RandomCreatorManager(ladderSize);
+        long lineSize = Math.round(ladderSize.getHeight() * ladderSize.getNumberOfPerson() * 0.3);
 
         for(int lineNum = 0; lineNum < lineSize; lineNum++){
             lineNum = drawRandomLine(lineNum);
-
         }
     }
 
     private int drawRandomLine(int lineNum){
-        NaturalNumber height = ladderSize.getHeight();
-        NaturalNumber numberOfPerson = ladderSize.getNumberOfPerson();
-        Position row = createPosition(randomByMax(height.getNumber()-2));
-        Position col = createPosition(randomByMax(numberOfPerson.getNumber()-1));
+        Position row = createPosition(randomByMax(ladderSize.getHeight() - ACCESSIBLE_LAST_INDEX_FROM_HEIGHT));
+        Position col = createPosition(randomByMax(ladderSize.getNumberOfPerson() - ACCESSIBLE_LAST_INDEX_FROM_NTHPERSON));
 
         boolean flag = drawLine(row, col);
         if(flag){
-            ranomCreatorManager.addPoint(createPoint(row, col));
+            randomCreatorManager.addPoint(createPoint(row, col));
             return lineNum;
         }
-        return lineNum - 1;
+        return --lineNum;
     }
 
     private int randomByMax(int max){
-        return (int) Math.random()*(max) + 1;
+        return (int) (Math.random() * max + START_INDEX);
     }
     @Override
     public boolean drawLine(Position row, Position col) {
@@ -63,23 +65,21 @@ public class RandomCreator implements LadderCreatorInterface{
     @Override
     public boolean validateLine(Position row, Position col) {
         // Line은 해당 지점에서 오른쪽으로 뻗는 line만 생성 가능
-        if (col.getPosition() >= ladderSize.getNumberOfPerson().getNumber())
+        if (col.getPosition() >= ladderSize.getNumberOfPerson())
             return false;
-        // throw new IllegalArgumentException("col 값이 유효하지 않습니다.");
 
-        if (row.getPosition() > ladderSize.getHeight().getNumber())
+        if (row.getPosition() > ladderSize.getHeight())
             return false;
-        // throw new IllegalArgumentException("row 값이 유효하지 않습니다.");
 
-        if(ranomCreatorManager.has(createPoint(row, col)))
+        if(randomCreatorManager.has(createPoint(row, col)))
             return false;
 
         return true;
     }
 
-    private void initLineByRow(NaturalNumber height, NaturalNumber numberOfPerson) {
-        for(int row = 1; row < height.getNumber() + 1; row++){
-            lineByRows[row] = new LineByRow(numberOfPerson);
+    private void initLineByRow(int height, int numberOfPerson) {
+        for(int row = START_INDEX; row <= height; row++){
+            lineByRows[row] = new LineByRow(NaturalNumber.createNaturalNumber(numberOfPerson));
         }
     }
 
