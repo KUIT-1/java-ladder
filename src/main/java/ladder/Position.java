@@ -2,6 +2,7 @@ package ladder;
 
 public class Position {
     private int position;
+    private static final int START_INDEX = 1;
 
     private Position(int position) {
         this.position = position;
@@ -13,7 +14,7 @@ public class Position {
     }
 
     private static void validateNumber(int position){
-        if(position <= 0)
+        if(position < START_INDEX)
             throw new IllegalArgumentException("유효한 위치가 아닙니다. 자연수로 입력해주세요.");
     }
 

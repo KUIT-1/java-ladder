@@ -3,6 +3,7 @@ package ladder;
 public class NaturalNumber {
 
     private final int number;
+    private static final int START_INDEX = 1;
 
     private NaturalNumber(int number) {
         this.number = number;
@@ -14,7 +15,7 @@ public class NaturalNumber {
     }
 
     private static void validateNumber(int number){
-        if(number <= 0)
+        if(number < START_INDEX)
             throw new IllegalArgumentException("자연수가 아닙니다.");
     }
 

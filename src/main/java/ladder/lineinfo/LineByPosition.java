@@ -1,4 +1,6 @@
-package ladder;
+package ladder.lineinfo;
+
+import ladder.Direction;
 
 import static ladder.Direction.*;
 

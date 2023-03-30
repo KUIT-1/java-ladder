@@ -1,10 +1,12 @@
 package ladder;
 
+import ladder.lineinfo.LineByRow;
+
 import static ladder.Direction.*;
 import static ladder.Position.*;
 
 public class Node {
-    private Direction state; // -1 : gotoLeft, 1 : gotoRight, 0 : gotoDown
+    private Direction state;
     private Position current_row = createPosition(1);
     private Position current_col;
 
