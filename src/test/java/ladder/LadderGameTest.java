@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LadderGameTest {
     LadderGame ladderGame;
     LadderGameFactory ladderGameFactory = new LadderGameFactory();
+    StringManager stringManager = new StringManager();
 
     @Test
     @DisplayName("사다리의 높이가 1 인 경우")
@@ -23,6 +24,7 @@ public class LadderGameTest {
         // then
         for (int j : startPositionList) {
             Position result = ladderGame.run(createPosition(j));
+            System.out.println(stringManager.getResultString(result));
             assertEquals(result.getPosition(), j);
         }
     }
@@ -38,6 +40,7 @@ public class LadderGameTest {
         // then
         int startPosition = 0;
         Position result = ladderGame.run(createPosition(startPosition));
+        System.out.println(stringManager.getResultString(result));
         assertEquals(1, result.getPosition());
     }
 
@@ -55,6 +58,7 @@ public class LadderGameTest {
         // then
         int startPosition = 0;
         Position result = ladderGame.run(createPosition(startPosition));
+        System.out.println(stringManager.getResultString(result));
         assertEquals(4, result.getPosition());
     }
 
@@ -67,8 +71,10 @@ public class LadderGameTest {
 
         //given
         Position before = ladderGame.run(createPosition(3));
+        System.out.println(stringManager.getResultString(before));
         ladderGame.drawLine(createPosition(3), createPosition(3));
         Position after = ladderGame.run(createPosition(3));
+        System.out.println(stringManager.getResultString(after));
 
         //then
         assertEquals(3, before.getPosition());

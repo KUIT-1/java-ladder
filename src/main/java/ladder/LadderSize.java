@@ -16,7 +16,10 @@ public class LadderSize {
         return row;
     }
 
-    public NaturalNumber getNumberOfPerson() {
-        return numberOfPerson;
+    public int getNumberOfPerson() {
+        return numberOfPerson.getNumber();
+    }
+    public int getNumOfRows(){
+        return row.getNumber();
     }
 }

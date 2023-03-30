@@ -3,32 +3,41 @@ package ladder.runner;
 import ladder.Point;
 import ladder.Position;
 import ladder.Row;
-import ladder.view.LadderViewResolver;
+import ladder.StringManager;
+import ladder.view.LadderViewHelper;
+
+import static ladder.Position.createPosition;
 
 public class LadderRunner {
     Row[] rows;
-    LadderViewResolver ladderViewResolver = new LadderViewResolver();
+    LadderViewHelper ladderViewHelper = new LadderViewHelper();
+    StringManager stringManager = new StringManager();
 
     public LadderRunner(Row[] rows) {
         this.rows = rows;
     }
 
     public Position run(Position startPosition) {
-        String status;
+        System.out.println(stringManager.getStartMessage());
+        System.out.println(stringManager.getDoubleDash());
         for (int i = 0; i < rows.length; i++) {
-            System.out.print("step: ");
-            System.out.println(i+1);
-            System.out.println("before");
-            status = ladderViewResolver.getLadderView(rows, Point.createPoint(Position.createPosition(i), startPosition));
-            System.out.println(status);
-
+            viewEachStep(startPosition, i, "before");
             rows[i].getNextPosition(startPosition);
-
-            System.out.println("after");
-            status = ladderViewResolver.getLadderView(rows, Point.createPoint(Position.createPosition(i), startPosition));
-            System.out.println(status);
-            System.out.println("----------------------------------------------------");
+            viewEachStep(startPosition, i, "after");
         }
+        System.out.println(stringManager.getEndMessage());
         return startPosition;
+    }
+
+    private void viewEachStep(Position startPosition, int i, String str) {
+        String status;
+        System.out.print(stringManager.getStepInfoMessage());
+        System.out.println(i + 1);
+        System.out.println(str);
+        status = ladderViewHelper.getLadderView(rows, Point.createPoint(createPosition(i), startPosition));
+        System.out.println(status);
+        if (str.equals("after")) {
+            System.out.println(stringManager.getSingleDash());
+        }
     }
 }

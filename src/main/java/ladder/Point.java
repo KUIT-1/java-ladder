@@ -1,8 +1,8 @@
 package ladder;
 
 public class Point {
-    public Position row;
-    public Position col;
+    Position row;
+    Position col;
 
     private Point(Position row, Position col) {
         this.row = row;

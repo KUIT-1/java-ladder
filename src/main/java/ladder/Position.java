@@ -1,7 +1,7 @@
 package ladder;
 
 public class Position {
-    public int position;
+    int position;
 
     private Position(int position) {
         validatePosition(position);

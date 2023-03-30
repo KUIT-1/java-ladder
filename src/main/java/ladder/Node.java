@@ -1,7 +1,7 @@
 package ladder;
 
 public class Node {
-    public Direction direction; // <- 임시로 public 으로 변경함
+    Direction direction;
 
     private Node(Direction direction) {
         this.direction = direction;

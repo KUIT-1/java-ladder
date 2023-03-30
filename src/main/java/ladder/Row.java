@@ -1,7 +1,8 @@
 package ladder;
 
 public class Row {
-    public Node[] nodes; // <- 임시로 public 으로 한 것
+    Node[] nodes;
+    StringManager stringManager = new StringManager();
 
     public Row(NaturalNumber numberOfPerson) {
         nodes = new Node[numberOfPerson.getNumber()];
@@ -19,7 +20,6 @@ public class Row {
 
     public void getNextPosition(Position nowPosition) {
         validatePositionSize(nowPosition);
-
         if (nodes[nowPosition.getPosition()].isRight()) {
             nowPosition.goRight();
             return;
@@ -32,31 +32,54 @@ public class Row {
     public void validateDrawingPosition(Position startPosition) {
         validatePositionSize(startPosition);
         if (nodes[startPosition.getPosition()].isLeft() /*left*/ || nodes[startPosition.getNextPosition()].isRight()) {
-            throw new IllegalArgumentException("startPosition 위치에서 Line 을 생성할 수 없습니다.");
+            throw new IllegalArgumentException(stringManager.getValidateDrawingPositionErrorMessage());
         }
     }
 
     private void validatePositionSize(Position position) {
         if (!position.isSmaller(nodes.length)) {
-            throw new IllegalArgumentException("포지션의 사이즈가 너무 큽니다!");
+            throw new IllegalArgumentException(stringManager.getValidatePositionSizeErrorMessage());
         }
     }
 
     public void validatePosition(int nowPosition) {
         if (nowPosition < 0 || nowPosition >= nodes.length) {
-            throw new IllegalArgumentException("유효하지 않은 Position 입니다.");
+            throw new IllegalArgumentException(stringManager.getValidatePositionErrorMessage());
         }
     }
 
     public void createStringEachRow(Position nowRow, Point playerPoint, StringBuilder sb) {
         for (int i = 0; i < nodes.length; i++) {
-            sb.append(nodes[i].direction.getDirection());
             Point point = Point.createPoint(nowRow, Position.createPosition(i));
             if (playerPoint.equals(point)) {
-                sb.append("*");
+                sb.append(stringManager.getUserSymbol());
             }
-            sb.append(" ");
+            appendCharacter(sb, i);
+            sb.append(stringManager.getTab());
         }
-        sb.append("\n");
+        sb.append(stringManager.getNewLine());
+    }
+
+    private void appendCharacter(StringBuilder sb, int i) {
+        int dir = nodes[i].direction.getDirection();
+        if(dir == 1){
+            sb.append(stringManager.right);
+        }
+        if(dir == -1){
+            sb.append(stringManager.left);
+        }
+        if(dir == 0){
+            sb.append(stringManager.straight);
+        }
+    }
+
+    public boolean isValid(Position position) {
+        if(position.getPosition() < 0 || position.getPosition() >= nodes.length){
+            return false;
+        }
+        if(nodes[position.getPosition()].isLeft() /*left*/ || nodes[position.getNextPosition()].isRight()){
+            return false;
+        }
+        return true;
     }
 }
