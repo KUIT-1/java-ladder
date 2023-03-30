@@ -1,4 +1,4 @@
-package ladder.random;
+package ladder;
 
 import ladder.NaturalNumber;
 import java.util.Set;
