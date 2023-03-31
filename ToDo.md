@@ -4,4 +4,3 @@
 - 사다리 선 그릴 때, 선이 이미 있는 위치이면 IllegalArgumentException
 
 - 랜덤 사다리 line 개수가 행*열*0.3이 아니면 예외처리
-- 

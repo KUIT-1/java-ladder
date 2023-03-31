@@ -15,9 +15,6 @@ public class LadderGameFactory {
 
         Random random = new Random();
 
-        System.out.println(ladderSize.getRowSize().getNumber());
-        System.out.println(ladderSize.getColSize().getNumber());
-
         while (true){
             Position randomRowPos = Position.createPosition(random.nextInt(ladderSize.getRowSize().getNumber())+1);
             Position randomColPos = Position.createPosition(random.nextInt(ladderSize.getColSize().getNumber())+1);
@@ -28,11 +25,10 @@ public class LadderGameFactory {
 
             randomLadderCreator.drawLine(ladderPosition);
 
-            if(numOfLine.size() > ladderSize.numOfLine().getNumber()){
+            if(numOfLine.size() == ladderSize.numOfLine().getNumber()){
                 break;
             }
 
-            System.out.println(numOfLine);
         }
 
         return new LadderGame(randomLadderCreator);

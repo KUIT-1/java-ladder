@@ -39,9 +39,12 @@ public class Rows {
         if(position.getPosition() < nodes.length-1 && nodes[position.getPosition()].isLadder() && nodes[position.getPosition()+1].isLadder()){
             return true;
         }
-
-        return position.getPosition() > 0 && nodes[position.getPosition()].isLadder() && nodes[position.getPosition() - 1].isLadder();
+        if(position.getPosition() > 0 && nodes[position.getPosition()].isLadder() && nodes[position.getPosition()-1].isLadder()){
+            return true;
+        }
+        return false;
     }
+
 
     public void nextPosition(Position num){
         validatePositionSize(num);
@@ -71,6 +74,13 @@ public class Rows {
     private void validateDrawline(int col, Position position){
         if(nodes[col].isLadder() && nodes[col+1].isLadder() && nodes[col+2].isLadder()){
             nodes[position.getPosition()] = createNoLadderNode();
+        }
+    }
+
+    private void validateRandomDrawline(int col, Position position){
+        if(nodes[col].isLadder() && nodes[col+1].isLadder() && nodes[col+2].isLadder()){
+            nodes[position.getPosition()] = createNoLadderNode();
+            nodes[position.getPosition()+1] = createNoLadderNode();
         }
     }
 

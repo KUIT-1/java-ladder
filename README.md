@@ -10,17 +10,25 @@
 6. 연속 2개의 사다리가 만들어지지 않게 하기 위해 연속 3개의 위치가 1이 되지 않도록 조절
    (연속 2개의 사다리 = 연속 세 점의 값이 1)
 
-- Rows클래스
-  - getNumofRow() : 사다리 길이 반환
-  - getNumofPerson() : 사람 수 반환
-  - getValue() : 해당 위치에 저장된 값 반환
-  - validateLadder() : 사다리 생성 시, 사람 수가 0명 이하이거나 사다리 길이가 0이하인지 검사
-  - validatePosition() : 해당 위치가 사다리에서 벗어난 위치인지 검사
-  - validateNumOfPerson() : 사다리 타기 실행 시, 참여하는 사람의 수 검사
-  - drawLine() : 사다리 그리는 함수
+- Direction enum 클래스 -> 사다리 선이 있는지 없는지를 1 또는 0으로 정의 (Direction -> isOrNotLine)
+- LadderPostion 클래스 -> 사다리 선 생성할 위치 넘겨줄 때 사용
+- LadderSize 클래스 -> 사다리 생성할 크기 넘겨줄 때 사용 -
+- Rows 클래스 -> 사다리 행 클래스
+- Node 클래스 -> 사다리 위치 클래스, 사다리 선 정보 갖고있음
 
-- 사다리 생성 시, 사다리 길이가 0이거나 사다리 탈 수 있는 사람이 0명이면 IllegalArgumentException
-- 사다리 타기 실행 시, 선택된 사다리 번호가 만들어진 범위에서 벗어나면 IllegalArgumentException
-- 사다리 선 그릴 때, 사다리 위치에서 벗어나면 IllegalArgumentException
+DI
+- LadderCreator 인터페이스에 getRow(), drawLine(), validatePositionSize() 메서드 추출
+- GeneralLadderCreator, RandomLadderCreator 클래스에서 LadderCreator 인터페이스의 메서드들 구현
+- LadderGame 클래스에서 인스턴스 변수로 LadderCreator 선언
+- LadderGame 클래스의 생성자를 통해 구체화된 LadderCreator 받아와서 초기화
+- LadderGameFactory 클래스에서 LadderGame 클래스로 LadderCreator 클래스와의 의존성 주입
 
-Direction -> isOrNotLadder
+랜덤 사다리
+- RandomLadderCreator 클래스에서 랜덤사다리 생성
+- LadderGameFactory 클래스의 createRandomLadderGame메서드에서 HashSet<LadderPosition>을 통해 중복되는 선 확인
+- 값 비교위해 LadderPostion 클래스에서 hashCode(), equals() 오버라이딩
+
+사다리 실행 및 출력
+- LadderGame 클래스의 run메서드 실행하면 LadderRunner객체 생성 후, LadderRunner객체의 run메서드 실행
+- LadderRunner 클래스의 run메서드에서 사다리 print
+- LadderGame 클래스의 drawLine메서드에서 LadderCreator 클래스의 drawLine메서드 호출하여 사다리 선 그리기 수행

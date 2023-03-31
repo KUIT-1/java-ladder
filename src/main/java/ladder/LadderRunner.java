@@ -10,8 +10,6 @@ public class LadderRunner {
     public int run(Position position) {
         position.minusPosition();
 
-        System.out.println(rows.length);
-
         for(int i = 0; i< rows.length; i++){
             Position ypos = Position.createPosition(i+1);
             ypos.minusPosition();

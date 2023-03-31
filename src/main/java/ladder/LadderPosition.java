@@ -21,19 +21,19 @@ public class LadderPosition {
         return x;
     }
 
-    @Override
-    public int hashCode() {
-        return x.getPosition()*y.getPosition();
-    }
+//    @Override
+//    //public int hashCode() {
+//        return x.getPosition()*y.getPosition();
+//    }
 
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof LadderPosition){
             LadderPosition ladderPosition = (LadderPosition) obj;
 
-            return this.x.getPosition() == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition() ||
-            this.x.getPosition()-1 == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition() ||
-            this.x.getPosition()+1 == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition();
+            System.out.println(this.x.getPosition() + " " + ladderPosition.x.getPosition());
+
+            return this.x.getPosition() == ladderPosition.x.getPosition() && this.y.getPosition() == ladderPosition.y.getPosition();
         }
         return false;
     }

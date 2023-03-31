@@ -25,8 +25,6 @@ public class RandomLadderCreator implements LadderCreator{
 
         if(rows[ladderPosition.getRowPosition().getPosition()].RandomLadderDrawLine(ladderPosition.getColPosition())){
             numOfLine.add(ladderPosition);
-            System.out.println(ladderPosition.getRowPosition().getPosition());
-            System.out.println(ladderPosition.getColPosition().getPosition());
         }
     }
 
