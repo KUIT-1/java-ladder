@@ -31,7 +31,17 @@ public class Ladder {
         }
         return currentPosition;
     }
-
+    private Direction getDirection(Row row, int position) {
+        if (position <= 1) {
+            return Direction.RIGHT;
+        } else if (position >= row.getNumberOfPerson()) {
+            return Direction.LEFT;
+        } else if (row.isLineDrawn(position - 1)) {
+            return Direction.LEFT;
+        } else {
+            return Direction.RIGHT;
+        }
+    }
     public void runAll() {
         for (int i = 1; i <= rows[0].getNumberOfPerson(); i++) {
             System.out.println("시작 지점: " + i + " -> " + run(i));
