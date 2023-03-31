@@ -7,10 +7,14 @@ public class Ladder {
     private final int row;
     private final int numberOfPerson;
     // public Ladder(int row, int numberOfPerson) {rows = new int[row][numberOfPerson];}
+    private final int height; // 세로줄의 개수
+    private final int width; // 가로줄의 개수
 
     public Ladder(int row, int numberOfPerson){
         this.row = row;
         this.numberOfPerson = numberOfPerson;
+        height = row;
+        width = numberOfPerson * 2 - 1; // 각 가로줄에는 세로줄이 2개씩 들어가므로, 사람 수에 2를 곱하고 1을 빼준다.
         rows = new Row[row];
         for(int i=0; i<row; i++){
             rows[i] = new Row(numberOfPerson);
@@ -24,10 +28,32 @@ public class Ladder {
         rows[row].drawLine(col);
     }
     public int run(int position){
-        for(int i=0; i< rows.length; i++) {
-            rows[i].newPosition(position);
+//        for(int i=0; i< rows.length; i++) {
+//            rows[i].newPosition(position);
+//        }
+//        return position;
+        LadderPosition currentPosition = new LadderPosition(position, 0);
+        for (int i = 0; i < height; i++) {
+            String rowString = rows[i].getRowString();
+            if (currentPosition.getX() > 0 && rowString.charAt(currentPosition.getX() * 2 - 1) == '-') { // 현재 위치에서 왼쪽으로 가는 사다리가 있는 경우
+                currentPosition = new LadderPosition(currentPosition.getX() - 1, currentPosition.getY() + 1);
+            } else if (currentPosition.getX() < width - 1 && rowString.charAt(currentPosition.getX() * 2 + 1) == '-') { // 현재 위치에서 오른쪽으로 가는 사다리가 있는 경우
+                currentPosition = new LadderPosition(currentPosition.getX() + 1, currentPosition.getY() + 1);
+            }
         }
-        return position;
+        return currentPosition.getX();
 
     }
+
+    public void printLadder(int position) {
+        for (int i = 0; i < height; i++) {
+            String rowString = rows[i].getRowString();
+            if (i == position) { // 현재 위치에 * 표시
+                System.out.println(rowString.replaceAll("(\\\\|-)", "$0*"));
+            } else {
+                System.out.println(rowString);
+            }
+        }
+    }
+
 }

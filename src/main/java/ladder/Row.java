@@ -20,6 +20,19 @@ public class Row {
             }
         }
     }
+    public String getRowString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < row.length; i++) {
+            if (row[i] == 1) { // if (row[i] != 0) 0 1 -1
+                sb.append("-").append("\\"); // 현재 위치에서 오른쪽으로 가는 사다리
+            } else if (row[i] == -1) {
+                sb.append("\\").append("-"); // 현재 위치에서 왼쪽으로 가는 사다리
+            } else {
+                sb.append(" ").append(" "); // 사다리가 없는 경우
+            }
+        }
+        return sb.toString();
+    }
 
 
     public int newPosition(int position) {
@@ -33,6 +46,8 @@ public class Row {
         }
         return position;
     }
+
+
 
 
     private void validateNumberOfPerson(int numberOfPerson) {
