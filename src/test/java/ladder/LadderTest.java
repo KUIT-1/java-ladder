@@ -17,6 +17,6 @@ public void runTest(){
     result = ladder.run(4);
     assertEquals(4, result);
     result = ladder.run(5);
-    assertEquals(5, result);}}
+    assertEquals(5, result);
 }
 }
