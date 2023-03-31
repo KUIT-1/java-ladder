@@ -1,35 +1,19 @@
 package ladder;
 
 public class Position {
-    private int row;
-    private int column;
+    private final int row;
+    private final int position;
 
-    public Position(int row, int column) {
+    public Position(int row, int position) {
         this.row = row;
-        this.column = column;
+        this.position = position;
     }
 
     public int getRow() {
         return row;
     }
 
-    public int getColumn() {
-        return column;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
-    @Override
-    public String toString() {
-        return "Position{" +
-                "row=" + row +
-                ", column=" + column +
-                '}';
+    public int getPosition() {
+        return position;
     }
 }

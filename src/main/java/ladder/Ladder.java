@@ -12,7 +12,9 @@ public class Ladder {
             rows[i] = new Row(numberOfPeoplePerRow);
         }
     }
-
+    public Row[] getRows() {
+        return rows;
+    }
     public void drawLine(int rowNumber, int position) {
         if (rowNumber < 1 || rowNumber > rows.length) {
             throw new IllegalArgumentException();
