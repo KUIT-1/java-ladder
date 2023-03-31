@@ -1,13 +1,14 @@
 package ladder;
 
-public class CreateLadder {
+public class ManualLadderCreator implements LadderCreator{
     private Row[] ladder;
+    private LadderSize ladderSize;
 
-    public CreateLadder(int totalRow, int totalCol) {
-        validateTotalRow(totalRow);
-        ladder=new Row[totalRow];
-        for(int i=0;i<totalRow;i++){
-            ladder[i]=new Row(totalCol);
+    public ManualLadderCreator(LadderSize ladderSize) {
+        validateTotalRow(ladderSize.totalRow);
+        ladder=new Row[ladderSize.totalRow];
+        for(int i=0;i<ladderSize.totalRow;i++){
+            ladder[i]=new Row(ladderSize.totalCol);
         }
 
     }

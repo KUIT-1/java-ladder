@@ -9,7 +9,8 @@ public class LadderGameTest {
     @Test
     @DisplayName("ladder game")
     void ladderGame(){
-        CreateLadder ladder=new CreateLadder(2,3);
+        LadderSize ladderSize=new LadderSize(2,3);
+        ManualLadderCreator ladder=new ManualLadderCreator(ladderSize);
         ladder.drawLine(0,0);
         ladder.drawLine(1,1);
         LadderGame ladderGame =new LadderGame(ladder);

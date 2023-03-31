@@ -1,14 +1,14 @@
 package ladder;
 
 public class LadderGame {
-    CreateLadder ladder;
+    ManualLadderCreator ladder;
 
-    public LadderGame(CreateLadder ladder) {
+    public LadderGame(ManualLadderCreator ladder) {
         this.ladder = ladder;
         printLadderGame(ladder);
     }
 
-    private void printLadderGame(CreateLadder ladder) {
+    private void printLadderGame(ManualLadderCreator ladder) {
         ladder.printLadder();
     }
 
