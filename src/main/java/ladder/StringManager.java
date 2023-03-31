@@ -5,7 +5,7 @@ public class StringManager {
     String left = "┫";
     String straight = "┃";
     String startMessage = "[사다리 타기 게임을 시작합니다.]";
-    String endMessage = "사타리 타기 게임이 종료되었습니다~~~~!";
+    String endMessage = "와! 사타리 타기 게임이 종료되었습니다~~~~!";
     String singleDash = "----------------------------------------------------";
     String doubleDash = "====================================================";
     String userSymbol = "*";

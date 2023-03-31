@@ -62,13 +62,13 @@ public class Row {
 
     private void appendCharacter(StringBuilder sb, int i) {
         int dir = nodes[i].direction.getDirection();
-        if(dir == 1){
+        if(dir == Direction.RIGHT.getDirection()){
             sb.append(stringManager.right);
         }
-        if(dir == -1){
+        if(dir == Direction.LEFT.getDirection()){
             sb.append(stringManager.left);
         }
-        if(dir == 0){
+        if(dir == Direction.STRAIGHT.getDirection()){
             sb.append(stringManager.straight);
         }
     }

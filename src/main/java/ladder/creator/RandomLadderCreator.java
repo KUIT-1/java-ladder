@@ -11,13 +11,13 @@ import java.util.HashSet;
 public class RandomLadderCreator implements LadderCreator {
     Row[] rows;
     RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-    CustomLadderCreator customLadderCreator;
+    ManualLadderCreator manualLadderCreator;
     LadderSize ladderSize;
 
     public RandomLadderCreator(LadderSize ladderSize) {
         this.ladderSize = ladderSize;
-        customLadderCreator = new CustomLadderCreator(ladderSize);
-        rows = customLadderCreator.getRows();
+        manualLadderCreator = new ManualLadderCreator(ladderSize);
+        rows = manualLadderCreator.getRows();
         drawLine();
     }
 
@@ -33,8 +33,8 @@ public class RandomLadderCreator implements LadderCreator {
         while (hs.size() < maxLineNum){
             Position row = Position.createPosition(randomNumberGenerator.getRandomNumber(ladderSize.getNumOfRows()-1));
             Position col = Position.createPosition(randomNumberGenerator.getRandomNumber(ladderSize.getNumberOfPerson()-2));
-            if(customLadderCreator.getRows()[row.getPosition()].isValid(col)){
-                customLadderCreator.drawLine(row, col);
+            if(manualLadderCreator.getRows()[row.getPosition()].isValid(col)){
+                manualLadderCreator.drawLine(row, col);
                 hs.add(Point.createPoint(row, col));
             }
         }

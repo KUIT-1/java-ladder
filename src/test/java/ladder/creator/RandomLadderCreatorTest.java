@@ -9,16 +9,14 @@ import static ladder.Position.createPosition;
 
 class RandomLadderCreatorTest {
     LadderSize ladderSize;
-    RandomLadderCreator randomLadderCreator;
     LadderGameFactory ladderGameFactory;
     LadderGame ladderGame;
     StringManager stringManager = new StringManager();
 
     public void init(NaturalNumber row, NaturalNumber col) {
         ladderSize = LadderSize.createLadderSize(row, col);
-        randomLadderCreator = new RandomLadderCreator(ladderSize);
         ladderGameFactory = new LadderGameFactory();
-        ladderGame = new LadderGame(randomLadderCreator);
+        ladderGame = ladderGameFactory.createRandomLadderGame(ladderSize);
     }
 
     @Test
