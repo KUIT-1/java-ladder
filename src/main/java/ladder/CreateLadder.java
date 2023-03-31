@@ -1,9 +1,9 @@
 package ladder;
 
-public class CreateLadder2 {
+public class CreateLadder {
     private Row[] ladder;
 
-    public CreateLadder2(int totalRow,int totalCol) {
+    public CreateLadder(int totalRow, int totalCol) {
         validateTotalRow(totalRow);
         ladder=new Row[totalRow];
         for(int i=0;i<totalRow;i++){
@@ -33,5 +33,12 @@ public class CreateLadder2 {
 
     public Row[] getLadder() {
         return ladder;
+    }
+
+    public void printLadder() {
+        for(int i=0;i<ladder.length;i++){
+            ladder[i].printRow();
+            System.out.println();
+        }
     }
 }

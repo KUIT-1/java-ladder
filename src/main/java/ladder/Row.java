@@ -66,4 +66,29 @@ public class Row {
 //            //stay
 //        }
     }
+
+    public void printRow() {
+        for(int i=0;i<nodes.length;i++){
+            nodes[i].printNode();
+        }
+    }
+
+
+
+    public void printNodesWithStar(Position position) {
+
+        for(int nodeIdx=0;nodeIdx<nodes.length;nodeIdx++){
+            boolean positionIdx=false;
+            if(position.getPosition()==nodeIdx)
+                positionIdx=true;
+            nodes[nodeIdx].printPositionNode(positionIdx);
+        }
+    }
+
+    public void printNodesWithoutStar() {
+
+        for(int nodeIdx=0;nodeIdx<nodes.length;nodeIdx++){
+            nodes[nodeIdx].printNode();
+        }
+    }
 }

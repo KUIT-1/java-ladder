@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ladder.LadderGame2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-29T05:38:54" hostname="DESKTOP-BMMNLKP" time="0.027">
+<testsuite name="ladder.LadderGame2Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-31T12:04:08" hostname="DESKTOP-BMMNLKP" time="0.035">
   <properties/>
-  <testcase name="ladder game" classname="ladder.LadderGame2Test" time="0.027"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="ladder game" classname="ladder.LadderGame2Test" time="0.035"/>
+  <system-out><![CDATA[-1 1 0 
+0 -1 1 
+-1* 1 0 
+0 -1 1 
+-1 1* 0 
+0 -1 1 
+-1 1 0 
+0 -1* 1 
+-1 1 0 
+0 -1 1* 
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
