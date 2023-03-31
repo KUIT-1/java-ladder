@@ -27,12 +27,13 @@ public class Row {
     }
 
     private void validatePosition(int position) {
-        if (position < 1 || position >= numberOfPerson) {
-            throw new IllegalArgumentException("Invalid position: " + position);
+        if (position < 1 || position > numberOfPerson) {
+            throw new IllegalArgumentException();
         }
     }
+
     private void validatePersonNum(int numberOfPerson){
-        if(numberOfPerson<1){
+        if(numberOfPerson < 1){
             throw new IllegalArgumentException();
         }
     }

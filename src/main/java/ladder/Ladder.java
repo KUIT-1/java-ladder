@@ -3,42 +3,38 @@ package ladder;
 public class Ladder {
     private final Row[] rows;
 
-    public Ladder(int row, int numberOfPerson) {
-        rows = new Row[row];
-        for (int i = 0; i < row; i++) {
-            rows[i] = new Row(numberOfPerson);
+    public Ladder(int numberOfRows, int numberOfPeoplePerRow) {
+        if (numberOfRows <= 0 || numberOfPeoplePerRow <= 0) {
+            throw new IllegalArgumentException("사다리의 가로와 세로줄은 모두 자연수여야 합니다.");
+        }
+        this.rows = new Row[numberOfRows];
+        for (int i = 0; i < numberOfRows; i++) {
+            rows[i] = new Row(numberOfPeoplePerRow);
         }
     }
 
-    public void drawLine(int row, int col) {
-        rows[row - 1].drawLine(col);
+    public void drawLine(int rowNumber, int position) {
+        if (rowNumber < 1 || rowNumber > rows.length) {
+            throw new IllegalArgumentException();
+        }
+        rows[rowNumber - 1].drawLine(position);
     }
 
-    public int run(int position) {
-        for (int i = 0; i < rows.length; i++) {
-            Row currentRow = rows[i];
-            int currentPos = position;
-
-            // 오른쪽으로 선이 그려져 있으면 오른쪽으로 이동
-            if (currentPos < currentRow.getNumberOfPerson() && currentRow.isLineDrawn(currentPos)) {
-                currentPos++;
+    public int run(int startPosition) {
+        int currentPosition = startPosition;
+        for (Row row : rows) {
+            if (currentPosition > 1 && row.isLineDrawn(currentPosition - 1)) {
+                currentPosition--;
+            } else if (currentPosition < row.getNumberOfPerson() && row.isLineDrawn(currentPosition)) {
+                currentPosition++;
             }
-            // 왼쪽으로 선이 그려져 있으면 왼쪽으로 이동
-            else if (currentPos > 1 && currentRow.isLineDrawn(currentPos - 1)) {
-                currentPos--;
-            }
-
-            // 다음행 위치 업데이트해주기
-            position = currentPos;
         }
-
-        return position;
+        return currentPosition;
     }
 
     public void runAll() {
         for (int i = 1; i <= rows[0].getNumberOfPerson(); i++) {
-            System.out.println("Start position: " + i + " => " + run(i));
+            System.out.println("시작 지점: " + i + " -> " + run(i));
         }
     }
 }
-
