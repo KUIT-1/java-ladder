@@ -1,62 +1,54 @@
 package ladder;
 
-import static ladder.Direction.*;
+import java.util.Arrays;
 
 public class Ladder {
 
+    private final Row[] rows;
+    public static int ladderRow, numberOfPerson;
 
-    private final int[] rows;
-    public static int row, numberOfPerson;
-    public static final int DIRECTION_LEFT =-1;
-/*
     public Ladder(int row, int numberOfPerson) {
-        this.rows = rows;
-        rows = new int[numberOfPerson];
-        //row:사다리의높이, numeberOfPerson:세로줄의개수
-    }
-    */
-    public Ladder(int row, int numberOfPerson) {
-        this.row=row;
-        rows = new int[numberOfPerson];
-        //row:사다리의높이, numeberOfPerson:세로줄의개수
+        this.ladderRow = row;
+        this.numberOfPerson = numberOfPerson;
+        //rows = new int[row][numberOfPerson];
+        rows = new Row[row];
+
+        //각 Row객체의 인스턴스를 생성
+        for(int i=0;i<row;i++){
+            rows[i] = new Row(numberOfPerson);
+        }
     }
 
-    //사다리의 가로줄을 생성하는 메서드
-    void drawLine(int row, int col) {
-        rows[row].drawLine(col);
+    public void drawLine(int row, int column){
+        rows[row].drawLine(column);
+    }
+
+    public int run(int startPosition){
+        String printBefore = toString();
+        System.out.println("//Before");
+        System.out.println(printBefore);
+
+        //int pRow=0; //몇 행에 있는지 알려주는 변수
+        int pCol=startPosition;  //몇번째 사다리에 있는지 알려주는 변수
+
+        for(int pRow=0;pRow<ladderRow;pRow++){
+            pCol=rows[pRow].nextPosition(pCol);
         }
 
+        String printAfter = toString();
+        System.out.println("//After");
+        System.out.println(printAfter);
 
-    //사다리를 선택하면 도착하는 사다리의 번호를 알려주는 메서드
-    int run(int position){
-        //position == 시작하는 사다리의 열+1
-        //시작위치 = [0][position-1];
-        int y=0;
-        int x=position-1;
+        return pCol;
+    }
 
-        while(true){
-            if(y==row) {
-                //System.out.println(y + " " + x);
-                return x + 1;
-            }
-
-            if(rows[y][x]== CENTER.getDirction()){
-                y++;
-                //System.out.println(y + " " + x);
-                continue;
-            }
-            if(rows[y][x]==RIGHT.getDirction()){
-                x++;
-                y++;
-                //System.out.println(y + " " + x);
-                continue;
-            }
-            if(rows[y][x]== LEFT.getDirction()){
-                x--;
-                y++;
-                //System.out.println(y + " " + x);
-            }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Row row : rows) {
+            sb.append(Arrays.toString(row.oneRow)).append("\n");
         }
+        return sb.toString();
     }
 
 }
