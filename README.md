@@ -95,3 +95,51 @@ JUnit<br>
 -상태와 행위를 한 곳에서 관리<br>
 -컬렉션에 이름 붙이기 가능<br>
  9. getter/setter/property를 쓰지 않는다.<br>
+
+## 실습
+위 원칙을 지키며 사다리 게임을 제작하였다.
+> LadderGameFactory Class
+
+* 사다리 게임 유형에 따라 사다리 게임을 생성하는 정적 팩토리 메서드 클래스
+
+> LadderGame Class
+
+* 사다리 게임 전체를 관리하는 클래스
+
+> LadderRunner Class
+
+* 사다리 게임을 실행시키는 클래스
+
+> LadderCreator Interface
+
+* 사다리 게임 생성에 필요한 메서드들이 선언되어있는 클래스
+
+> LadderNormalCreator Class
+
+* 사다리 긋는 것을 사용자가 지정할 수 있게 해주는 클래스
+
+> LadderRandomCreator Class
+
+* 사다리 긋는 것을 랜덤하게 해주는 클래스
+
+> Col Class
+
+* 사다리의 열을 관리하는 클래스
+
+> DrawLadder Class
+
+* 사다리를 출력해주는 클래스
+
+> Position, PositiveNum, LadderSize Class
+
+* 사다리 게임에 필요한 변수들이 사다리 내부에서 움직일 수 있도록 Validate 해주는 클래스
+
+> Direction Enum Class
+
+* 좌,우, 아래의 값을 관리하는 Enum 클래스
+
+## 결과
+![image](https://user-images.githubusercontent.com/83682424/229282197-65495f77-68b5-4d28-8efd-9047cef5754b.png)
+<br>
+![image](https://user-images.githubusercontent.com/83682424/229282116-a0b6ecf0-b5bf-4f3e-b21c-7b4167147777.png)
+
