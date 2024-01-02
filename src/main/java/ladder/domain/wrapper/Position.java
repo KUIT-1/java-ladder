@@ -1,38 +1,35 @@
 package ladder.domain.wrapper;
 
-import ladder.domain.Ladder;
-import ladder.domain.creator.LadderCreator;
-
 import java.awt.*;
+import java.util.Objects;
 
 public class Position {
 
-    private Point leftPoint;
-    private Point rightPoint;
+    private final Point leftPoint;
+    private final Point rightPoint;
 
-    public Position(Point leftPoint, Point rightPoint, Ladder ladder) {
-        validatePoint(leftPoint, rightPoint, ladder);
-
+    private Position(Point leftPoint, Point rightPoint) {
         this.leftPoint = leftPoint;
         this.rightPoint = rightPoint;
     }
 
-    private static void validatePoint(Point leftPoint, Point rightPoint, Ladder ladder) {
-        /** Y 좌표값이 numberOfPerson을 넘어선 안됨 */
-        if (leftPoint.getY()  > ladder.getRows()[0].getLength()) throw new IllegalArgumentException();
-        if (rightPoint.getY() > ladder.getRows()[0].getLength()) throw new IllegalArgumentException();
-        /** X 좌표값이 row을 넘어선 안됨 */
-        if (leftPoint.getX() > ladder.getRows().length) throw new IllegalArgumentException();
-        if (rightPoint.getX() > ladder.getRows().length) throw new IllegalArgumentException();
+    public static Position of(int x, int leftY, int rightY) {
+        return new Position(new Point(x, leftY), new Point(x, rightY));
+    }
 
-        /** rightPoint.Y > leftPoint.Y*/
-        if (rightPoint.getY() <= leftPoint.getY()) throw new IllegalArgumentException();
-        /** 두 좌표의 Y 값 차가 1이어야 함 */
-        if (leftPoint.getY() - rightPoint.getY() != -1) throw new IllegalArgumentException();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return Objects.equals(leftPoint, position.leftPoint) || Objects.equals(rightPoint, position.rightPoint)
+                || Objects.equals(rightPoint, position.leftPoint) || Objects.equals(leftPoint, position.rightPoint);
 
-        /** 해당 좌표에 값이 있으면 안 됨 (선이 그어져 있으면 안됨) */
-        if (ladder.getRows()[leftPoint.x].getValue(leftPoint.y) != 0) throw new IllegalArgumentException();
-        if (ladder.getRows()[rightPoint.x].getValue(rightPoint.y) != 0) throw new IllegalArgumentException();
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
     }
 
     public int getLeftPointXInt() {
