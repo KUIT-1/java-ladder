@@ -20,6 +20,10 @@ public class Ladder {
         return new Ladder(row, numberOfPerson);
     }
 
+    public void nextPosition(int i, LadderNumber ladderNumber, CurrentPosition currentPosition) {
+        rows[i].nextPosition(ladderNumber, currentPosition);
+    }
+
     public Row[] getRows() {
         return rows;
     }
