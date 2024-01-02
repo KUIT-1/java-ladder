@@ -1,5 +1,7 @@
 package ladder.domain;
 
+import ladder.domain.wrapper.CurrentPosition;
+import ladder.domain.wrapper.LadderNumber;
 import ladder.domain.wrapper.NumberOfPerson;
 import ladder.domain.wrapper.NumberOfRow;
 
@@ -7,11 +9,15 @@ public class Ladder {
 
     private final Row[] rows;
 
-    public Ladder(NumberOfRow row, NumberOfPerson numberOfPerson) {
+    private Ladder(NumberOfRow row, NumberOfPerson numberOfPerson) {
         rows = new Row[row.getNumberOfRow()];
         for (int i = 0; i < row.getNumberOfRow(); i++) {
             rows[i] = new Row(numberOfPerson);
         }
+    }
+
+    public static Ladder of(NumberOfRow row, NumberOfPerson numberOfPerson) {
+        return new Ladder(row, numberOfPerson);
     }
 
     public Row[] getRows() {
