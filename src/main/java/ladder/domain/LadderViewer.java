@@ -12,7 +12,7 @@ public class LadderViewer {
         this.ladder = ladder;
     }
 
-    public static LadderViewer createLadderViewer(CurrentPosition currentPosition, Ladder ladder) {
+    public static LadderViewer of(CurrentPosition currentPosition, Ladder ladder) {
         return new LadderViewer(currentPosition, ladder);
     }
 
