@@ -2,27 +2,28 @@ package ladder.domain;
 
 import ladder.domain.wrapper.CurrentPosition;
 import ladder.domain.wrapper.LadderNumber;
-import ladder.factory.LadderFactory;
 
 public class LadderRunner {
 
-    private Ladder ladder;
+    private final Ladder ladder;
 
-    public LadderRunner(Ladder ladder) {
+    private LadderRunner(Ladder ladder) {
         this.ladder = ladder;
     }
 
-    public int run(LadderNumber ladderNum) {
-        LadderViewer ladderViewer = LadderFactory.createLadderViewer(CurrentPosition.createCurrentPosition(ladderNum));
+    public static LadderRunner of(Ladder ladder) {
+        return new LadderRunner(ladder);
+    }
+
+    public void run(LadderNumber ladderNum) {
+        LadderViewer ladderViewer = LadderViewer.of(CurrentPosition.createCurrentPosition(ladderNum), ladder);
 
         for (int i = 0; i < ladder.getRowSize(); i++) {
             ladderViewer.setCurrentPositionX(i);
             ladderViewer.view("BEFORE");
-            ladder.getRows()[i].nextPosition(ladderNum, ladderViewer.getCurrentPosition());
+            ladder.nextPosition(i, ladderNum, ladderViewer.getCurrentPosition());
             ladderViewer.view("AFTER");
         }
-
-        return ladderNum.getNumber();
     }
 
 }
