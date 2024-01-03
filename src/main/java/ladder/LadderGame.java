@@ -1,29 +1,23 @@
 package ladder;
 
-import ladder.domain.Ladder;
+import ladder.domain.LadderRunner;
 import ladder.domain.creator.LadderCreator;
 import ladder.domain.wrapper.LadderNumber;
-import ladder.factory.LadderFactory;
 
 public class LadderGame {
 
-    private LadderCreator ladderCreator;
-    private Ladder ladder;
+    private final LadderCreator ladderCreator;
 
-    public LadderGame(LadderCreator ladderCreator, Ladder ladder) {
+    private LadderGame(LadderCreator ladderCreator) {
         this.ladderCreator = ladderCreator;
-        this.ladder = ladder;
+    }
+
+    public static LadderGame of(LadderCreator ladderCreator) {
+        return new LadderGame(ladderCreator);
     }
 
     public int run(LadderNumber ladderNum) {
-        return LadderFactory.createLadderRunner(ladderCreator).run(ladderNum);
-    }
-
-    public Ladder getLadder() {
-        return ladder;
-    }
-
-    public LadderCreator getLadderCreator() {
-        return ladderCreator;
+        LadderRunner.of(ladderCreator.getLadder()).run(ladderNum);
+        return ladderNum.getNumber();
     }
 }
