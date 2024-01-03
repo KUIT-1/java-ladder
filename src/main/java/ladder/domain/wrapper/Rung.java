@@ -3,27 +3,27 @@ package ladder.domain.wrapper;
 import java.awt.*;
 import java.util.Objects;
 
-public class Position {
+public class Rung {
 
     private final Point leftPoint;
     private final Point rightPoint;
 
-    private Position(Point leftPoint, Point rightPoint) {
+    private Rung(Point leftPoint, Point rightPoint) {
         this.leftPoint = leftPoint;
         this.rightPoint = rightPoint;
     }
 
-    public static Position of(int x, int leftY, int rightY) {
-        return new Position(new Point(x, leftY), new Point(x, rightY));
+    public static Rung of(int x, int leftY, int rightY) {
+        return new Rung(new Point(x, leftY), new Point(x, rightY));
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Position position = (Position) o;
-        return Objects.equals(leftPoint, position.leftPoint) || Objects.equals(rightPoint, position.rightPoint)
-                || Objects.equals(rightPoint, position.leftPoint) || Objects.equals(leftPoint, position.rightPoint);
+        Rung rung = (Rung) o;
+        return Objects.equals(leftPoint, rung.leftPoint) || Objects.equals(rightPoint, rung.rightPoint)
+                || Objects.equals(rightPoint, rung.leftPoint) || Objects.equals(leftPoint, rung.rightPoint);
 
     }
 
