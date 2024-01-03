@@ -8,7 +8,7 @@ public class LadderNumber {
         this.number = number;
     }
 
-    public static LadderNumber createLadderNumber(int number) {
+    public static LadderNumber of(int number) {
         validateNumber(number);
         return new LadderNumber(number);
     }

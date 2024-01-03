@@ -8,7 +8,7 @@ public class NumberOfPerson {
         this.numberOfPerson = numberOfPerson;
     }
 
-    public static NumberOfPerson createNumberOfPerson(int numberOfPerson) {
+    public static NumberOfPerson of(int numberOfPerson) {
         validateNumber(numberOfPerson);
         return new NumberOfPerson(numberOfPerson);
     }

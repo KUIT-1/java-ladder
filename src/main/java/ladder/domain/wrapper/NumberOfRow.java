@@ -8,7 +8,7 @@ public class NumberOfRow {
         this.numberOfRow = numberOfPerson;
     }
 
-    public static NumberOfRow createNumberOfRow(int numberOfRow) {
+    public static NumberOfRow of(int numberOfRow) {
         validateNumber(numberOfRow);
         return new NumberOfRow(numberOfRow);
     }
