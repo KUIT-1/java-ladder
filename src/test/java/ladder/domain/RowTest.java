@@ -15,13 +15,13 @@ public class RowTest {
 
     @BeforeEach
     public void reset() {
-        row = new Row(NumberOfPerson.createNumberOfPerson(5));
+        row = new Row(NumberOfPerson.of(5));
     }
 
     @Test
     public void createRow() throws Exception {
         //given
-        Row row = new Row(NumberOfPerson.createNumberOfPerson(5));
+        Row row = new Row(NumberOfPerson.of(5));
 
         //when
         row.setValue(2, 3);
@@ -35,7 +35,7 @@ public class RowTest {
     public void nextPosition() throws Exception {
         //when
         row.setValue(2, 3);
-        LadderNumber ladderNumber = LadderNumber.createLadderNumber(2);
+        LadderNumber ladderNumber = LadderNumber.of(2);
         CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
 
         row.nextPosition(ladderNumber, currentPosition);
@@ -50,7 +50,7 @@ public class RowTest {
     public void validate() throws Exception {
         //when
         row.setValue(2, 3);
-        LadderNumber ladderNumber = LadderNumber.createLadderNumber(10);
+        LadderNumber ladderNumber = LadderNumber.of(10);
         CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
 
         //then
