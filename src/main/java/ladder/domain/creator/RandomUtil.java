@@ -4,18 +4,13 @@ import java.util.Random;
 
 public class RandomUtil {
 
-    private Random random;
+    private final static Random random;
 
-    private RandomUtil() {
-        random = new Random();
-        random.setSeed(System.currentTimeMillis());
+    static {
+        random = new Random(System.currentTimeMillis());
     }
 
-    public static RandomUtil createRandomUtil() {
-        return new RandomUtil();
-    }
-
-    public int generate(int range) {
+    public static int generate(int range) {
         return random.nextInt(range);
     }
 }
