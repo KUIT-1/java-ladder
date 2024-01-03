@@ -1,7 +1,9 @@
 package ladder.domain.creator;
 
 import ladder.domain.Ladder;
-import ladder.domain.wrapper.Position;
+import ladder.domain.wrapper.Rung;
+
+import java.util.Set;
 
 public class RandomLadderCreator implements LadderCreator {
 
@@ -11,6 +13,7 @@ public class RandomLadderCreator implements LadderCreator {
     public RandomLadderCreator(Ladder ladder, LadderCreator selfLadderCreator) {
         this.ladder = ladder;
         this.selfLadderCreator = selfLadderCreator;
+        drawLine();
     }
 
     /**
@@ -25,14 +28,10 @@ public class RandomLadderCreator implements LadderCreator {
     public void drawLine() {
         int count = (int) (ladder.getRowSize() * ladder.getNumberOfPersonSize() * 0.3);
 
-        for (int i = 0; i < count; i++) {
-            RandomPosition randomPosition = RandomPosition.createRandomPosition();
+        Set<Rung> randomRungs = RandomRung.getRandomRungs(ladder, count);
 
-            Position position = randomPosition.getPosition(ladder);
-
-            selfLadderCreator.drawLine(position.getLeftPointXInt(),
-                    position.getLeftPointYInt(), position.getRightPointYInt());
-        }
+        randomRungs.forEach(position -> selfLadderCreator.drawLine(position.getLeftPointXInt(),
+                position.getLeftPointYInt(), position.getRightPointYInt()));
     }
 
     @Override
