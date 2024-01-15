@@ -30,6 +30,10 @@ public class Ladder {
         }
     }
 
+    public void setLine(int x, int leftY, int rightY) {
+        rows[x].setValue(leftY, rightY);
+    }
+
     public Row[] getRows() {
         return rows;
     }

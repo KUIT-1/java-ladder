@@ -12,7 +12,7 @@ public class SelfLadderCreator implements LadderCreator{
 
     @Override
     public void drawLine(int x, int leftY, int rightY) {
-        ladder.getRows()[x].setValue(leftY, rightY);
+        ladder.setLine(x, leftY, rightY);
     }
 
     /**
