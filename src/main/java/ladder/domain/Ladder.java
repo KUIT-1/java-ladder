@@ -24,6 +24,12 @@ public class Ladder {
         rows[i].nextPosition(ladderNumber, currentPosition);
     }
 
+    public void view(CurrentPosition currentPosition) {
+        for (int i = 0; i < getRowSize(); i++) {
+            rows[i].viewValues(getNumberOfPersonSize(), i, currentPosition);
+        }
+    }
+
     public Row[] getRows() {
         return rows;
     }

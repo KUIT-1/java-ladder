@@ -18,10 +18,7 @@ public class LadderViewer {
 
     public void view(String message) {
         System.out.println(message);
-        Row[] rows = ladder.getRows();
-        for (int i = 0; i < ladder.getRowSize(); i++) {
-            rows[i].viewValues(ladder.getNumberOfPersonSize(), i, currentPosition);
-        }
+        ladder.view(currentPosition);
         System.out.println();
     }
 
