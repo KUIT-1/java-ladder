@@ -4,25 +4,20 @@ import ladder.domain.wrapper.CurrentPosition;
 
 public class LadderViewer {
 
-    private final CurrentPosition currentPosition;
     private final Ladder ladder;
 
-    private LadderViewer(CurrentPosition currentPosition, Ladder ladder) {
-        this.currentPosition = currentPosition;
+    private LadderViewer(Ladder ladder) {
         this.ladder = ladder;
     }
 
-    public static LadderViewer of(CurrentPosition currentPosition, Ladder ladder) {
-        return new LadderViewer(currentPosition, ladder);
+    public static LadderViewer of(Ladder ladder) {
+        return new LadderViewer(ladder);
     }
 
-    public void view(String message) {
+    public void view(String message, CurrentPosition currentPosition) {
         System.out.println(message);
         ladder.view(currentPosition);
         System.out.println();
     }
 
-    public void setCurrentPositionX(int i) {
-        currentPosition.setX(i);
-    }
 }
