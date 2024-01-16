@@ -16,7 +16,16 @@ public class LadderViewer {
         return new LadderViewer(currentPosition, ladder);
     }
 
-    public void view(String message) {
+    public void view(CurrentPosition currentPosition) {
+        for (int i = 0; i < ladder.getRowSize(); i++) {
+            setCurrentPositionX(i);
+            viewLadder("BEFORE");
+            ladder.nextPosition(i, currentPosition);
+            viewLadder("AFTER");
+        }
+    }
+
+    private void viewLadder(String message) {
         System.out.println(message);
         ladder.view(currentPosition);
         System.out.println();
@@ -24,9 +33,5 @@ public class LadderViewer {
 
     public void setCurrentPositionX(int i) {
         currentPosition.setX(i);
-    }
-
-    public CurrentPosition getCurrentPosition() {
-        return currentPosition;
     }
 }

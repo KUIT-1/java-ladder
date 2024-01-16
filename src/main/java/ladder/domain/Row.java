@@ -1,7 +1,6 @@
 package ladder.domain;
 
 import ladder.domain.wrapper.CurrentPosition;
-import ladder.domain.wrapper.LadderNumber;
 import ladder.domain.wrapper.NumberOfPerson;
 
 public class Row {
@@ -15,17 +14,15 @@ public class Row {
         }
     }
 
-    public void nextPosition(LadderNumber ladderNum, CurrentPosition currentPosition) {
-        validateLadderNumber(ladderNum);
+    public void nextPosition(CurrentPosition currentPosition) {
+        validateCurrentPositionY(currentPosition);
 
-        if (nodes[ladderNum.getNumber()].isLeft()) {
-            ladderNum.goRight();
-            currentPosition.setY(ladderNum.getNumber());
+        if (nodes[currentPosition.getY()].isLeft()) {
+            currentPosition.goRight();
             return;
         }
-        if (nodes[ladderNum.getNumber()].isRight()) {
-            ladderNum.goLeft();
-            currentPosition.setY(ladderNum.getNumber());
+        if (nodes[currentPosition.getY()].isRight()) {
+            currentPosition.goLeft();
             return;
         }
     }
@@ -39,16 +36,16 @@ public class Row {
         nodes[rightY] = Node.createRightNode();
     }
 
-    private void validateLadderNumber(LadderNumber ladderNum) {
-        if (ladderNum.isBigger(nodes.length)) throw new IllegalArgumentException();
+    private void validateCurrentPositionY(CurrentPosition currentPosition) {
+        if (currentPosition.isYBiggerThan(nodes.length)) throw new IllegalArgumentException();
     }
 
     public int getLength() {
         return nodes.length;
     }
 
-    public void viewValues(int numberOfPersonSize, int row, CurrentPosition currentPosition) {
-        for (int i = 0; i < numberOfPersonSize; i++) {
+    public void viewValues(int row, CurrentPosition currentPosition) {
+        for (int i = 0; i < nodes.length; i++) {
             if (currentPosition.equal(row, i)) {
                 System.out.print(getValue(i) + "* ");
                 continue;
