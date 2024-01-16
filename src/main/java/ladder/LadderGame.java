@@ -2,6 +2,7 @@ package ladder;
 
 import ladder.domain.LadderRunner;
 import ladder.domain.creator.LadderCreator;
+import ladder.domain.wrapper.CurrentPosition;
 import ladder.domain.wrapper.LadderNumber;
 
 public class LadderGame {
@@ -17,7 +18,8 @@ public class LadderGame {
     }
 
     public int run(LadderNumber ladderNum) {
-        LadderRunner.of(ladderCreator.getLadder()).run(ladderNum);
-        return ladderNum.getNumber();
+        CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNum);
+        LadderRunner.of(ladderCreator.getLadder()).run(currentPosition);
+        return currentPosition.getY();
     }
 }
