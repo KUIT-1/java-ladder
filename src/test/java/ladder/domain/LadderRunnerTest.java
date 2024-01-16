@@ -1,6 +1,7 @@
 package ladder.domain;
 
 import ladder.domain.creator.SelfLadderCreator;
+import ladder.domain.wrapper.CurrentPosition;
 import ladder.domain.wrapper.LadderNumber;
 import ladder.domain.wrapper.NumberOfPerson;
 import ladder.domain.wrapper.NumberOfRow;
@@ -24,9 +25,10 @@ public class LadderRunnerTest {
         selfLadderCreator.drawLine(2, 2, 3);
 
         LadderNumber ladderNumber = LadderNumber.of(1);
-        ladderRunner.run(ladderNumber);
+        CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
+        ladderRunner.run(currentPosition);
 
         //then
-        assertEquals(3, ladderNumber.getNumber());
+        assertEquals(3, currentPosition.getY());
     }
 }

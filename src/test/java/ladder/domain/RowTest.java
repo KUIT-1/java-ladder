@@ -38,12 +38,11 @@ public class RowTest {
         LadderNumber ladderNumber = LadderNumber.of(2);
         CurrentPosition currentPosition = CurrentPosition.createCurrentPosition(ladderNumber);
 
-        row.nextPosition(ladderNumber, currentPosition);
+        row.nextPosition(currentPosition);
 
         //then
         /** currentPosition 초기 x 값은 0임 */
         assertTrue(currentPosition.equal(0, 3));
-
     }
 
     @Test
@@ -55,7 +54,6 @@ public class RowTest {
 
         //then
         assertThrows(IllegalArgumentException.class,
-                () -> row.nextPosition(ladderNumber, currentPosition));
-
+                () -> row.nextPosition(currentPosition));
     }
 }
