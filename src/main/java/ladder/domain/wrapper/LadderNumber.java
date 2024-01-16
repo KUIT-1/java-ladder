@@ -23,26 +23,6 @@ public class LadderNumber {
         return number >= 0;
     }
 
-    public void goRight() {
-        number++;
-    }
-
-    public void goLeft() {
-        number--;
-    }
-
-    public boolean isSmaller(int number) {
-        return this.number < number;
-    }
-
-    public boolean isBigger(int number) {
-        return this.number > number;
-    }
-
-    public boolean isEqual(int number) {
-        return this.number == number;
-    }
-
     public int getNumber() {
         return number;
     }
