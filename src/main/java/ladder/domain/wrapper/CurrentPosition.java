@@ -14,12 +14,24 @@ public class CurrentPosition {
         return new CurrentPosition(ladderNum);
     }
 
-    public void setX(int x) {
-        point.setLocation(x, point.y);
+    public boolean isYBiggerThan(int num) {
+        return point.y > num;
     }
 
-    public void setY(int y) {
-        point.setLocation(point.x, y);
+    public int getY() {
+        return point.y;
+    }
+
+    public void goRight() {
+        point.y++;
+    }
+
+    public void goLeft() {
+        point.y--;
+    }
+
+    public void setX(int x) {
+        point.setLocation(x, point.y);
     }
 
     public boolean equal(int x, int y) {
