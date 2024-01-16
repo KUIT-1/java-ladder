@@ -1,7 +1,6 @@
 package ladder.domain;
 
 import ladder.domain.wrapper.CurrentPosition;
-import ladder.domain.wrapper.LadderNumber;
 
 public class LadderRunner {
 
@@ -15,15 +14,9 @@ public class LadderRunner {
         return new LadderRunner(ladder);
     }
 
-    public void run(LadderNumber ladderNum) {
-        LadderViewer ladderViewer = LadderViewer.of(CurrentPosition.createCurrentPosition(ladderNum), ladder);
-
-        for (int i = 0; i < ladder.getRowSize(); i++) {
-            ladderViewer.setCurrentPositionX(i);
-            ladderViewer.view("BEFORE");
-            ladder.nextPosition(i, ladderNum, ladderViewer.getCurrentPosition());
-            ladderViewer.view("AFTER");
-        }
+    public void run(CurrentPosition currentPosition) {
+        LadderViewer ladderViewer = LadderViewer.of(currentPosition, ladder);
+        ladderViewer.view(currentPosition);
     }
 
 }
