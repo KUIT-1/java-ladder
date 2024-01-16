@@ -20,13 +20,13 @@ public class Ladder {
         return new Ladder(row, numberOfPerson);
     }
 
-    public void nextPosition(int i, LadderNumber ladderNumber, CurrentPosition currentPosition) {
-        rows[i].nextPosition(ladderNumber, currentPosition);
+    public void nextPosition(int i, CurrentPosition currentPosition) {
+        rows[i].nextPosition(currentPosition);
     }
 
     public void view(CurrentPosition currentPosition) {
         for (int i = 0; i < getRowSize(); i++) {
-            rows[i].viewValues(getNumberOfPersonSize(), i, currentPosition);
+            rows[i].viewValues(i, currentPosition);
         }
     }
 
