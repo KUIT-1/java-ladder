@@ -16,7 +16,13 @@ public class LadderRunner {
 
     public void run(CurrentPosition currentPosition) {
         LadderViewer ladderViewer = LadderViewer.of(currentPosition, ladder);
-        ladderViewer.view(currentPosition);
+
+        for (int i = 0; i < ladder.getRowSize(); i++) {
+            ladderViewer.setCurrentPositionX(i);
+            ladderViewer.view("BEFORE");
+            ladder.nextPosition(i, currentPosition);
+            ladderViewer.view("AFTER");
+        }
     }
 
 }
